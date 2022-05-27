@@ -1,3 +1,10 @@
 <resources>
     <string name="app_name">Valo.ai</string>
+    <string name="username">Nama Pengguna</string>
+    <string name="login_image_illustration">Login Image Illustration</string>
+    <string name="login_to_valo_ai">Masuk ke Valo.Ai</string>
+    <string name="password">Kata Sandi</string>
+    <string name="btn_to_register_text">Daftar Sekarang</string>
+    <string name="login">Masuk</string>
+    <string name="does_not_have_an_account">Belum punya akun?</string>
 </resources>
