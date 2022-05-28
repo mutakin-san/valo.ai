@@ -1,8 +1,10 @@
 package com.capstone.valoai.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ImageView
+import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
 import com.capstone.valoai.R
 import com.capstone.valoai.data.local.OnBoardPref
@@ -28,9 +30,15 @@ class MainActivity : AppCompatActivity() {
                 }
             }
         }
+        setContentView(R.layout.activity_detail_vaksin)
+
+        findViewById<ImageView>(R.id.btn_back).setOnClickListener {
+            finish()
+        }
 
 
-
-        setContentView(R.layout.login_layout)
+        findViewById<TextView>(R.id.faskes_title).setOnClickListener {
+            startActivity(Intent(this@MainActivity, VaksinLocationMapsActivity::class.java))
+        }
     }
 }

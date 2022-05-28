@@ -8,4 +8,10 @@
     <string name="login">Masuk</string>
     <string name="does_not_have_an_account">Belum punya akun?</string>
     <string name="get_started">Mulai Sekarang</string>
+    <string name="back_button">Tombol Kembali</string>
+    <string name="banner_informasi_vaksin">Banner Informasi Vaksin</string>
+    <string name="vaccine_location_text">Lokasi Vaksin</string>
+    <string name="age_recommendation_text">Sasaran Usia</string>
+    <string name="description">Keterangan</string>
+    <string name="title_activity_vaksin_location_maps">VaksinLocationMapsActivity</string>
 </resources>
