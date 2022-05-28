@@ -1,4 +1,4 @@
-package com.capstone.valoai
+package com.capstone.valoai.ui
 
 import android.annotation.SuppressLint
 import android.content.Intent

@@ -10,9 +10,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Valoai">
         <activity
-            android:name=".SplashScreenActivity"
-            android:theme="@style/SplashTheme"
-            android:exported="true">
+            android:name=".ui.OnBoardingActivity"
+            android:exported="false"/>
+        <activity
+            android:name=".ui.SplashScreenActivity"
+            android:exported="true"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -20,9 +23,8 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
-            android:exported="false" />
-
+            android:name=".ui.MainActivity"
+            android:exported="false"/>
     </application>
 
 </manifest>

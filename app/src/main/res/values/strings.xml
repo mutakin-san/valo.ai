@@ -7,4 +7,5 @@
     <string name="btn_to_register_text">Daftar Sekarang</string>
     <string name="login">Masuk</string>
     <string name="does_not_have_an_account">Belum punya akun?</string>
+    <string name="get_started">Mulai Sekarang</string>
 </resources>
