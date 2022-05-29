@@ -1,0 +1,801 @@
+user_id,name,age,gender,vac_1,vac_2,vac_booster
+1,Bakda Salahudin,18,1,5,5,4
+2,Eja Widodo,36,1,5,5,4
+3,Gamanto Prasetya,39,1,5,5,4
+4,Vera Puspita,47,0,5,5,4
+5,Elvina Pratiwi,46,0,5,5,4
+6,Ophelia Susanti,29,0,4,4,3
+7,Bella Anggraini,31,0,4,4,3
+8,Lega Saptono,40,1,4,4,3
+9,Cornelia Haryanti,44,0,4,4,3
+10,Digdaya Waluyo,28,1,4,4,3
+11,Jaeman Thamrin,23,1,3,3,3
+12,Caraka Simbolon,22,1,3,3,3
+13,Taufik Nababan,18,1,3,3,3
+14,Ika Astuti,30,0,3,3,3
+15,Padma Mandasari,39,0,3,3,3
+16,Luhung Simanjuntak,28,1,2,2,0
+17,Faizah Haryanti,19,0,2,2,0
+18,Hari Gunarto,20,1,2,2,1
+19,Cakrajiya Lazuardi,44,1,2,2,1
+20,Aswani Wacana,26,0,2,2,1
+21,Betania Suartini,18,0,1,1,3
+22,Paramita Yuliarti,39,0,1,1,3
+23,Dimaz Saputra,24,1,1,1,1
+24,Hartana Adriansyah,39,1,1,1,1
+25,Suci Permata,43,0,1,1,0
+26,Vivi Lestari,21,0,0,0,3
+27,Vanesa Suryatmi,43,0,0,0,3
+28,Sakura Riyanti,33,0,0,0,1
+29,Karja Pradana,46,1,0,0,1
+30,Salsabila Mardhiyah,33,0,0,0,0
+31,Restu Mulyani,36,0,5,5,4
+32,Uda Haryanto,21,1,5,5,4
+33,Agus Utama,26,1,5,5,4
+34,Langgeng Setiawan,30,1,5,5,4
+35,Kambali Tampubolon,54,1,5,5,4
+36,Yani Palastri,20,0,4,4,3
+37,Maya Oktaviani,26,0,4,4,3
+38,Candra Januar,26,1,4,4,3
+39,Waluyo Marbun,32,1,4,4,3
+40,Ika Hassanah,23,0,4,4,3
+41,Jane Yulianti,20,0,3,3,3
+42,Tantri Fujiati,20,0,3,3,3
+43,Daryani Saptono,21,1,3,3,3
+44,Endah Suryatmi,25,0,3,3,3
+45,Luthfi Firmansyah,24,1,3,3,3
+46,Salwa Usamah,55,0,2,2,0
+47,Nasrullah Budiyanto,25,1,2,2,0
+48,Yuliana Mardhiyah,42,0,2,2,1
+49,Zulaikha Hasanah,56,0,2,2,1
+50,Jamal Pranowo,59,1,2,2,1
+51,Gina Winarsih,39,0,1,1,3
+52,Rahayu Halimah,58,0,1,1,3
+53,Talia Pratiwi,43,0,1,1,1
+54,Rahayu Padmasari,25,0,1,1,1
+55,Baktiadi Suwarno,47,1,1,1,0
+56,Lanang Napitupulu,58,1,0,0,3
+57,Safina Pudjiastuti,22,0,0,0,3
+58,Gabriella Lestari,44,0,0,0,1
+59,Okta Halim,46,0,0,0,1
+60,Hari Mustofa,43,1,0,0,0
+61,Ajiman Wijaya,32,1,5,5,4
+62,Titi Wastuti,56,0,5,5,4
+63,Dacin Kusumo,38,1,5,5,4
+64,Talia Pertiwi,50,0,5,5,4
+65,Rina Riyanti,33,0,5,5,4
+66,Laras Pudjiastuti,26,0,4,4,3
+67,Malika Usada,35,0,4,4,3
+68,Kayla Hartati,52,0,4,4,3
+69,Kani Mulyani,24,0,4,4,3
+70,Laras Uyainah,39,0,4,4,3
+71,Cinta Safitri,29,0,3,3,3
+72,Zulfa Wijayanti,53,0,3,3,3
+73,Ganep Najmudin,25,1,3,3,3
+74,Samsul Prasasta,37,1,3,3,3
+75,Ega Hardiansyah,31,1,3,3,3
+76,Putri Wahyuni,52,0,2,2,0
+77,Vicky Yulianti,49,0,2,2,0
+78,Cakrajiya Wibowo,48,1,2,2,1
+79,Zulaikha Suartini,36,0,2,2,1
+80,Garang Prasasta,30,1,2,2,1
+81,Sarah Susanti,50,0,1,1,3
+82,Baktiadi Situmorang,51,1,1,1,3
+83,Upik Wibowo,22,1,1,1,1
+84,Pandu Sihombing,46,1,1,1,1
+85,Perkasa Hutagalung,57,1,1,1,0
+86,Laksana Pranowo,25,1,0,0,3
+87,Yessi Novitasari,52,0,0,0,3
+88,Luthfi Maryadi,37,1,0,0,1
+89,Gaduh Setiawan,21,1,0,0,1
+90,Niyaga Manullang,51,0,0,0,0
+91,Kalim Ardianto,58,1,5,5,4
+92,Umaya Adriansyah,33,1,4,4,3
+93,Betania Novitasari,51,0,3,3,3
+94,Oliva Aryani,34,0,2,2,0
+95,Cawuk Tamba,57,1,1,1,0
+96,Melinda Nurdiyanti,36,0,0,0,0
+97,Zaenab Anggraini,34,0,5,5,4
+98,Cawisadi Simbolon,33,0,4,4,3
+99,Samsul Habibi,18,1,3,3,3
+100,Karsa Prabowo,40,1,2,2,1
+101,Yessi Palestri,54,0,2,2,0
+102,Ajiman Nugroho,37,1,2,2,1
+103,Rangga Situmorang,21,1,0,0,3
+104,Wirda Yulianti,18,0,0,0,1
+105,Suci Hartati,32,0,0,0,1
+106,Ulya,19,0,0,0,1
+107,Jarwadi Putra,23,1,0,0,1
+108,Capa Prasetya,18,1,0,0,3
+109,Ciaobell Safitri,26,0,0,0,0
+110,Gatra Suwarno,40,1,0,0,0
+111,Cengkir Waskita,38,1,4,4,3
+112,Lamar Thamrin,23,1,4,4,3
+113,Asman Gunawan,55,1,1,1,1
+114,Febi Widiastuti,35,0,1,1,1
+115,Ihsan Saefullah,19,1,1,1,1
+116,Vega Nugroho,30,1,1,1,3
+117,Zizi Yulianti,24,0,1,1,0
+118,Daliman Dongoran,20,1,0,0,0
+119,Ganda Latupono,57,1,0,0,0
+120,Najam Wibisono,45,1,3,3,3
+121,Fathonah Lailasari,38,0,3,3,3
+122,Citra Zulaika,29,0,4,4,3
+123,Adikara Najmudin,30,1,4,4,3
+124,Jamaila Uyainah,27,0,0,0,3
+125,Narji Prasetyo,25,1,2,2,0
+126,Dartono Budiman,44,1,5,5,3
+127,Argono Kusumo,55,1,5,5,3
+128,Zalindra Utami,56,0,5,5,3
+129,Salimah Permata,36,0,3,3,3
+130,Vicky Suartini,48,1,3,3,3
+131,Bella Astuti,31,0,3,3,3
+132,Belinda Hariyah,45,0,0,0,1
+133,Vero Pradana,20,1,0,0,1
+134,Rafid Napitupulu,27,1,4,4,3
+135,Hadi Putra,53,1,4,4,3
+136,Puput Permata,24,0,4,4,3
+137,Cengkir Kuswoyo,56,1,1,1,0
+138,Endah Safitri,37,0,1,1,1
+139,Caket Maulana,22,1,1,1,1
+140,Gandi Prasetya,31,1,1,1,3
+141,Citra Hasanan,53,0,2,2,1
+142,Kamaria Kusmawati,35,0,2,2,1
+143,Dian Halimah,37,0,5,5,3
+144,Tomi Siregar,29,1,5,5,3
+145,Gading Dabukke,48,1,2,2,0
+146,Ina Hastuti,41,0,2,2,0
+147,Padmi Purnawati,30,0,0,0,1
+148,Kamidin Prasasta,32,1,1,1,3
+149,Bajragin Mustofa,46,1,4,4,3
+150,Koko Uwais,19,1,3,3,3
+151,Gaman Wacana,18,1,3,3,3
+152,Kani Yuniar,36,0,5,5,3
+153,Bancar Dabukke,39,1,0,0,1
+154,Ikin Mandala,47,1,0,0,1
+155,Reza Santoso,46,1,2,2,1
+156,Rama Wibowo,29,1,0,0,0
+157,Nadine Hartati,31,0,2,2,0
+158,Eva Lestari,40,0,0,0,0
+159,Ridwan Hardiansyah,44,1,0,0,3
+160,Mahmud Sirait,28,1,5,5,3
+161,Darimin Zulkarnain,23,1,3,3,3
+162,Ajeng Yolanda,22,0,1,1,3
+163,Edi Samosir,18,1,1,1,3
+164,Oliva Kuswandari,30,0,0,0,0
+165,Akarsana Santoso,39,1,0,0,0
+166,Vinsen Najmudin,28,1,4,4,3
+167,Vega Iswahyudi,19,0,4,4,3
+168,Gilda Hartati,20,1,4,4,3
+169,Widya Wahyuni,44,0,4,4,3
+170,Ami Wahyuni,26,0,1,1,1
+171,Puspa Laksmawati,18,0,1,1,0
+172,Makara Natsir,39,1,1,1,0
+173,Dodo Saputra,24,1,1,1,3
+174,Gatra Nugroho,39,1,2,2,0
+175,Asman Mahendra,43,1,3,3,3
+176,Dalimin Budiyanti,21,1,3,3,3
+177,Sari Lailasari,43,0,3,3,3
+178,Gamani Hutasoit,33,1,1,1,3
+179,Eja Pranowo,46,1,1,1,1
+180,Mohammad Ahsan,33,1,1,1,0
+181,Hendra Setiawan,36,1,1,1,3
+182,Gregoria Mariska Tunjung,21,0,1,1,1
+183,Kevin Sanjaya Sukamuljo,26,1,1,1,1
+184,Marcus Fernaldi Gideon,30,1,1,1,0
+185,Haryanto Arbi,54,1,1,1,0
+186,Cristian Adinata,20,1,1,1,1
+187,Jonathan Christie,26,1,1,1,0
+188,Melati Daeva Oktavianti,26,0,3,3,3
+189,Greysia Polli,32,0,5,5,3
+190,Apriyani Rahayu,23,0,0,0,1
+191,Putri Kusuma Wardani,20,0,0,0,1
+192,Febriana Dwipuja Kusuma,20,0,3,3,3
+193,Ribka Sugiarto,21,0,2,2,1
+194,Fajar Alfian,25,1,2,2,1
+195,Muhammad Rian Ardianto,24,1,2,2,1
+196,Heri Iman Pierngadi,55,1,3,3,3
+197,Anthony Sinisuka Ginting,25,1,4,4,3
+198,Taufik Hidayat,42,1,5,5,3
+199,Chandra Wijaya,56,1,5,5,3
+200,Sigit Budiharto,59,1,0,0,0
+201,Nabila Nasyiah,39,0,0,0,3
+202,Septi Rahimah,58,0,1,1,3
+203,Kemal Sitorus,43,1,3,3,3
+204,Darmana Sihotang,25,1,3,3,3
+205,Chandra Waluyo,47,1,4,4,3
+206,Malika Yuliarti,58,0,2,2,1
+207,Baktiadi Napitupulu,22,1,5,5,4
+208,Jumadi Narpati,44,1,4,4,3
+209,Victoria Suryatmi,46,0,4,4,3
+210,Artanto Jailani,43,1,4,4,3
+211,Lantar Halim,32,1,0,0,0
+212,Kacung Prakasa,56,1,2,2,0
+213,Martana Prasetyo,38,1,0,0,1
+214,Panji Sitompul,50,1,2,2,1
+215,Amalia Lailasari,33,0,1,1,0
+216,Lantar Najmudin,26,1,2,2,1
+217,Lukita Maryadi,35,1,5,5,4
+218,Rangga Simbolon,52,1,0,0,1
+219,Lantar Maheswara,24,1,3,3,3
+220,Gadang Rajasa,39,1,2,2,1
+221,Gilda Kusmawati,29,0,2,2,0
+222,Emin Firgantoro,53,1,1,1,3
+223,Fitriani Namaga,25,0,0,0,0
+224,Bagas Prakasa,37,1,2,2,0
+225,Faizah Utami,31,0,2,2,1
+226,Halima Namaga,52,0,0,0,3
+227,Tantri Safitri,49,0,0,0,1
+228,Dagel Mandala,48,1,1,1,0
+229,Waluyo Dabukke,36,1,3,3,3
+230,Lega Latupono,30,1,3,3,3
+231,Lanjar Waluyo,50,1,1,1,0
+232,Aurora Lestari,51,0,0,0,1
+233,Zaenab Riyanti,22,0,5,5,4
+234,Chelsea Anggraini,46,0,3,3,3
+235,Okto Dongoran,57,1,5,5,4
+236,Radika Marbun,25,1,5,5,4
+237,Samiah Yuniar,52,0,2,2,0
+238,Daruna Marbun,37,1,0,0,0
+239,Wawan Saptono,21,1,5,5,4
+240,Tari Oktaviani,51,0,3,3,3
+241,Cakrawala Firgantoro,58,1,3,3,3
+242,Lantar Pranowo,33,1,4,4,3
+243,Agnes Susanti,51,0,0,0,0
+244,Natalia Handayani,34,0,1,1,0
+245,Gina Kusmawati,57,0,4,4,3
+246,Febi Wijayanti,36,0,1,1,0
+247,Puti Hassanah,34,0,5,5,4
+248,Salsabila Purnawati,33,0,1,1,0
+249,Ana Hasanah,18,0,2,2,1
+250,Usyi Susanti,40,0,1,1,1
+251,Langgeng Siregar,22,1,3,3,3
+252,Alambana Latupono,21,1,0,0,0
+253,Siti Suryatmi,18,0,0,0,0
+254,Laras Pudjiastuti,34,0,4,4,3
+255,Cindy Wahyuni,43,0,0,0,3
+256,Kamaria Handayani,30,0,5,5,4
+257,Kania Fujiati,34,0,4,4,3
+258,Ganda Sinaga,21,1,1,1,1
+259,Wani Purnawati,22,0,4,4,3
+260,Hamzah Simanjuntak,39,1,5,5,4
+261,Damar Lazuardi,55,1,4,4,3
+262,Jayeng Nugroho,42,1,0,0,1
+263,Gaiman Marpaung,42,1,2,2,1
+264,Ayu Suartini,52,0,1,1,1
+265,Eva Wulandari,53,0,5,5,4
+266,Kayla Utami,51,0,0,0,0
+267,Ella Fujiati,60,0,2,2,0
+268,Jasmin Kuswandari,60,0,4,4,3
+269,Kala Rajasa,41,1,0,0,0
+270,Qori Lestari,25,0,0,0,3
+271,Bancar Iswahyudi,40,1,1,1,1
+272,Ibrani Salahudin,55,1,4,4,3
+273,Ganjaran Tampubolon,40,1,1,1,1
+274,Belinda Zulaika,50,0,4,4,3
+275,Jelita Yolanda,22,0,5,5,4
+276,Prima Sitorus,26,1,0,0,0
+277,Warsa Nashiruddin,25,1,4,4,3
+278,Jaga Thamrin,40,1,3,3,3
+279,Violet Fujiati,56,0,2,2,1
+280,Cinta Palastri,34,0,2,2,1
+281,Anom Manullang,59,1,0,0,1
+282,Elma Hasanah,21,0,1,1,0
+283,Raina Mandasari,29,0,4,4,3
+284,Kayla Purwanti,36,0,5,5,4
+285,Ganda Nainggolan,54,1,2,2,1
+286,Mahmud Wijaya,41,1,3,3,3
+287,Parman Pratama,43,1,0,0,1
+288,Sakura Laksmiwati,48,0,2,2,1
+289,Titin Lestari,20,0,5,5,4
+290,Jasmin Suartini,45,0,4,4,3
+291,Diana Haryanti,59,0,2,2,0
+292,Mutia Yulianti,46,0,4,4,3
+293,Lidya Suartini,60,0,3,3,3
+294,Ida Handayani,49,0,5,5,4
+295,Victoria Maryati,55,0,4,4,3
+296,Kania Farida,53,0,1,1,0
+297,Intan Rahimah,57,0,3,3,3
+298,Asirwada Hidayanto,32,1,3,3,3
+299,Ratih Laksmiwati,57,0,0,0,3
+300,Harimurti Sinaga,36,1,0,0,3
+301,Sakura Januar,47,1,4,4,3
+302,Indra Salahudin,42,1,4,4,3
+303,Puti Wulandari,20,0,3,3,3
+304,"Harjo Tarihoran, M.TI.",57,1,3,3,3
+305,Tirtayasa Napitupulu,33,1,3,3,3
+306,"Sutan Yoga Pangestu, S.T.",24,1,3,3,3
+307,drg. Kawaca Sinaga,31,1,3,3,3
+308,"Ridwan Permadi, M.Kom.",48,1,2,2,0
+309,Darimin Usamah,19,1,2,2,0
+310,"Purwadi Pudjiastuti, M.Ak",34,1,2,2,1
+311,"KH. Bakda Yulianti, S.Pt",46,0,2,2,1
+312,Mahmud Dongoran,20,0,2,2,1
+313,Hamzah Mandasari,39,0,1,1,3
+314,Devi Ardianto,18,0,1,1,3
+315,"Hafshah Zulkarnain, S.Ked",55,1,1,1,1
+316,Kadir Salahudin,37,1,1,1,1
+317,Ir. Balangga Suwarno,28,0,1,1,0
+318,Narji Purnawati,46,1,0,0,3
+319,R. Zamira Safitri,36,1,0,0,3
+320,Puji Siregar,23,0,0,0,1
+321,Puput Hutagalung,56,0,0,0,1
+322,Rafi Suartini,43,1,0,0,0
+323,Danu Farida,32,1,5,5,4
+324,Almira Dabukke,29,0,5,5,4
+325,"dr. Dartono Budiyanto, S.E.I",32,1,5,5,4
+326,"Ir. Asmadi Najmudin, M.Pd",21,1,5,5,4
+327,Dimas Hutasoit,58,1,5,5,4
+328,Cut Uli Firgantoro,18,0,4,4,3
+329,Ciaobella Damanik,45,0,4,4,3
+330,Agnes Waskita,35,0,4,4,3
+331,Gawati Winarsih,44,0,4,4,3
+332,Melinda Kuswoyo,34,0,4,4,3
+333,R.M. Limar Suwarno,23,1,3,3,3
+334,"Luwar Safitri, S.Pd",45,0,3,3,3
+335,Febi Maheswara,22,1,3,3,3
+336,Eva Usada,34,0,3,3,3
+337,Cindy Nashiruddin,40,0,3,3,3
+338,Ratih Lazuardi,32,0,2,2,0
+339,Unjani Santoso,55,0,2,2,0
+340,Violet Wibisono,23,1,2,2,1
+341,Viman Kurniawan,43,1,2,2,1
+342,Aurora Firmansyah,27,0,2,2,1
+343,Salsabila Rajasa,38,1,1,1,3
+344,Kamila Andriani,48,1,1,1,3
+345,Ulya Sitorus,34,1,1,1,1
+346,Mulyanto Hastuti,43,1,1,1,1
+347,Ir. Dalima Oktaviani,36,0,1,1,0
+348,"Wirda Budiyanto, M.TI.",48,0,0,0,3
+349,Ciaobella Maheswara,43,0,0,0,3
+350,Galih Tarihoran,54,0,0,0,1
+351,Dt. Yosef Nababan,35,1,0,0,1
+352,Mursinin Andriani,48,1,0,0,0
+353,"Ayu Pangestu, M.Kom.",38,1,5,5,4
+354,Puput Safitri,44,1,5,5,4
+355,Zelda Wijaya,39,1,5,5,4
+356,Vivi Winarno,32,0,5,5,4
+357,"drg. Hani Mulyani, S.Pd",21,0,5,5,4
+358,Luhung Saefullah,29,0,4,4,3
+359,dr. Genta Saragih,38,0,4,4,3
+360,"Puti Hamima Nababan, S.Ked",51,0,4,4,3
+361,"drg. Salimah Rahayu, M.TI.",54,1,4,4,3
+362,Shania Suartini,45,1,4,4,3
+363,Mutia Wastuti,22,1,3,3,3
+364,Ir. Violet Mustofa,49,0,3,3,3
+365,Hilda Suwarno,32,0,3,3,3
+366,Drs. Ghaliyati Narpati,19,1,3,3,3
+367,Bancar Suartini,18,1,3,3,3
+368,Gasti Nasyidah,23,0,2,2,0
+369,"Ir. Salimah Riyanti, S.I.Kom",44,0,2,2,0
+370,Kuncara Nasyidah,32,0,2,2,1
+371,Olivia Oktaviani,48,1,2,2,1
+372,"Vivi Saptono, S.Gz",38,1,2,2,1
+373,Safina Siregar,28,1,1,1,3
+374,R.A. Agnes Wacana,23,0,1,1,3
+375,Karen Pradipta,29,0,1,1,1
+376,Icha Rahimah,35,0,1,1,1
+377,Agnes Napitupulu,26,0,1,1,0
+378,"Puti Padmasari, S.Sos",22,1,0,0,3
+379,Hartaka Hutagalung,38,1,0,0,3
+380,Puti Fitriani Tampubolon,47,1,0,0,1
+381,Nyoman Halimah,34,0,0,0,1
+382,drg. Harimurti Hakim,39,0,0,0,0
+383,Michelle Usada,44,0,5,5,4
+384,"R. Zulaikha Pradana, M.Pd",57,0,4,4,3
+385,Ir. Kacung Halimah,34,0,3,3,3
+386,"Dr. Eva Sihombing, M.Ak",32,0,2,2,0
+387,"Anom Adriansyah, S.I.Kom",58,1,1,1,0
+388,Argono Wahyuni,32,0,0,0,0
+389,Dr. Kasiran Sudiati,28,0,5,5,4
+390,"Candrakanta Wijayanti, M.Kom.",32,0,4,4,3
+391,Garang Permadi,32,1,3,3,3
+392,Harsana Firmansyah,32,0,2,2,1
+393,"Tari Tamba, S.Pd",19,1,2,2,0
+394,Tari Sinaga,56,1,2,2,1
+395,"Puti Almira Simanjuntak, S.T.",21,1,0,0,3
+396,Teddy Adriansyah,29,1,0,0,1
+397,Ir. Luthfi Sihombing,57,0,0,0,1
+398,Dimas Hutagalung,32,1,0,0,1
+399,R. Salwa Iswahyudi,19,0,0,0,1
+400,Langgeng Pudjiastuti,30,1,0,0,3
+401,Ira Yolanda,36,1,0,0,0
+402,Radit Handayani,38,0,0,0,0
+403,Jaeman Waskita,48,1,4,4,3
+404,Harjo Hasanah,42,0,4,4,3
+405,H. Tedi Mandala,18,0,1,1,1
+406,Wulan Lazuardi,49,1,1,1,1
+407,"Tami Sihombing, S.Farm",35,0,1,1,1
+408,"Vivi Maulana, S.Farm",49,0,1,1,3
+409,"Sutan Dimaz Mandasari, S.H.",19,0,1,1,0
+410,Hj. Putri Nurdiyanti,46,1,0,0,0
+411,Danang Laksita,37,1,0,0,0
+412,Wani Narpati,49,0,3,3,3
+413,Puti Septi Dabukke,47,0,3,3,3
+414,Paramita Sudiati,33,0,4,4,3
+415,Dinda Fujiati,45,1,4,4,3
+416,Hani Wibisono,46,0,0,0,3
+417,"R. Puji Widodo, S.Ked",45,1,2,2,0
+418,Waluyo Habibi,24,0,5,5,3
+419,"Karja Oktaviani, M.M.",59,1,5,5,3
+420,drg. Ayu Gunawan,25,0,5,5,3
+421,Jelita Utama,27,0,3,3,3
+422,Yuliana Simanjuntak,21,1,3,3,3
+423,Drs. Daliono Wulandari,22,1,3,3,3
+424,Laras Mandasari,56,0,0,0,1
+425,Dacin Kuswandari,34,1,0,0,1
+426,"Mursinin Tampubolon, S.H.",33,0,4,4,3
+427,Aris Winarsih,54,1,4,4,3
+428,Jaiman Permadi,18,0,4,4,3
+429,Ganep Maulana,19,1,1,1,0
+430,Dr. Prayitna Rahimah,23,1,1,1,1
+431,Kacung Mustofa,22,1,1,1,1
+432,"R.A. Restu Dabukke, M.M.",26,1,1,1,3
+433,Okta Sitorus,32,1,2,2,1
+434,Janet Oktaviani,43,1,2,2,1
+435,"R. Kajen Mayasari, S.H.",45,0,5,5,3
+436,Maryanto Pratama,37,0,5,5,3
+437,R.A. Irma Susanti,51,1,2,2,0
+438,"Drs. Harimurti Oktaviani, M.Kom.",37,1,2,2,0
+439,Nova Saefullah,25,0,0,0,1
+440,Alika Oktaviani,39,1,1,1,3
+441,Tomi Wastuti,34,1,4,4,3
+442,Wira Oktaviani,57,1,3,3,3
+443,"Luis Ramadan, S.E.",21,1,3,3,3
+444,Oliva Lestari,59,0,5,5,3
+445,Kariman Sihotang,43,0,0,0,1
+446,"Bakiono Latupono, S.Farm",23,1,0,0,1
+447,Cager Suwarno,26,0,2,2,1
+448,Rangga Megantara,49,0,0,0,0
+449,Caturangga Puspita,42,1,2,2,0
+450,Patricia Hutasoit,47,0,0,0,0
+451,"Humaira Fujiati, S.I.Kom",35,0,0,0,3
+452,Yulia Aryani,38,0,5,5,3
+453,Aurora Rahmawati,45,0,3,3,3
+454,dr. Prima Rajata,23,1,1,1,3
+455,Nasim Wibisono,36,0,1,1,3
+456,"Dewi Haryanti, S.Ked",21,0,0,0,0
+457,"Anom Sihombing, M.M.",58,1,0,0,0
+458,Ir. Legawa Halim,24,1,4,4,3
+459,Salwa Pratama,18,0,4,4,3
+460,Eva Zulaika,33,0,4,4,3
+461,Mariadi Pratama,28,1,4,4,3
+462,Puspa Susanti,21,0,1,1,1
+463,Najib Marbun,54,1,1,1,0
+464,Victoria Kuswoyo,47,0,1,1,0
+465,Nova Pradipta,51,0,1,1,3
+466,Bagiya Mardhiyah,57,1,2,2,0
+467,drg. Intan Usamah,26,0,3,3,3
+468,Dr. Lala Sihotang,54,0,3,3,3
+469,"Darmana Gunawan, S.Psi",25,1,3,3,3
+470,Rafi Wacana,30,1,1,1,3
+471,Raisa Ardianto,49,0,1,1,1
+472,Jatmiko Anggraini,35,1,1,1,0
+473,Dewi Hutasoit,18,0,1,1,3
+474,Raharja Zulaika,25,1,1,1,1
+475,Cengkal Hidayanto,35,1,1,1,1
+476,Sutan Dodo Ramadan,26,1,1,1,0
+477,Budi Mangunsong,56,1,1,1,0
+478,Rahayu Widodo,18,0,1,1,1
+479,Upik Suartini,57,0,1,1,0
+480,"Zulaikha Nainggolan, S.IP",19,0,3,3,3
+481,Kani Maulana,44,0,5,5,3
+482,Ir. Jayeng Dabukke,57,1,0,0,1
+483,Daryani Marbun,30,0,0,0,1
+484,Vicky Hutagalung,55,0,3,3,3
+485,Raina Hidayanto,19,0,2,2,1
+486,Raina Wijayanti,40,0,2,2,1
+487,Murti Rahmawati,19,0,2,2,1
+488,Jayadi Rajata,49,1,3,3,3
+489,Budi Haryanti,38,1,4,4,3
+490,R. Kamidin Fujiati,55,0,5,5,3
+491,"Garda Saputra, M.Pd",21,1,5,5,3
+492,Bakiono Dabukke,58,1,0,0,0
+493,Tedi Prasetya,29,0,0,0,3
+494,Ajeng Hastuti,20,0,1,1,3
+495,Damar Yulianti,39,1,3,3,3
+496,Baktiono Halim,40,0,3,3,3
+497,Tgk. Oni Puspasari,38,1,4,4,3
+498,Ir. Kiandra Nurdiyanti,34,0,2,2,1
+499,Cengkal Prasetya,48,1,5,5,4
+500,Jayeng Napitupulu,50,0,4,4,3
+501,Among Pranowo,57,0,4,4,3
+502,Ir. Utama Saptono,48,1,4,4,3
+503,Bakiman Utami,28,1,0,0,0
+504,Zulfa Nuraini,33,0,2,2,0
+505,"Niyaga Simbolon, S.Ked",20,0,0,0,1
+506,Dr. Sakura Santoso,45,1,2,2,1
+507,"Ir. Gantar Wahyudin, M.Ak",48,1,1,1,0
+508,Darman Zulkarnain,58,1,2,2,1
+509,Halima Farida,58,1,5,5,4
+510,Rini Megantara,44,0,0,0,1
+511,"Aditya Aryani, S.IP",41,1,3,3,3
+512,"Pia Kuswandari, M.Kom.",39,1,2,2,1
+513,Lalita Irawan,44,0,2,2,0
+514,Tania Sihombing,34,0,1,1,3
+515,"Drs. Utama Lestari, S.T.",42,0,0,0,0
+516,Gabriella Habibi,52,0,2,2,0
+517,Cawuk Yulianti,43,1,2,2,1
+518,"Puti Nabila Rahayu, S.Sos",42,1,0,0,3
+519,"Ir. Vivi Utama, M.M.",32,0,0,0,1
+520,"Ir. Hartaka Handayani, S.Kom",49,0,1,1,0
+521,Janet Prasetya,25,0,3,3,3
+522,"Chelsea Suartini, M.M.",43,0,3,3,3
+523,Ina Safitri,27,1,1,1,0
+524,Margana Rajasa,54,0,0,0,1
+525,Drs. Salman Purwanti,35,1,5,5,4
+526,"Agnes Natsir, M.Farm",33,0,3,3,3
+527,Cagak Mayasari,20,0,5,5,4
+528,Darijan Hastuti,29,1,5,5,4
+529,Tantri Rahayu,31,0,2,2,0
+530,"Dr. Bakda Prasetya, S.Gz",36,0,0,0,0
+531,Salwa Sihombing,31,1,5,5,4
+532,R. Vera Nashiruddin,24,1,3,3,3
+533,Emin Wahyudin,23,0,3,3,3
+534,Hendri Gunawan,38,0,4,4,3
+535,Nrima Situmorang,44,0,0,0,0
+536,Hj. Ratih Winarsih,21,0,1,1,0
+537,"Ir. Zelda Prayoga, S.I.Kom",18,0,4,4,3
+538,Drs. Sakura Purwanti,21,1,1,1,0
+539,Malika Nurdiyanti,46,1,5,5,4
+540,"drg. Suci Utama, S.Gz",20,1,1,1,0
+541,Violet Sitorus,39,1,2,2,1
+542,T. Dagel Mulyani,33,1,1,1,1
+543,"Ika Gunawan, S.Kom",20,1,3,3,3
+544,Irnanto Mansur,32,0,0,0,0
+545,"Yunita Padmasari, S.E.I",44,1,0,0,0
+546,Lintang Kuswandari,57,1,4,4,3
+547,"Bajragin Suryatmi, S.T.",44,0,0,0,3
+548,Mala Prasetya,54,1,5,5,4
+549,Febi Astuti,40,1,4,4,3
+550,Jaga Hardiansyah,34,1,1,1,1
+551,Jamalia Prasetyo,59,0,4,4,3
+552,Farah Utama,31,0,5,5,4
+553,Ir. Jelita Mandasari,28,0,4,4,3
+554,Jamalia Rajata,40,0,0,0,1
+555,Cecep Riyanti,27,1,2,2,1
+556,Nardi Najmudin,56,0,1,1,1
+557,Dr. Rahmi Anggriawan,38,0,5,5,4
+558,Nurul Utama,31,0,0,0,0
+559,Cakrajiya Mangunsong,44,1,2,2,0
+560,Karimah Saputra,41,1,4,4,3
+561,Drs. Emil Pranowo,56,0,0,0,0
+562,Bakidin Waluyo,46,0,0,0,3
+563,Rusman Siregar,54,0,1,1,1
+564,R.M. Kariman Jailani,44,1,4,4,3
+565,Jagaraga Tarihoran,48,0,1,1,1
+566,Suci Mahendra,39,0,4,4,3
+567,"Dacin Puspita, S.H.",37,1,5,5,4
+568,"Artanto Winarsih, S.H.",35,0,0,0,0
+569,Jaga Nurdiyanti,28,0,4,4,3
+570,Ophelia Suryatmi,56,0,3,3,3
+571,Galar Aryani,28,1,2,2,1
+572,"H. Erik Namaga, S.Kom",18,0,2,2,1
+573,Ella Halimah,32,0,0,0,1
+574,Opung Jailani,34,0,1,1,0
+575,"Puti Septi Prakasa, S.Ked",38,1,4,4,3
+576,Wira Saptono,49,1,5,5,4
+577,Upik Nababan,43,1,2,2,1
+578,Darimin Rajata,19,1,3,3,3
+579,H. Cemeti Nugroho,39,1,0,0,1
+580,Raditya Lazuardi,19,0,2,2,1
+581,R. Kasim Manullang,42,0,5,5,4
+582,Hana Budiyanto,50,1,4,4,3
+583,"Salman Tamba, S.I.Kom",56,0,2,2,0
+584,"Kamila Nuraini, S.Pd",36,0,4,4,3
+585,dr. Daryani Sitorus,57,0,3,3,3
+586,Sutan Gaiman Wibowo,53,1,5,5,4
+587,Aisyah Hutasoit,47,0,4,4,3
+588,Zaenab Firgantoro,29,0,1,1,0
+589,Olivia Rahayu,58,1,3,3,3
+590,"Kezia Nasyidah, M.Ak",48,1,3,3,3
+591,"Jane Hutapea, S.IP",43,0,0,0,3
+592,Putri Prasetya,38,1,0,0,3
+593,"Drs. Icha Safitri, M.Kom.",22,1,1,1,1
+594,Irma Saputra,51,0,1,1,1
+595,Artanto Habibi,44,0,1,1,0
+596,Aris Widiastuti,24,0,0,0,3
+597,"Raina Kuswandari, S.Sos",48,1,0,0,3
+598,drg. Azalea Siregar,45,1,0,0,1
+599,Prasetyo Riyanti,44,0,0,0,1
+600,Tgk. Rahman Nainggolan,41,0,0,0,0
+601,Lidya Wijaya,53,0,5,5,4
+602,Bakiono Mangunsong,48,1,4,4,3
+603,"Nasrullah Rajasa, S.Ked",32,1,3,3,3
+604,Asman Napitupulu,26,1,2,2,0
+605,Cici Wahyudin,54,1,1,1,0
+606,Malika Thamrin,31,1,0,0,0
+607,Mahfud Farida,27,1,5,5,4
+608,"dr. Melinda Rahayu, M.Farm",58,0,4,4,3
+609,drg. Mujur Winarsih,58,0,3,3,3
+610,Daliman Manullang,33,1,2,2,1
+611,T. Catur Utami,52,1,2,2,0
+612,"Erik Rajata, M.Farm",31,0,2,2,1
+613,Alambana Maulana,57,0,0,0,3
+614,Drs. Pia Namaga,31,1,0,0,1
+615,"Edi Riyanti, M.Ak",26,0,0,0,1
+616,"Puput Samosir, M.M.",51,0,0,0,1
+617,"Puji Puspita, M.Kom.",18,0,0,0,1
+618,Mulyono Riyanti,33,1,0,0,3
+619,Ganep Mangunsong,34,0,0,0,0
+620,Nilam Sitompul,54,0,0,0,0
+621,Tgk. Ellis Aryani,40,1,4,4,3
+622,Jaka Widiastuti,34,1,4,4,3
+623,Safina Pangestu,53,0,1,1,1
+624,Cut Farah Mahendra,46,1,4,4,3
+625,"dr. Naradi Usada, S.E.",21,1,0,0,0
+626,Mariadi Simanjuntak,21,1,1,1,0
+627,Ratih Laksita,20,0,4,4,3
+628,Imam Kurniawan,56,1,1,1,0
+629,Warji Padmasari,59,0,5,5,4
+630,Danang Anggriawan,42,0,1,1,0
+631,Prayogo Pratama,32,1,2,2,1
+632,Danu Hutasoit,56,0,1,1,1
+633,"Wakiman Zulaika, S.IP",56,1,3,3,3
+634,Lantar Zulkarnain,28,1,0,0,0
+635,Fathonah Pangestu,32,0,0,0,0
+636,Lulut Hastuti,59,1,4,4,3
+637,"R. Galang Nurdiyanti, S.Gz",56,0,0,0,3
+638,Vanya Habibi,19,0,5,5,4
+639,Dadi Sirait,44,0,4,4,3
+640,"Umi Astuti, S.Ked",37,1,1,1,1
+641,Martana Nasyiah,40,1,4,4,3
+642,"Endah Mansur, S.Pt",40,1,5,5,4
+643,Nardi Uwais,40,0,4,4,3
+644,Nyoman Hariyah,26,0,0,0,1
+645,Lukman Irawan,30,1,2,2,1
+646,"Dr. Gaiman Maulana, S.Farm",22,1,1,1,1
+647,Syahrini Hidayanto,34,0,5,5,4
+648,Ganjaran Latupono,42,1,0,0,0
+649,R.M. Mulya Dabukke,19,0,2,2,0
+650,Dewi Safitri,19,1,4,4,3
+651,Gadang Sihombing,50,0,0,0,0
+652,Virman Mustofa,44,1,0,0,3
+653,R.A. Ifa Prastuti,31,1,1,1,1
+654,Icha Yolanda,52,0,4,4,3
+655,Zelaya Mahendra,48,0,1,1,1
+656,R.A. Jasmin Susanti,50,0,4,4,3
+657,R. Jatmiko Winarno,50,0,5,5,4
+658,Jelita Wahyudin,23,0,0,0,0
+659,Ratih Purnawati,45,1,4,4,3
+660,Puji Nurdiyanti,52,1,3,3,3
+661,Maras Tarihoran,58,0,2,2,1
+662,Ir. Jarwa Sihombing,48,0,2,2,1
+663,Janet Laksmiwati,22,0,0,0,1
+664,dr. Bambang Rajasa,57,1,1,1,0
+665,"Ajiman Prayoga, S.Gz",24,0,4,4,3
+666,Hardana Hutapea,46,0,5,5,4
+667,"Gasti Purwanti, M.Ak",36,1,2,2,1
+668,Agnes Wibisono,35,0,3,3,3
+669,Cawisadi Situmorang,37,1,0,0,1
+670,Drs. Unggul Manullang,30,1,2,2,1
+671,Catur Damanik,36,0,5,5,4
+672,Prasetyo Purnawati,47,0,4,4,3
+673,drg. Syahrini Gunarto,48,1,2,2,0
+674,Lalita Prabowo,32,0,4,4,3
+675,"Yosef Winarsih, S.IP",43,0,0,0,1
+676,Kemba Wasita,55,1,0,0,1
+677,Najam Suwarno,44,1,0,0,3
+678,Mahesa Adriansyah,26,0,0,0,0
+679,"Kemal Kusumo, S.I.Kom",25,0,0,0,0
+680,Joko Tampubolon,54,0,4,4,3
+681,Cut Fitria Mustofa,45,0,4,4,3
+682,Puti Kartika Saputra,19,1,1,1,1
+683,"Zamira Budiyanto, M.Ak",20,0,1,1,1
+684,Ibrani Siregar,19,0,1,1,1
+685,Amalia Pangestu,49,0,1,1,3
+686,Lulut Tampubolon,27,1,1,1,0
+687,"Lanjar Pratiwi, S.T.",25,1,0,0,0
+688,Vicky Prabowo,49,1,0,0,0
+689,R. Arta Waskita,57,0,3,3,3
+690,Jayadi Melani,34,0,3,3,3
+691,Nabila Ardianto,49,0,4,4,3
+692,Gada Narpati,38,0,4,4,3
+693,Adinata Prastuti,54,0,0,0,3
+694,"Labuh Wijaya, S.E.",51,0,2,2,0
+695,Kamila Firmansyah,27,1,5,5,3
+696,Endah Mulyani,54,1,5,5,3
+697,Padma Hastuti,27,0,5,5,3
+698,Agnes Andriani,22,0,3,3,3
+699,"Shakila Wibisono, M.Ak",29,0,3,3,3
+700,"dr. Ade Laksmiwati, S.T.",20,1,3,3,3
+701,Maida Siregar,28,1,0,0,1
+702,"Dr. Maras Wahyudin, S.IP",42,1,0,0,1
+703,Raisa Hariyah,58,1,4,4,3
+704,"Maida Rajata, S.T.",18,0,4,4,3
+705,"Asmianto Saptono, S.T.",44,0,4,4,3
+706,Danang Gunarto,23,0,1,1,0
+707,Jamil Kusumo,57,0,1,1,1
+708,Uchita Pertiwi,50,0,1,1,1
+709,"Ir. Malik Latupono, S.E.",31,1,1,1,3
+710,Dalimin Budiman,52,1,2,2,1
+711,Amalia Maryati,54,0,2,2,1
+712,R.A. Laras Hutapea,26,1,5,5,3
+713,"R. Hasim Jailani, S.Pd",33,1,5,5,3
+714,Laras Mustofa,39,1,2,2,0
+715,Mursita Wacana,39,0,2,2,0
+716,"Xanana Zulaika, S.Farm",34,1,0,0,1
+717,Yunita Riyanti,43,1,1,1,3
+718,"Dinda Pertiwi, S.I.Kom",41,1,4,4,3
+719,"Cemani Rahmawati, S.Kom",49,0,3,3,3
+720,Jamal Damanik,40,0,3,3,3
+721,Widya Prasetya,46,1,5,5,3
+722,"Silvia Padmasari, M.Kom.",32,1,0,0,1
+723,"T. Maryadi Saptono, S.Pd",18,1,0,0,1
+724,"H. Karman Sudiati, S.Ked",57,1,2,2,1
+725,Septi Siregar,36,1,0,0,0
+726,Winda Rajasa,53,0,2,2,0
+727,"R. Ihsan Kuswoyo, M.Ak",46,0,0,0,0
+728,Drs. Karma Maryati,20,1,0,0,3
+729,R.A. Qori Yulianti,29,0,5,5,3
+730,"Hj. Citra Hasanah, S.Pd",56,0,3,3,3
+731,Saadat Suryatmi,19,0,1,1,3
+732,Almira Tamba,37,0,1,1,3
+733,Ir. Lidya Hassanah,26,1,0,0,0
+734,Estiono Sihombing,39,0,0,0,0
+735,"drg. Akarsana Lailasari, M.TI.",33,0,4,4,3
+736,Rina Thamrin,24,1,0,0,0
+737,Surya Lestari,31,0,0,0,0
+738,Baktianto Laksmiwati,47,0,4,4,3
+739,Gawati Prakasa,19,1,4,4,3
+740,Harjo Nainggolan,38,0,4,4,3
+741,"dr. Mila Marpaung, S.E.I",23,1,4,4,3
+742,"Hj. Raina Prasetya, M.Kom.",41,1,1,1,1
+743,"Jasmin Wacana, S.Farm",58,0,1,1,0
+744,Yulia Wijaya,26,0,1,1,0
+745,"Drs. Ajimat Januar, M.M.",43,1,1,1,3
+746,Kayla Saputra,21,0,2,2,0
+747,Chelsea Rahayu,41,0,3,3,3
+748,Hasna Mansur,24,1,3,3,3
+749,"Dr. Jagapati Wijaya, S.IP",19,0,3,3,3
+750,Drs. Ophelia Manullang,26,0,1,1,3
+751,Panji Yulianti,29,0,1,1,1
+752,Dimas Laksmiwati,37,1,1,1,0
+753,Chelsea Hutapea,48,0,1,1,3
+754,"Jefri Namaga, S.E.I",57,0,1,1,1
+755,Ade Mahendra,35,0,1,1,1
+756,Dewi Samosir,23,0,1,1,0
+757,dr. Safina Laksmiwati,32,0,1,1,0
+758,"Kala Dongoran, S.Farm",35,0,1,1,1
+759,Laras Puspasari,38,0,1,1,0
+760,"Darmanto Rahimah, M.Kom.",23,0,3,3,3
+761,Cengkir Sinaga,42,0,5,5,3
+762,Cahyanto Januar,39,1,0,0,1
+763,"Dt. Respati Sitompul, S.IP",50,0,0,0,1
+764,Dina Wibowo,37,0,3,3,3
+765,Devi Kuswandari,31,1,2,2,1
+766,Tira Narpati,22,0,2,2,1
+767,"Ozy Padmasari, S.H.",56,1,2,2,1
+768,"Julia Susanti, S.T.",40,1,3,3,3
+769,"Edward Wacana, S.IP",34,0,4,4,3
+770,Limar Sihombing,56,0,5,5,3
+771,"Luis Saputra, S.E.",58,1,5,5,3
+772,"Slamet Namaga, M.Kom.",33,1,0,0,0
+773,"Cakrawangsa Safitri, S.Sos",57,0,0,0,3
+774,Silvia Fujiati,39,0,1,1,3
+775,Queen Winarsih,46,0,3,3,3
+776,"dr. Najwa Agustina, S.Kom",18,1,3,3,3
+777,Emil Mangunsong,51,1,4,4,3
+778,"Nabila Usamah, M.Farm",20,0,2,2,1
+779,"Ratna Rajata, M.TI.",22,0,5,5,4
+780,Eva Saputra,54,0,4,4,3
+781,"Drs. Edi Saragih, S.Kom",49,0,4,4,3
+782,Tgk. Tina Halim,32,1,4,4,3
+783,Sabrina Firmansyah,21,1,0,0,0
+784,Adikara Wastuti,57,1,2,2,0
+785,Darman Saptono,56,0,0,0,1
+786,Lukman Nasyidah,33,1,2,2,1
+787,Sutan Candrakanta Hidayanto,34,0,1,1,0
+788,"Cut Diana Pradana, S.T.",29,1,2,2,1
+789,Candrakanta Maryati,59,0,5,5,4
+790,Puji Gunarto,43,0,0,0,1
+791,"drg. Hilda Sitorus, S.Gz",23,0,3,3,3
+792,Yunita Wijayanti,31,0,2,2,1
+793,Queen Nugroho,48,0,2,2,0
+794,dr. Cornelia Suwarno,56,1,1,1,3
+795,Ghaliyati Maryati,36,0,0,0,0
+796,Putri Sudiati,48,0,2,2,0
+797,"Ir. Ratih Suartini, S.H.",25,0,2,2,1
+798,"R. Okto Wijayanti, S.Sos",47,0,0,0,3
+799,"R.M. Wahyu Fujiati, S.IP",47,0,0,0,1
+800,Siti Usada,52,0,1,1,0
