@@ -1,4 +1,4 @@
-package com.capstone.valoai.data.models
+package com.capstone.valoai.features.onboarding.data.models
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize

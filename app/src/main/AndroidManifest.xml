@@ -26,20 +26,20 @@
             android:value="${MAPS_API_KEY}" />
 
         <activity
-            android:name=".ui.VaksinLocationMapsActivity"
+            android:name=".features.maps.presentation.VaksinLocationMapsActivity"
             android:exported="false"
             android:label="@string/title_activity_vaksin_location_maps" />
         <activity
-            android:name=".ui.LoginActivity"
+            android:name=".features.auth.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.DetailVaksinActivity"
+            android:name=".features.detailvaksin.presentation.DetailVaksinActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.OnBoardingActivity"
+            android:name=".features.onboarding.presentation.OnBoardingActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.SplashScreenActivity"
+            android:name=".features.splashscreen.presentation.SplashScreenActivity"
             android:exported="true"
             android:theme="@style/SplashTheme">
             <intent-filter>
@@ -49,7 +49,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".MainActivity"
             android:exported="false" />
     </application>
 
