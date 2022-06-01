@@ -1,4 +1,4 @@
-package com.capstone.valoai.features.auth
+package com.capstone.valoai.features.auth.presentation.login
 
 import android.content.Intent
 import android.os.Bundle

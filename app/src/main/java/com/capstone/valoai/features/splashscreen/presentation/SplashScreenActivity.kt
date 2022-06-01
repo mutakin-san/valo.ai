@@ -4,7 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import com.capstone.valoai.features.auth.LoginActivity
+import com.capstone.valoai.features.auth.presentation.login.LoginActivity
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : AppCompatActivity() {
