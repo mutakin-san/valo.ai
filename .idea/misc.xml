@@ -10,8 +10,10 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.109" />
         <entry key="app/src/main/res/drawable/splash_background.xml" value="0.109" />
         <entry key="app/src/main/res/font/.xml" value="0.24583333333333332" />
+        <entry key="app/src/main/res/font/oswald.xml" value="0.23229166666666667" />
+        <entry key="app/src/main/res/font/oswald_bold.xml" value="0.23229166666666667" />
         <entry key="app/src/main/res/layout/activity_detail_vaksin.xml" value="0.22037037037037038" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.20208333333333334" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.2181208053691275" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.20208333333333334" />
         <entry key="app/src/main/res/layout/activity_on_boarding.xml" value="0.13" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.17119565217391305" />

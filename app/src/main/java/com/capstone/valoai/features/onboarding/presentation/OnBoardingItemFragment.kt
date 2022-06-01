@@ -42,8 +42,8 @@ class OnBoardingItemFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        binding.title.text = page?.title
-        binding.description.text = page?.description
+        binding.onboardingTitle.text = page?.title
+        binding.onboardingDescription.text = page?.description
         binding.illustration.setImageDrawable(page?.imageId?.let { getDrawable(it) })
 
     }
