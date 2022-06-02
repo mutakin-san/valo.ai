@@ -1,4 +1,4 @@
-package com.capstone.valoai.ui
+package com.capstone.valoai
 
 import android.content.Intent
 import android.os.Bundle
@@ -6,9 +6,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.capstone.valoai.R
-import com.capstone.valoai.data.local.OnBoardPref
-import com.capstone.valoai.data.local.datastore
+import com.capstone.valoai.features.maps.presentation.VaksinLocationMapsActivity
+import com.capstone.valoai.features.onboarding.data.local.OnBoardPref
+import com.capstone.valoai.features.onboarding.data.local.datastore
+import com.capstone.valoai.features.onboarding.presentation.OnBoardingActivity
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 

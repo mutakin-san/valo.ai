@@ -1,4 +1,4 @@
-package com.capstone.valoai.ui
+package com.capstone.valoai.features.onboarding.presentation
 
 import android.content.Intent
 import android.graphics.Color
@@ -9,7 +9,8 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.capstone.valoai.R
 import com.capstone.valoai.databinding.ActivityOnBoardingBinding
-import com.capstone.valoai.ui.fragments.OnBoardingAdapter
+import com.capstone.valoai.MainActivity
+import com.capstone.valoai.features.onboarding.domain.adapters.OnBoardingAdapter
 import com.google.android.material.tabs.TabLayoutMediator
 
 class OnBoardingActivity : AppCompatActivity() {

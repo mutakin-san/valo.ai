@@ -1,10 +1,11 @@
-package com.capstone.valoai.ui.fragments
+package com.capstone.valoai.features.onboarding.domain.adapters
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.capstone.valoai.R
-import com.capstone.valoai.data.models.OnBoardingModel
+import com.capstone.valoai.features.onboarding.data.models.OnBoardingModel
+import com.capstone.valoai.features.onboarding.presentation.OnBoardingItemFragment
 
 class OnBoardingAdapter(activity: AppCompatActivity, private val itemsCount: Int) :
     FragmentStateAdapter(activity) {

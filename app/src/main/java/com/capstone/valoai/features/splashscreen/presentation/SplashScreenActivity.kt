@@ -1,9 +1,10 @@
-package com.capstone.valoai.ui
+package com.capstone.valoai.features.splashscreen.presentation
 
 import android.annotation.SuppressLint
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.capstone.valoai.features.auth.LoginActivity
 
 @SuppressLint("CustomSplashScreen")
 class SplashScreenActivity : AppCompatActivity() {

@@ -14,4 +14,5 @@
     <string name="age_recommendation_text">Sasaran Usia</string>
     <string name="description">Keterangan</string>
     <string name="title_activity_vaksin_location_maps">VaksinLocationMapsActivity</string>
+    <string name="onboarding_illustration">Onboarding Illustration</string>
 </resources>

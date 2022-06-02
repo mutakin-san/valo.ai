@@ -1,10 +1,9 @@
-package com.capstone.valoai.ui
+package com.capstone.valoai.features.maps.presentation
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import com.capstone.valoai.R
 import com.capstone.valoai.databinding.ActivityVaksinLocationMapsBinding
-
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback

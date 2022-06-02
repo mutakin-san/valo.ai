@@ -1,4 +1,4 @@
-package com.capstone.valoai.ui.fragments
+package com.capstone.valoai.features.onboarding.presentation
 
 import android.graphics.drawable.Drawable
 import android.os.Bundle
@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
-import com.capstone.valoai.data.models.OnBoardingModel
+import com.capstone.valoai.features.onboarding.data.models.OnBoardingModel
 import com.capstone.valoai.databinding.FragmentOnboardingItemBinding
 
 private const val PAGE = "page"
@@ -42,8 +42,8 @@ class OnBoardingItemFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        binding.title.text = page?.title
-        binding.description.text = page?.description
+        binding.onboardingTitle.text = page?.title
+        binding.onboardingDescription.text = page?.description
         binding.illustration.setImageDrawable(page?.imageId?.let { getDrawable(it) })
 
     }
