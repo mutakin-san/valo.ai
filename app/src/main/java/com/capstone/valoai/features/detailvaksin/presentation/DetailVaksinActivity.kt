@@ -1,4 +1,4 @@
-package com.capstone.valoai.ui
+package com.capstone.valoai.features.detailvaksin.presentation
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle

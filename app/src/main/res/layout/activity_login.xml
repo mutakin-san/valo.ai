@@ -11,13 +11,11 @@
 
         <TextView
             android:id="@+id/label_login"
+            style="@style/HeadingText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
-            android:fontFamily="sans-serif-medium"
             android:text="@string/login_to_valo_ai"
-            android:textSize="28sp"
-            android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
@@ -42,6 +40,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginTop="50dp"
             android:labelFor="@id/field_username"
+            style="@style/ParagraphText"
             android:text="@string/username"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/image_login" />
@@ -54,6 +53,7 @@
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
             app:boxStrokeWidth="2dp"
+            app:hintEnabled="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/label_username"
@@ -74,6 +74,7 @@
             android:layout_marginTop="16dp"
             android:labelFor="@id/field_password"
             android:text="@string/password"
+            style="@style/ParagraphText"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/field_username" />
 
@@ -89,6 +90,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/label_password"
             app:passwordToggleEnabled="true"
+            app:hintEnabled="false"
             app:placeholderText="Isi Password">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -101,6 +103,7 @@
 
         <TextView
             android:id="@+id/label_does_not_have_account"
+            style="@style/ParagraphText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="13dp"
@@ -114,6 +117,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:text="@string/btn_to_register_text"
+            style="@style/ParagraphText"
             android:textColor="?attr/colorPrimary"
             app:layout_constraintBottom_toBottomOf="@+id/label_does_not_have_account"
             app:layout_constraintStart_toEndOf="@+id/label_does_not_have_account"
@@ -122,13 +126,13 @@
 
         <Button
             android:id="@+id/btn_login"
-            style="@style/Widget.MaterialComponents.Button"
             android:layout_width="0dp"
             android:layout_height="55dp"
             android:layout_marginStart="24dp"
             android:layout_marginTop="60dp"
             android:layout_marginEnd="24dp"
             android:text="@string/login"
+            style="@style/Button1Text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/label_does_not_have_account" />

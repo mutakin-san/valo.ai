@@ -1,4 +1,4 @@
-package com.capstone.valoai.data.local
+package com.capstone.valoai.features.onboarding.data.local
 
 import android.content.Context
 import androidx.datastore.core.DataStore
