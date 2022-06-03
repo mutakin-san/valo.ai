@@ -1,9 +1,12 @@
 package com.capstone.valoai.features.maps.presentation
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.valoai.R
 import com.capstone.valoai.databinding.ActivityVaksinLocationMapsBinding
+import com.capstone.valoai.features.detail_faskes.data.models.FaskesModel
+import com.capstone.valoai.features.detail_faskes.presentation.DetailFaskesActivity
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -22,6 +25,10 @@ class VaksinLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
         binding = ActivityVaksinLocationMapsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+
+        binding.back.setOnClickListener {
+            finish()
+        }
         // Obtain the SupportMapFragment and get notified when the map is ready to be used.
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
@@ -43,6 +50,24 @@ class VaksinLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
         // Add a marker in Sydney and move the camera
         val sydney = LatLng(-34.0, 151.0)
         mMap.addMarker(MarkerOptions().position(sydney).title("Marker in Sydney"))
+        mMap.setOnInfoWindowClickListener {
+            val detailFaskesIntent =
+                Intent(this@VaksinLocationMapsActivity, DetailFaskesActivity::class.java)
+            detailFaskesIntent.apply {
+                putExtra(
+                    DetailFaskesActivity.FASKES_EXTRA_NAME,
+                    FaskesModel(
+                        4,
+                        "Klinik Zarra Medika",
+                        "-7.34170468201285",
+                        "108.135989605324",
+                        listOf("Sinovac", "Moderna", "Coronavac")
+                    )
+                )
+            }
+            startActivity(detailFaskesIntent)
+        }
         mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney))
+
     }
 }

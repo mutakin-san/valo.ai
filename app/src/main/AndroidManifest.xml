@@ -38,7 +38,7 @@
             android:name=".features.auth.presentation.login.LoginActivity"
             android:exported="false" />
         <activity
-            android:name=".features.detail_vaksin.presentation.DetailVaksinActivity"
+            android:name=".features.detail_faskes.presentation.DetailFaskesActivity"
             android:exported="false" />
         <activity
             android:name=".features.onboarding.presentation.OnBoardingActivity"

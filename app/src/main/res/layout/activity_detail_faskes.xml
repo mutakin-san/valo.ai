@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView android:layout_height="wrap_content"
-    android:layout_width="match_parent"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android">
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        tools:context=".features.detail_vaksin.presentation.DetailVaksinActivity">
+        tools:context=".features.detail_faskes.presentation.DetailFaskesActivity">
 
         <ImageView
             android:id="@+id/btn_back"
@@ -53,11 +53,11 @@
 
         <com.google.android.material.chip.Chip
             android:id="@+id/chip4"
-            android:clickable="false"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="14dp"
+            android:clickable="false"
             android:text="Sukabumi"
             app:chipBackgroundColor="@color/blue_secondary"
             app:chipCornerRadius="8dp"
@@ -142,12 +142,12 @@
             app:layout_constraintTop_toBottomOf="@+id/label_age_recommendation">
 
             <com.google.android.material.chip.Chip
-                android:clickable="false"
                 android:id="@+id/chip1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="14dp"
+                android:clickable="false"
                 android:text="Remaja (9 - 17 Tahun)"
                 app:chipBackgroundColor="@color/blue_secondary"
                 app:chipCornerRadius="8dp"
@@ -156,12 +156,12 @@
 
 
             <com.google.android.material.chip.Chip
-                android:clickable="false"
                 android:id="@+id/chip2"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="14dp"
+                android:clickable="false"
                 android:text="Remaja (9 - 17 Tahun)"
                 app:chipBackgroundColor="@color/blue_secondary"
                 app:chipCornerRadius="8dp"
@@ -197,12 +197,12 @@
             app:layout_constraintTop_toBottomOf="@+id/label_vaccine_type">
 
             <com.google.android.material.chip.Chip
-                android:clickable="false"
                 android:id="@+id/coronavac"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="14dp"
+                android:clickable="false"
                 android:text="Coronavac"
                 app:chipBackgroundColor="@color/blue_secondary"
                 app:chipCornerRadius="8dp"
@@ -211,12 +211,12 @@
 
 
             <com.google.android.material.chip.Chip
-                android:clickable="false"
                 android:id="@+id/Moderna"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="14dp"
+                android:clickable="false"
                 android:text="Moderna"
                 app:chipBackgroundColor="@color/blue_secondary"
                 app:chipCornerRadius="8dp"
@@ -225,12 +225,12 @@
 
 
             <com.google.android.material.chip.Chip
-                android:clickable="false"
                 android:id="@+id/sinovac"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
                 android:layout_marginTop="14dp"
+                android:clickable="false"
                 android:text="Sinovac"
                 app:chipBackgroundColor="@color/blue_secondary"
                 app:chipCornerRadius="8dp"
@@ -263,6 +263,20 @@
             app:layout_constraintTop_toBottomOf="@+id/label_vaccine_description"
             tools:text="lorem dolor amet - " />
 
+
+        <Button
+            android:id="@+id/btn_show_rute"
+            android:layout_width="match_parent"
+            android:layout_height="55dp"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginBottom="24dp"
+            android:drawableEnd="@drawable/ic_baseline_map_24"
+            android:text="Tampilkan Rute"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/vaccine_description" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
