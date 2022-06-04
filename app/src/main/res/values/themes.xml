@@ -62,4 +62,13 @@
         <item name="android:textSize">14sp</item>
         <item name="android:fontFamily">@font/mulish_semibold</item>
     </style>
+    <style name="Button3Text" parent="Widget.MaterialComponents.Button">
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/mulish_semibold</item>
+    </style>
+    <style name="Button3TextSecondary" parent="Widget.MaterialComponents.Button">
+        <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/mulish_semibold</item>
+        <item name="android:backgroundTint">@color/blue_primary_secondary</item>
+    </style>
 </resources>
