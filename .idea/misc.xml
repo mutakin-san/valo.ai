@@ -6,6 +6,7 @@
         <entry key="..\:/Bangkit2022/valo.ai/app/src/main/res/drawable/ic_baseline_map_24.xml" value="0.1665" />
         <entry key="..\:/Bangkit2022/valo.ai/app/src/main/res/layout/activity_detail_faskes.xml" value="0.15489130434782608" />
         <entry key="..\:/Bangkit2022/valo.ai/app/src/main/res/layout/activity_detail_vaksin.xml" value="0.16983695652173914" />
+        <entry key="..\:/Bangkit2022/valo.ai/app/src/main/res/layout/activity_login.xml" value="0.2300469483568075" />
         <entry key="..\:/Bangkit2022/valo.ai/app/src/main/res/layout/activity_main.xml" value="0.16983695652173914" />
         <entry key="..\:/Bangkit2022/valo.ai/app/src/main/res/layout/activity_register.xml" value="0.1082427536231884" />
         <entry key="..\:/Bangkit2022/valo.ai/app/src/main/res/layout/activity_vaksin_location_maps.xml" value="0.16983695652173914" />
@@ -16,14 +17,12 @@
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.109" />
         <entry key="app/src/main/res/drawable/splash_background.xml" value="0.109" />
         <entry key="app/src/main/res/font/.xml" value="0.24583333333333332" />
-        <entry key="app/src/main/res/font/mulish_bold.xml" value="0.23802083333333332" />
         <entry key="app/src/main/res/font/oswald.xml" value="0.23229166666666667" />
         <entry key="app/src/main/res/font/oswald_bold.xml" value="0.23229166666666667" />
         <entry key="app/src/main/res/layout/activity_detail_vaksin.xml" value="0.22037037037037038" />
-        <entry key="app/src/main/res/layout/activity_login.xml" value="0.165" />
+        <entry key="app/src/main/res/layout/activity_login.xml" value="0.2181208053691275" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.20208333333333334" />
         <entry key="app/src/main/res/layout/activity_on_boarding.xml" value="0.13" />
-        <entry key="app/src/main/res/layout/activity_register.xml" value="0.335" />
         <entry key="app/src/main/res/layout/activity_splash_screen.xml" value="0.17119565217391305" />
         <entry key="app/src/main/res/layout/activity_vaksin_location_maps.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_onboarding_item.xml" value="0.25" />

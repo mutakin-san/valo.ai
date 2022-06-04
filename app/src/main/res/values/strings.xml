@@ -24,4 +24,5 @@
     <string name="description">Keterangan</string>
     <string name="title_activity_vaksin_location_maps">VaksinLocationMapsActivity</string>
     <string name="onboarding_illustration">Onboarding Illustration</string>
+    <string name="web_client_id">934521763666-u0vbnqbf5nuescmngfcc2nbceep91oj2.apps.googleusercontent.com</string>
 </resources>

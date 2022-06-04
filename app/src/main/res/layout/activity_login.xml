@@ -27,6 +27,7 @@
             style="@style/HeadingText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
             android:layout_marginTop="100dp"
             android:text="@string/valo_ai"
             android:textColor="@color/blue_primary"
@@ -55,13 +56,13 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="50dp"
-            android:labelFor="@id/field_username"
+            android:labelFor="@id/field_email"
             android:text="@string/email"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/image_login" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/field_username"
+            android:id="@+id/field_email"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -71,13 +72,12 @@
             app:hintEnabled="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/label_username"
-            app:placeholderText="Isi username">
+            app:layout_constraintTop_toBottomOf="@id/label_username">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/password"
+                android:hint="@string/email"
                 android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
 
@@ -92,7 +92,7 @@
             android:labelFor="@id/field_password"
             android:text="@string/password"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/field_username" />
+            app:layout_constraintTop_toBottomOf="@id/field_email" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/field_password"
@@ -106,13 +106,12 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/label_password"
-            app:passwordToggleEnabled="true"
-            app:placeholderText="Isi Password">
+            app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="@string/email"
+                android:hint="@string/password"
                 android:inputType="textPassword"
                 android:maxLines="1" />
         </com.google.android.material.textfield.TextInputLayout>
@@ -147,11 +146,23 @@
             android:layout_width="0dp"
             android:layout_height="55dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
             android:text="@string/login"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/label_does_not_have_account" />
+            app:layout_constraintTop_toBottomOf="@id/signInWithGoogle" />
+
+        <ImageButton
+            android:id="@+id/signInWithGoogle"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@android:color/transparent"
+            android:scaleType="centerInside"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_to_register"
+            app:srcCompat="@drawable/google" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
