@@ -1,12 +1,21 @@
 <resources>
     <string name="app_name">Valo.ai</string>
-    <string name="username">Nama Pengguna</string>
     <string name="login_image_illustration">Login Image Illustration</string>
-    <string name="login_to_valo_ai">Masuk ke Valo.Ai</string>
+    <string name="login_to">Masuk ke</string>
+    <string name="register_to">Daftar ke</string>
+    <string name="valo_ai">Valo.Ai</string>
     <string name="password">Kata Sandi</string>
+    <string name="email">Email</string>
+    <string name="phone">Nomor Telepon</string>
+    <string name="password_confirmation">Konfirmasi Kata Sandi</string>
     <string name="btn_to_register_text">Daftar Sekarang</string>
+    <string name="btn_to_login_text">Login Sekarang</string>
     <string name="login">Masuk</string>
+    <string name="already_vaksin">Sudah Pernah</string>
+    <string name="not_already_vaksin">Belum Pernah</string>
+    <string name="register">Register</string>
     <string name="does_not_have_an_account">Belum punya akun?</string>
+    <string name="already_have_an_account">Sudah punya akun?</string>
     <string name="get_started">Mulai Sekarang</string>
     <string name="back_button">Tombol Kembali</string>
     <string name="banner_informasi_vaksin">Banner Informasi Vaksin</string>
