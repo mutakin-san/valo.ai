@@ -1,9 +1,9 @@
 package com.capstone.valoai.features.dashboard.presentations
 
 import android.content.Intent
+import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -50,6 +50,7 @@ class DashboardActivity : AppCompatActivity() {
 
         user?.updateProfile(profileUpdates)?.addOnCompleteListener {
             binding.txtName.text = user?.displayName
+            Glide.with(this).load(user?.photoUrl).circleCrop().into(binding.profileDashboard)
         }
 
 
