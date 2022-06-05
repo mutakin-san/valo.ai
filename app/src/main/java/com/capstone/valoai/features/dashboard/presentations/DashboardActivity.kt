@@ -1,9 +1,11 @@
 package com.capstone.valoai.features.dashboard.presentations
 
 import android.content.Intent
-import android.graphics.BitmapFactory
 import android.net.Uri
 import android.os.Bundle
+import android.util.Log
+import android.view.MenuItem
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -11,12 +13,14 @@ import com.capstone.valoai.databinding.ActivityDashboardBinding
 import com.capstone.valoai.features.auth.presentation.login.LoginActivity
 import com.capstone.valoai.features.dashboard.domain.adapter.FikesListAdapter
 import com.capstone.valoai.features.maps.presentation.VaksinLocationMapsActivity
+import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.RelativeCornerSize
 import com.google.android.material.shape.RoundedCornerTreatment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
+import kotlin.math.log
 
 
 class DashboardActivity : AppCompatActivity() {
@@ -30,8 +34,6 @@ class DashboardActivity : AppCompatActivity() {
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         attachFikesList()
         setContentView(binding.root)
-
-
 
         val bottomAppBar = binding.bottomAppBar
         val bottomBarBackground = bottomAppBar.background as MaterialShapeDrawable
@@ -53,7 +55,14 @@ class DashboardActivity : AppCompatActivity() {
             Glide.with(this).load(user?.photoUrl).circleCrop().into(binding.profileDashboard)
         }
 
-
+        binding.bottomNavigationView.setOnItemSelectedListener{ item ->
+            Log.println(Log.INFO, "Test", "${item.title}")
+            when (item.title) {
+                "Home" -> attachFikesList()
+                "Riwayat" -> attachHistoryList()
+            }
+            true
+        }
 
         firebaseAuth.addAuthStateListener {
             if (it.currentUser == null) {
@@ -72,7 +81,15 @@ class DashboardActivity : AppCompatActivity() {
         binding.dashboardList.adapter = FikesListAdapter(dataDummy)
     }
 
-    fun onClickFeb() {
+    private fun attachHistoryList() {
+        val dataDummy = arrayListOf("Test3", "Test5")
+        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+
+        binding.dashboardList.layoutManager = layoutManager
+        binding.dashboardList.adapter = FikesListAdapter(dataDummy)
+    }
+
+    fun onClickFeb(view: View) {
         print("test")
         startActivity(Intent(this@DashboardActivity, VaksinLocationMapsActivity::class.java))
 
