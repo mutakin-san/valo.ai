@@ -39,6 +39,7 @@
     </style>
     <style name="Subtitle1Text">
         <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:fontFamily">@font/mulish_semibold</item>
     </style>
@@ -58,6 +59,10 @@
     </style>
     <style name="MiniText">
         <item name="android:textSize">12sp</item>
+        <item name="android:fontFamily">@font/mulish</item>
+    </style>
+    <style name="MiniText2">
+        <item name="android:textSize">8sp</item>
         <item name="android:fontFamily">@font/mulish</item>
     </style>
     <style name="Button1Text" parent="Widget.MaterialComponents.Button">

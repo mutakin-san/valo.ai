@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <item name="fikesName" type="id">fikesName</item>
+    <item name="fikesN" type="id">nameFikes</item>
+    <item name="cardView3" type="id">cardView3</item>
+</resources>
