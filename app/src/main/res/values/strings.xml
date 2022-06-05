@@ -40,4 +40,9 @@
     <string name="text_riwayat">Riwayat</string>
     <string name="inactive">inactive</string>
     <string name="active">active</string>
+    <string name="greeting">Selamat Datang,</string>
+    <string name="Profile">avatar</string>
+    <string name="rekomendasi_list">Rekomendasi Vaksin</string>
+    <string name="km10">10 Km</string>
+    <string name="AstraZeneca">AstraZeneca</string>
 </resources>
