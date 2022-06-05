@@ -6,7 +6,6 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.valoai.databinding.ActivityDetailFaskesBinding
 import com.capstone.valoai.features.detail_faskes.data.models.FaskesModel
-import com.capstone.valoai.features.maps.presentation.VaksinLocationMapsActivity
 
 class DetailFaskesActivity : AppCompatActivity() {
     private var faskesData: FaskesModel? = null
@@ -20,24 +19,23 @@ class DetailFaskesActivity : AppCompatActivity() {
 
         faskesData = intent.getParcelableExtra(FASKES_EXTRA_NAME)
 
+        with(binding){
+            faskesTitle.text = faskesData?.name
+            faskesName.text = faskesData?.name
 
-        binding.faskesTitle.text = faskesData?.name
-        binding.faskesName.text = faskesData?.name
-        binding.btnShowRute.setOnClickListener {
-            val mapsRuteUri =
-                Uri.parse("google.navigation:q=${faskesData?.latitude},${faskesData?.longitude}")
-            val mapIntent = Intent(Intent.ACTION_VIEW, mapsRuteUri)
-            mapIntent.setPackage("com.google.android.apps.maps")
-            startActivity(mapIntent)
+            btnShowRute.setOnClickListener {
+                val mapsRuteUri =
+                    Uri.parse("google.navigation:q=${faskesData?.latitude},${faskesData?.longitude}")
+                val mapIntent = Intent(Intent.ACTION_VIEW, mapsRuteUri)
+                mapIntent.setPackage("com.google.android.apps.maps")
+                startActivity(mapIntent)
+            }
+
+            btnBack.setOnClickListener {
+                finish()
+            }
         }
 
-        binding.btnBack.setOnClickListener {
-            finish()
-        }
-
-        binding.faskesTitle.setOnClickListener {
-            startActivity(Intent(this@DetailFaskesActivity, VaksinLocationMapsActivity::class.java))
-        }
     }
 
 
