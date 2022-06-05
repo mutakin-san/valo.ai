@@ -3,7 +3,7 @@
     <item android:state_checked="true" android:color="@color/white"
         android:tooltipText="@string/text_home"
         android:title="@string/active" />
-    <item android:color="@color/grey_less"
+    <item android:color="@color/grey"
         android:tooltipText="@string/text_riwayat"
         android:title="@string/inactive" />
 </selector>

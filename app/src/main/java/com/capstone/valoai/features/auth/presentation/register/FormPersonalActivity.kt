@@ -2,14 +2,14 @@ package com.capstone.valoai.features.auth.presentation.register
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import com.capstone.valoai.R
+import com.capstone.valoai.databinding.ActivityFormPersonalBinding
 
 class FormPersonalActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityFormPersonalBinding
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_form_personal)
+        binding = ActivityFormPersonalBinding.inflate(layoutInflater)
+        setContentView(binding.root)
     }
-
-    fun onBirthDateClick(view: View) {}
 }
