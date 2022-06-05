@@ -17,6 +17,7 @@
         <entry key="app/src/main/res/drawable/active_dot_indicator.xml" value="0.1885" />
         <entry key="app/src/main/res/drawable/bg_splash.xml" value="0.109" />
         <entry key="app/src/main/res/drawable/default_dot_indicator.xml" value="0.1885" />
+        <entry key="app/src/main/res/drawable/ic_baseline_medical_services_24.xml" value="0.1735" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.109" />
         <entry key="app/src/main/res/drawable/splash_background.xml" value="0.109" />
         <entry key="app/src/main/res/font/.xml" value="0.24583333333333332" />
@@ -31,6 +32,8 @@
         <entry key="app/src/main/res/layout/activity_vaksin_location_maps.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_onboarding_item.xml" value="0.25" />
         <entry key="app/src/main/res/layout/list_card_vaksin.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/list_item_fakes.xml" value="0.15572916666666667" />
+        <entry key="app/src/main/res/layout/list_item_riwayat.xml" value="0.23867753623188406" />
         <entry key="app/src/main/res/layout/login_layout.xml" value="0.12" />
         <entry key="app/src/main/res/layout/onboarding_item_layout.xml" value="0.17119565217391305" />
         <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.109" />

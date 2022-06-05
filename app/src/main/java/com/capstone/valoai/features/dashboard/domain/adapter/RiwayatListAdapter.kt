@@ -7,7 +7,7 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.capstone.valoai.R
 
-class FikesListAdapter(private val fikestList: List<String>) : RecyclerView.Adapter<FikesListAdapter.ListViewHolder>() {
+class RiwayatListAdapter(private val fikestList: List<String>): RecyclerView.Adapter<RiwayatListAdapter.ListViewHolder>() {
     private lateinit var onItemClickCallback: OnItemClickCallback
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
@@ -15,7 +15,7 @@ class FikesListAdapter(private val fikestList: List<String>) : RecyclerView.Adap
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ListViewHolder {
-        return ListViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.list_card_vaksin, parent, false))
+        return ListViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.list_item_riwayat, parent, false))
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {

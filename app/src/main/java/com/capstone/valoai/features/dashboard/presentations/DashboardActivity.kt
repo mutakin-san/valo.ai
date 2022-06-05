@@ -4,23 +4,20 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
-import android.view.MenuItem
-import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
 import com.capstone.valoai.databinding.ActivityDashboardBinding
 import com.capstone.valoai.features.auth.presentation.login.LoginActivity
-import com.capstone.valoai.features.dashboard.domain.adapter.FikesListAdapter
+import com.capstone.valoai.features.dashboard.domain.adapter.FakesListAdapter
+import com.capstone.valoai.features.dashboard.domain.adapter.RiwayatListAdapter
 import com.capstone.valoai.features.maps.presentation.VaksinLocationMapsActivity
-import com.google.android.material.navigation.NavigationBarView
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.RelativeCornerSize
 import com.google.android.material.shape.RoundedCornerTreatment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.UserProfileChangeRequest
-import kotlin.math.log
 
 
 class DashboardActivity : AppCompatActivity() {
@@ -64,11 +61,20 @@ class DashboardActivity : AppCompatActivity() {
             true
         }
 
+        binding.fab.setOnClickListener {
+            onClickFeb()
+        }
+
         firebaseAuth.addAuthStateListener {
             if (it.currentUser == null) {
                 startActivity(Intent(this@DashboardActivity, LoginActivity::class.java))
                 finish()
             }
+        }
+
+        binding.profileDashboard.setOnClickListener {
+            firebaseAuth.signOut()
+            startActivity(Intent(this@DashboardActivity, LoginActivity::class.java))
         }
 
     }
@@ -78,7 +84,7 @@ class DashboardActivity : AppCompatActivity() {
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
         binding.dashboardList.layoutManager = layoutManager
-        binding.dashboardList.adapter = FikesListAdapter(dataDummy)
+        binding.dashboardList.adapter = FakesListAdapter(dataDummy)
     }
 
     private fun attachHistoryList() {
@@ -86,20 +92,10 @@ class DashboardActivity : AppCompatActivity() {
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
         binding.dashboardList.layoutManager = layoutManager
-        binding.dashboardList.adapter = FikesListAdapter(dataDummy)
+        binding.dashboardList.adapter = RiwayatListAdapter(dataDummy)
     }
 
-    fun onClickFeb(view: View) {
-        print("test")
+    fun onClickFeb() {
         startActivity(Intent(this@DashboardActivity, VaksinLocationMapsActivity::class.java))
-
-        binding.txtName.text = user?.displayName
-        Glide.with(this@DashboardActivity).load(user?.photoUrl).into(binding.profileDashboard)
-        binding.profileDashboard.setOnClickListener {
-            firebaseAuth.signOut()
-        }
-        binding.fab.setOnClickListener {
-            startActivity(Intent(this@DashboardActivity, VaksinLocationMapsActivity::class.java))
-        }
     }
 }
