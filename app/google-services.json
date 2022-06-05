@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "934521763666",
+    "project_id": "bangkit-project-capstone",
+    "storage_bucket": "bangkit-project-capstone.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:934521763666:android:7f9339f5afd5443d106c8b",
+        "android_client_info": {
+          "package_name": "com.capstone.valoai"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "934521763666-k6hmiltpncpcadoq6l5povslqp65a1kp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.capstone.valoai",
+            "certificate_hash": "8016a06990d3c3c8f00423965ebf1f5dedce0e90"
+          }
+        },
+        {
+          "client_id": "934521763666-u0vbnqbf5nuescmngfcc2nbceep91oj2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBpVwXtIaIDWla21NFLaxMFnoqfkJ1jANc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "934521763666-u0vbnqbf5nuescmngfcc2nbceep91oj2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
