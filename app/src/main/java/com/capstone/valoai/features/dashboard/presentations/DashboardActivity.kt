@@ -1,20 +1,22 @@
 package com.capstone.valoai.features.dashboard.presentations
 
 import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.bumptech.glide.Glide
 import com.capstone.valoai.databinding.ActivityDashboardBinding
+import com.capstone.valoai.features.auth.presentation.login.LoginActivity
 import com.capstone.valoai.features.dashboard.domain.adapter.FikesListAdapter
 import com.capstone.valoai.features.maps.presentation.VaksinLocationMapsActivity
-import com.bumptech.glide.Glide
-import com.capstone.valoai.features.auth.presentation.login.LoginActivity
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.RelativeCornerSize
 import com.google.android.material.shape.RoundedCornerTreatment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.UserProfileChangeRequest
 
 
 class DashboardActivity : AppCompatActivity() {
@@ -27,9 +29,6 @@ class DashboardActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityDashboardBinding.inflate(layoutInflater)
         attachFikesList()
-
-        setContentView(binding.root)
-        binding = ActivityDashboardBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
 
@@ -43,6 +42,17 @@ class DashboardActivity : AppCompatActivity() {
 
         firebaseAuth = FirebaseAuth.getInstance()
         user = firebaseAuth.currentUser
+
+        val profileUpdates = UserProfileChangeRequest.Builder()
+            .setDisplayName("NoerSy")
+            .setPhotoUri(Uri.parse("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"))
+            .build()
+
+        user?.updateProfile(profileUpdates)?.addOnCompleteListener {
+            binding.txtName.text = user?.displayName
+        }
+
+
 
         firebaseAuth.addAuthStateListener {
             if (it.currentUser == null) {
@@ -61,7 +71,7 @@ class DashboardActivity : AppCompatActivity() {
         binding.dashboardList.adapter = FikesListAdapter(dataDummy)
     }
 
-    fun onClickFeb(view: View) {
+    fun onClickFeb() {
         print("test")
         startActivity(Intent(this@DashboardActivity, VaksinLocationMapsActivity::class.java))
 
