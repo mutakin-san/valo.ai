@@ -25,4 +25,25 @@
     <string name="title_activity_vaksin_location_maps">VaksinLocationMapsActivity</string>
     <string name="onboarding_illustration">Onboarding Illustration</string>
     <string name="web_client_id">934521763666-u0vbnqbf5nuescmngfcc2nbceep91oj2.apps.googleusercontent.com</string>
+    <string name="terms_and_policies">Menyetujui persyaratan dan kebijakan</string>
+    <string name="personal_text">Personal Information</string>
+    <string name="personal_dec">Masukan informasi personal informasi kamu agar kami bisa merekomendasikan vaksin yang relavan</string>
+    <string name="name">Name</string>
+    <string name="selesai">Selesai</string>
+    <string name="birth_date">Tanggal Lahir</string>
+    <string name="riwayat1">Riwayat Penyakit 1</string>
+    <string name="riwayat2">Riwayat Penyakit 2</string>
+    <string name="vaksin_radio">Sudah Pernah Vaksin?</string>
+    <string name="vakin1">Vaksin 1</string>
+    <string name="vakin3">Vaksin 3</string>
+    <string name="vakin2">Vaksin 2</string>
+    <string name="text_home">Home</string>
+    <string name="text_riwayat">Riwayat</string>
+    <string name="inactive">inactive</string>
+    <string name="active">active</string>
+    <string name="greeting">Selamat Datang,</string>
+    <string name="Profile">avatar</string>
+    <string name="rekomendasi_list">Rekomendasi Vaksin</string>
+    <string name="km10">10 Km</string>
+    <string name="AstraZeneca">AstraZeneca</string>
 </resources>

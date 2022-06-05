@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.capstone.valoai" >
+    package="com.capstone.valoai">
 
     <application
         android:allowBackup="true"
@@ -8,7 +8,13 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Valoai" >
+        android:theme="@style/Theme.Valoai">
+        <activity
+            android:name=".features.dashboard.presentations.DashboardActivity"
+            android:exported="false" />
+        <activity
+            android:name=".features.auth.presentation.register.FormPersonalActivity"
+            android:exported="false" />
         <activity
             android:name=".features.auth.presentation.register.RegisterActivity"
             android:exported="false" />
@@ -23,9 +29,9 @@
              project's local.properties file (e.g. MAPS_API_KEY=Aiza...), and replace the
              "YOUR_API_KEY" string in this file with "${MAPS_API_KEY}".
         -->
-        <meta-data
-            android:name="com.google.android.geo.API_KEY"
-            android:value="${MAPS_API_KEY}" />
+<!--        <meta-data-->
+<!--            android:name="com.google.android.geo.API_KEY"-->
+<!--            android:value="${MAPS_API_KEY}" />-->
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
@@ -46,16 +52,13 @@
         <activity
             android:name=".features.splashscreen.presentation.SplashScreenActivity"
             android:exported="true"
-            android:theme="@style/SplashTheme" >
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
     </application>
 
 </manifest>

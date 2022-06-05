@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -16,9 +17,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
             android:text="@string/register_to"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.335"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/image_register"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -26,13 +25,15 @@
             style="@style/HeadingText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="100dp"
+            android:layout_marginStart="4dp"
             android:text="@string/valo_ai"
             android:textColor="@color/blue_primary"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.696"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintBottom_toBottomOf="@+id/label_register"
+            app:layout_constraintEnd_toEndOf="@+id/image_register"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/label_register"
+            app:layout_constraintTop_toTopOf="@+id/label_register"
+            app:layout_constraintVertical_bias="0.0" />
 
         <ImageView
             android:id="@+id/image_register"
@@ -48,19 +49,19 @@
             app:srcCompat="@drawable/login_image" />
 
         <TextView
-            android:id="@+id/label_username"
+            android:id="@+id/label_name"
             style="@style/ParagraphText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="50dp"
-            android:labelFor="@id/field_username"
+            android:labelFor="@id/field_name"
             android:text="@string/email"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/image_register" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/field_username"
+            android:id="@+id/field_name"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -70,7 +71,7 @@
             app:hintEnabled="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/label_username"
+            app:layout_constraintTop_toBottomOf="@id/label_name"
             app:placeholderText="Isi username">
 
             <com.google.android.material.textfield.TextInputEditText
@@ -91,7 +92,7 @@
             android:labelFor="@id/field_password"
             android:text="@string/password"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/field_username" />
+            app:layout_constraintTop_toBottomOf="@id/field_name" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/field_password"
@@ -154,50 +155,27 @@
 
 
         <TextView
-            android:id="@+id/label_phone"
+            android:id="@+id/label_vaksin_radio"
             style="@style/ParagraphText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="16dp"
-            android:labelFor="@id/field_username"
-            android:text="@string/phone"
+            android:layout_marginTop="12dp"
+            android:text="@string/vaksin_radio"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/field_password_confirmation" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/field_phone"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
-            app:boxStrokeWidth="2dp"
-            app:hintEnabled="false"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/label_phone"
-            app:placeholderText="Isi username">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/phone"
-                android:maxLines="1" />
-        </com.google.android.material.textfield.TextInputLayout>
-
 
         <Button
             android:id="@+id/btn_already_vaksin"
             style="@style/Button3Text"
             android:layout_width="147dp"
             android:layout_height="55dp"
-            android:layout_marginTop="8dp"
+            android:layout_marginTop="12dp"
             android:text="@string/already_vaksin"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.189"
+            app:layout_constraintHorizontal_bias="0.202"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/field_phone" />
+            app:layout_constraintTop_toBottomOf="@+id/label_vaksin_radio" />
 
         <Button
             android:id="@+id/btn_login"
@@ -205,23 +183,34 @@
             android:layout_width="147dp"
             android:layout_height="55dp"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="8dp"
             android:text="@string/not_already_vaksin"
+            app:layout_constraintBottom_toBottomOf="@+id/btn_already_vaksin"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.766"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/field_phone" />
+            app:layout_constraintTop_toTopOf="@+id/btn_already_vaksin" />
+
+        <CheckBox
+            android:id="@+id/checkbox_meat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="32dp"
+            android:onClick="onCheckboxClicked"
+            android:text="@string/terms_and_policies"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_already_vaksin" />
 
         <Button
             android:id="@+id/btn__npt_already_vaksin"
             style="@style/Button1Text"
             android:layout_width="363dp"
             android:layout_height="55dp"
-            android:layout_marginTop="20dp"
             android:text="@string/register"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn_already_vaksin" />
+            app:layout_constraintTop_toBottomOf="@+id/checkbox_meat" />
 
         <TextView
             android:id="@+id/label_does_not_have_account"
@@ -231,6 +220,7 @@
             android:layout_marginStart="96dp"
             android:layout_marginTop="16dp"
             android:text="@string/already_have_an_account"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/btn__npt_already_vaksin" />
 
