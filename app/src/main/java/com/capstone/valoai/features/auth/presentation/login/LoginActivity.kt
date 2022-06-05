@@ -1,159 +1,163 @@
 package com.capstone.valoai.features.auth.presentation.login
 
 import android.content.Intent
-import android.content.IntentSender
 import android.os.Bundle
+import android.text.TextUtils
 import android.util.Log
+import android.view.View
 import android.widget.Toast
-import androidx.activity.result.IntentSenderRequest
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.lifecycleScope
-import com.capstone.valoai.R
 import com.capstone.valoai.databinding.ActivityLoginBinding
-import com.capstone.valoai.features.auth.data.local.UserPref
-import com.capstone.valoai.features.auth.data.local.userDatastore
-import com.capstone.valoai.features.auth.data.models.UserModel
+import com.capstone.valoai.features.auth.presentation.register.RegisterActivity
 import com.capstone.valoai.features.dashboard.presentations.DashboardActivity
-import com.google.android.gms.auth.api.identity.BeginSignInRequest
-import com.google.android.gms.auth.api.identity.Identity
-import com.google.android.gms.auth.api.identity.SignInClient
-import com.google.android.gms.common.api.ApiException
-import com.google.android.gms.common.api.CommonStatusCodes
+import com.firebase.ui.auth.AuthUI
+import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
+import com.firebase.ui.auth.data.model.FirebaseAuthUIAuthenticationResult
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.GoogleAuthProvider
-import kotlinx.coroutines.launch
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 
 class LoginActivity : AppCompatActivity() {
-    private val userPref: UserPref by lazy {
-        UserPref(this.userDatastore)
-    }
-    private lateinit var binding: ActivityLoginBinding
+
+    private var _binding: ActivityLoginBinding? = null
+    private val binding: ActivityLoginBinding
+        get() = _binding!!
+
 
     private lateinit var firebaseAuth: FirebaseAuth
-    private lateinit var oneTapClient: SignInClient
-    private lateinit var signInRequest: BeginSignInRequest
-    private val oneTapSignInRegister =
-        registerForActivityResult(ActivityResultContracts.StartIntentSenderForResult()) { result ->
-            if (result.resultCode == RESULT_OK) {
-                handleSignInResult(result.data)
-            }
-        }
 
+    private val signInLauncher = registerForActivityResult(
+        FirebaseAuthUIActivityResultContract()
+    ) { res ->
+        this.onSignInResult(res)
+    }
 
-    private fun handleSignInResult(data: Intent?) {
-        try {
-            val credential = oneTapClient.getSignInCredentialFromIntent(data)
-            val idToken = credential.googleIdToken
-            when {
-                idToken != null -> {
-                    val firebaseCredential = GoogleAuthProvider.getCredential(idToken, null)
-                    firebaseAuth.signInWithCredential(firebaseCredential)
-                        .addOnCompleteListener { task ->
-                            if (task.isSuccessful) {
-                                lifecycleScope.launch {
-                                    userPref.setUser(UserModel(name = task.result.user?.displayName))
-                                }
-                                startActivity(
-                                    Intent(
-                                        this@LoginActivity,
-                                        DashboardActivity::class.java
-                                    )
-                                )
-                                finish()
-
-                            } else {
-                                Log.e(TAG, "${task.exception?.localizedMessage}")
-                            }
-                        }
-                }
-                else -> {
-                    Log.d(TAG, "No ID token or password!")
-                }
-            }
-        } catch (e: ApiException) {
-            when (e.statusCode) {
-                CommonStatusCodes.CANCELED -> {
-                    Log.d(TAG, "One-tap dialog was closed.")
-                    // Don't re-prompt the user.
-                }
-                CommonStatusCodes.NETWORK_ERROR -> {
-                    Log.d(TAG, "One-tap encountered a network error.")
-                    // Try again or just ignore.
-                }
-                else -> {
-                    Log.d(
-                        TAG, "Couldn't get credential from result." +
-                                " (${e.localizedMessage})"
-                    )
-                }
-            }
+    private fun onSignInResult(result: FirebaseAuthUIAuthenticationResult) {
+        if (result.resultCode == RESULT_OK) {
+            // Successfully signed in
+            val user = FirebaseAuth.getInstance().currentUser
+            startActivity(
+                Intent(
+                    this@LoginActivity,
+                    DashboardActivity::class.java
+                )
+            )
+            finish()
         }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        binding = ActivityLoginBinding.inflate(layoutInflater)
+        _binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        firebaseAuth = FirebaseAuth.getInstance()
+        // Buttons
+        with(binding) {
+
+            btnToRegister.setOnClickListener {
+                startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
+                finish()
+            }
+
+            btnLogin.setOnClickListener {
+                val email = fieldEmail.editText?.text.toString()
+                val password = fieldPassword.editText?.text.toString()
+                signIn(email, password)
+            }
 
 
-        oneTapClient = Identity.getSignInClient(this)
-        signInRequest = BeginSignInRequest.builder()
-            .setPasswordRequestOptions(
-                BeginSignInRequest.PasswordRequestOptions.builder()
-                    .setSupported(true)
+            signInWithGoogle.setOnClickListener {
+
+                // Choose authentication providers
+                val providers = arrayListOf(
+                    AuthUI.IdpConfig.GoogleBuilder().build())
+
+                // Create and launch sign-in intent
+                val signInIntent = AuthUI.getInstance()
+                    .createSignInIntentBuilder()
+                    .setAvailableProviders(providers)
                     .build()
-            )
-            .setGoogleIdTokenRequestOptions(
-                BeginSignInRequest.GoogleIdTokenRequestOptions.builder()
-                    .setSupported(true)
-                    // Your server's client ID, not your Android client ID.
-                    .setServerClientId(getString(R.string.web_client_id))
-                    // Only show accounts previously used to sign in.
-                    .setFilterByAuthorizedAccounts(true)
-                    .build()
-            )
-            // Automatically sign in when exactly one credential is retrieved.
-            .setAutoSelectEnabled(true)
-            .build()
+                signInLauncher.launch(signInIntent)
 
-        binding.signInWithGoogle.setOnClickListener {
-            oneTapClient.beginSignIn(signInRequest)
-                .addOnSuccessListener(this) { result ->
-                    try {
-                        oneTapSignInRegister.launch(
-                            IntentSenderRequest.Builder(result.pendingIntent.intentSender).build()
-                        )
-                    } catch (e: IntentSender.SendIntentException) {
-                        Log.e(TAG, "Couldn't start One Tap UI: ${e.localizedMessage}")
-                    }
-                }
-                .addOnFailureListener(this) { e ->
-                    // No saved credentials found. Launch the One Tap sign-up flow, or
-                    // do nothing and continue presenting the signed-out UI.
-                    Log.d(TAG, e.localizedMessage as String)
-                }
+            }
+
         }
 
-        binding.btnLogin.setOnClickListener {
-            firebaseAuth.signInWithEmailAndPassword(
-                "mutakin@gmail.com",
-                "123456"
-            ).addOnCompleteListener {
-                if (it.isSuccessful) {
-                    lifecycleScope.launch {
-                        userPref.setUser(UserModel(name = it.result.user?.displayName))
-                    }
+        // Initialize Firebase Auth
+        firebaseAuth = Firebase.auth
+
+    }
+
+    override fun onStart() {
+        super.onStart()
+        // Check if user is signed in (non-null) and update UI accordingly.
+        val currentUser = firebaseAuth.currentUser
+        if (currentUser != null) {
+            startActivity(Intent(this@LoginActivity, DashboardActivity::class.java))
+            finish()
+        }
+    }
+
+    private fun signIn(email: String, password: String) {
+        if (!validateForm()) {
+            return
+        }
+
+        showProgressBar()
+
+        firebaseAuth.signInWithEmailAndPassword(email, password)
+            .addOnCompleteListener(this@LoginActivity) { task ->
+                if (task.isSuccessful) {
+                    // Sign in success, update UI with the signed-in user's information
+                    Log.d(TAG, "signInWithEmail:success")
                     startActivity(Intent(this@LoginActivity, DashboardActivity::class.java))
                     finish()
+                } else {
+                    // If sign in fails, display a message to the user.
+                    Log.w(TAG, "signInWithEmail:failure", task.exception)
+                    Toast.makeText(
+                        this@LoginActivity, "Authentication failed : ${task.exception?.localizedMessage}",
+                        Toast.LENGTH_SHORT
+                    ).show()
                 }
-            }.addOnFailureListener { e ->
-                Toast.makeText(this@LoginActivity, e.localizedMessage, Toast.LENGTH_SHORT).show()
+                hideProgressBar()
             }
+    }
+
+    private fun validateForm(): Boolean {
+        var valid = true
+
+        val email = binding.fieldEmail.editText?.text.toString()
+        if (TextUtils.isEmpty(email)) {
+            binding.fieldEmail.error = "Required."
+            valid = false
+        } else {
+            binding.fieldEmail.error = null
         }
+
+        val password = binding.fieldPassword.editText?.text.toString()
+        if (TextUtils.isEmpty(password)) {
+            binding.fieldPassword.error = "Required."
+            valid = false
+        } else {
+            binding.fieldPassword.error = null
+        }
+
+        return valid
+    }
+
+    private fun showProgressBar() {
+        binding.progressBar.visibility = View.VISIBLE
+    }
+
+    private fun hideProgressBar() {
+        binding.progressBar.visibility = View.GONE
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        _binding = null
     }
 
     companion object {

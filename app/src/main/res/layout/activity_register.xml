@@ -225,7 +225,7 @@
             app:layout_constraintTop_toBottomOf="@+id/btn__npt_already_vaksin" />
 
         <TextView
-            android:id="@+id/btn_to_register"
+            android:id="@+id/btn_to_login"
             style="@style/ParagraphText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
