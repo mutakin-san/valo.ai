@@ -53,7 +53,7 @@ class DashboardActivity : AppCompatActivity() {
         }
 
         binding.bottomNavigationView.setOnItemSelectedListener{ item ->
-            Log.println(Log.INFO, "Test", "${item.title}")
+//            Log.println(Log.INFO, "Test", "${item.title}")
             when (item.title) {
                 "Home" -> attachFikesList()
                 "Riwayat" -> attachHistoryList()
