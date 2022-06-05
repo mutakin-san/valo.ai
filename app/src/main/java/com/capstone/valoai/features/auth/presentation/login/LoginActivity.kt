@@ -4,16 +4,17 @@ import android.content.Intent
 import android.content.IntentSender
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.capstone.valoai.MainActivity
 import com.capstone.valoai.R
 import com.capstone.valoai.databinding.ActivityLoginBinding
 import com.capstone.valoai.features.auth.data.local.UserPref
 import com.capstone.valoai.features.auth.data.local.userDatastore
 import com.capstone.valoai.features.auth.data.models.UserModel
+import com.capstone.valoai.features.dashboard.presentations.DashboardActivity
 import com.google.android.gms.auth.api.identity.BeginSignInRequest
 import com.google.android.gms.auth.api.identity.Identity
 import com.google.android.gms.auth.api.identity.SignInClient
@@ -53,7 +54,13 @@ class LoginActivity : AppCompatActivity() {
                                 lifecycleScope.launch {
                                     userPref.setUser(UserModel(name = task.result.user?.displayName))
                                 }
-                                startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                                startActivity(
+                                    Intent(
+                                        this@LoginActivity,
+                                        DashboardActivity::class.java
+                                    )
+                                )
+                                finish()
 
                             } else {
                                 Log.e(TAG, "${task.exception?.localizedMessage}")
@@ -140,8 +147,11 @@ class LoginActivity : AppCompatActivity() {
                     lifecycleScope.launch {
                         userPref.setUser(UserModel(name = it.result.user?.displayName))
                     }
-                    startActivity(Intent(this@LoginActivity, MainActivity::class.java))
+                    startActivity(Intent(this@LoginActivity, DashboardActivity::class.java))
+                    finish()
                 }
+            }.addOnFailureListener { e ->
+                Toast.makeText(this@LoginActivity, e.localizedMessage, Toast.LENGTH_SHORT).show()
             }
         }
     }

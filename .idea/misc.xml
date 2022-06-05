@@ -4,12 +4,15 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Bangkit2022/valo.ai/app/src/main/res/drawable/ic_baseline_map_24.xml" value="0.1665" />
+        <entry key="..\:/Bangkit2022/valo.ai/app/src/main/res/layout/activity_dashboard.xml" value="0.17074275362318841" />
         <entry key="..\:/Bangkit2022/valo.ai/app/src/main/res/layout/activity_detail_faskes.xml" value="0.15489130434782608" />
         <entry key="..\:/Bangkit2022/valo.ai/app/src/main/res/layout/activity_detail_vaksin.xml" value="0.16983695652173914" />
+        <entry key="..\:/Bangkit2022/valo.ai/app/src/main/res/layout/activity_form_personal.xml" value="0.17074275362318841" />
         <entry key="..\:/Bangkit2022/valo.ai/app/src/main/res/layout/activity_login.xml" value="0.2300469483568075" />
         <entry key="..\:/Bangkit2022/valo.ai/app/src/main/res/layout/activity_main.xml" value="0.16983695652173914" />
         <entry key="..\:/Bangkit2022/valo.ai/app/src/main/res/layout/activity_register.xml" value="0.1082427536231884" />
         <entry key="..\:/Bangkit2022/valo.ai/app/src/main/res/layout/activity_vaksin_location_maps.xml" value="0.16983695652173914" />
+        <entry key="..\:/Bangkit2022/valo.ai/app/src/main/res/layout/list_card_vaksin.xml" value="0.17074275362318841" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.109" />
         <entry key="app/src/main/res/drawable/active_dot_indicator.xml" value="0.1885" />
         <entry key="app/src/main/res/drawable/bg_splash.xml" value="0.109" />

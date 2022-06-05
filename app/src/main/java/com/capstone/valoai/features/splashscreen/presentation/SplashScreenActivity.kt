@@ -5,8 +5,8 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
-import com.capstone.valoai.MainActivity
 import com.capstone.valoai.features.auth.presentation.login.LoginActivity
+import com.capstone.valoai.features.dashboard.presentations.DashboardActivity
 import com.capstone.valoai.features.onboarding.data.local.OnBoardPref
 import com.capstone.valoai.features.onboarding.data.local.datastore
 import com.capstone.valoai.features.onboarding.presentation.OnBoardingActivity
@@ -29,30 +29,27 @@ class SplashScreenActivity : AppCompatActivity() {
         lifecycleScope.launch {
             onBoardPref.launchStatus.first { status ->
                 if (status) {
-                    val intent = Intent(this@SplashScreenActivity, OnBoardingActivity::class.java)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                    startActivity(intent)
-                    finish()
+                    navigateTo(OnBoardingActivity::class.java)
                     onBoardPref.updateIsFirstLaunchedToFalse()
                 } else {
                     if (firebaseAuth.currentUser != null) {
-                        val intent = Intent(this@SplashScreenActivity, MainActivity::class.java)
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                        startActivity(intent)
-                        finish()
+                        navigateTo(DashboardActivity::class.java)
                     }else {
-                        val intent = Intent(this@SplashScreenActivity, LoginActivity::class.java)
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-                        startActivity(intent)
-                        finish()
+                        navigateTo(LoginActivity::class.java)
                     }
                 }
 
                 status
             }
         }
+    }
+
+
+    private fun navigateTo(destination: Class<*>){
+        val intent = Intent(this@SplashScreenActivity, destination)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        startActivity(intent)
+        finish()
     }
 }
