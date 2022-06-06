@@ -5,12 +5,20 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import com.capstone.valoai.R
+import com.capstone.valoai.commons.ApiConfig
+import com.capstone.valoai.commons.Status
 import com.capstone.valoai.databinding.ActivityVaksinLocationMapsBinding
 import com.capstone.valoai.features.detail_faskes.data.models.FaskesModel
 import com.capstone.valoai.features.detail_faskes.presentation.DetailFaskesActivity
+import com.capstone.valoai.features.maps.data.FaskesRepository
+import com.capstone.valoai.features.maps.usecase.FaskesViewModel
+import com.capstone.valoai.features.maps.usecase.ViewModelFactory
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -26,6 +34,8 @@ class VaksinLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityVaksinLocationMapsBinding
     private lateinit var fusedLocationClient: FusedLocationProviderClient
+
+    private lateinit var viewModel: FaskesViewModel
 
     private val listFaskes = listOf(
         FaskesModel(
@@ -191,7 +201,7 @@ class VaksinLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 permissions[Manifest.permission.ACCESS_FINE_LOCATION] ?: false -> {
                     getMyLocation()
                 }
-                permissions[Manifest.permission.ACCESS_FINE_LOCATION] ?: false -> {
+                permissions[Manifest.permission.ACCESS_COARSE_LOCATION] ?: false -> {
                     getMyLocation()
                 }
             }
@@ -199,6 +209,12 @@ class VaksinLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+
+        viewModel =
+            ViewModelProvider(
+                this,
+                ViewModelFactory(FaskesRepository(ApiConfig.faskesService))
+            )[FaskesViewModel::class.java]
 
 
         fusedLocationClient =
@@ -222,22 +238,46 @@ class VaksinLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
     @SuppressLint("MissingPermission")
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
-
         getMyLocation()
 
-        listFaskes.forEach { faskes ->
-            val location = LatLng(faskes.latitude.toDouble(), faskes.longitude.toDouble())
-            mMap.addMarker(MarkerOptions().position(location).title(faskes.name))
-            mMap.setOnInfoWindowClickListener {
-                val detailFaskesIntent =
-                    Intent(this@VaksinLocationMapsActivity, DetailFaskesActivity::class.java)
-                detailFaskesIntent.apply {
-                    putExtra(
-                        DetailFaskesActivity.FASKES_EXTRA_NAME,
-                        faskes
-                    )
+        viewModel.getAllFaskes().observe(this) {
+            it?.let { resource ->
+                when (resource.status) {
+                    Status.SUCCESS -> {
+                        resource.data?.let { list ->
+                            Log.i("Fetch API", "Fetch Data Faskes : $list")
+                            list.forEach { faskes ->
+                                val location =
+                                    LatLng(faskes.latitude.toDouble(), faskes.longitude.toDouble())
+                                mMap.addMarker(
+                                    MarkerOptions().position(location).title(faskes.name)
+                                )
+                                mMap.setOnInfoWindowClickListener {
+                                    val detailFaskesIntent =
+                                        Intent(
+                                            this@VaksinLocationMapsActivity,
+                                            DetailFaskesActivity::class.java
+                                        )
+                                    detailFaskesIntent.apply {
+                                        putExtra(
+                                            DetailFaskesActivity.FASKES_EXTRA_NAME,
+                                            faskes
+                                        )
+                                    }
+                                    startActivity(detailFaskesIntent)
+                                }
+                            }
+
+                        }
+                    }
+                    Status.ERROR -> {
+                        Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
+                    }
+                    Status.LOADING -> {
+//                        progressBar.visibility = View.VISIBLE
+//                        recyclerView.visibility = View.GONE
+                    }
                 }
-                startActivity(detailFaskesIntent)
             }
         }
 
@@ -248,7 +288,7 @@ class VaksinLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
     @SuppressLint("MissingPermission")
     private fun getMyLocation() {
         try {
-            
+
             if (checkSelfPermission(
                     Manifest.permission.ACCESS_FINE_LOCATION
                 ) == PackageManager.PERMISSION_GRANTED && checkSelfPermission(
@@ -262,7 +302,8 @@ class VaksinLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
                             CircleOptions()
                                 .center(myLocation)
                                 .radius(10000.0)
-                                .strokeColor(getColor(R.color.blue_primary_secondary)))
+                                .strokeColor(getColor(R.color.blue_primary_secondary))
+                        )
                         mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(myLocation, 10F))
                         // TODO: Rekomendasi tempat terdekat dengan lokasi saat ini
                     }
@@ -276,7 +317,7 @@ class VaksinLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
                     )
                 )
             }
-        }catch (e: Exception){
+        } catch (e: Exception) {
 
         }
     }
