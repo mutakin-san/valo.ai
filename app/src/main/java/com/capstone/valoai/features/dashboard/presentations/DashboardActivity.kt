@@ -3,7 +3,6 @@ package com.capstone.valoai.features.dashboard.presentations
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
@@ -42,15 +41,20 @@ class DashboardActivity : AppCompatActivity() {
         firebaseAuth = FirebaseAuth.getInstance()
         user = firebaseAuth.currentUser
 
-        val profileUpdates = UserProfileChangeRequest.Builder()
-            .setDisplayName("NoerSy")
-            .setPhotoUri(Uri.parse("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"))
-            .build()
-
-        user?.updateProfile(profileUpdates)?.addOnCompleteListener {
+        if(user?.displayName == null || user?.photoUrl == null){
+            val profileUpdates = UserProfileChangeRequest.Builder()
+                .setDisplayName("NoerSy")
+                .setPhotoUri(Uri.parse("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"))
+                .build()
+                user?.updateProfile(profileUpdates)?.addOnCompleteListener {
+                    binding.txtName.text = user?.displayName
+                    Glide.with(this).load(user?.photoUrl).circleCrop().into(binding.profileDashboard)
+                }
+        }else {
             binding.txtName.text = user?.displayName
             Glide.with(this).load(user?.photoUrl).circleCrop().into(binding.profileDashboard)
         }
+
 
         binding.bottomNavigationView.setOnItemSelectedListener{ item ->
 //            Log.println(Log.INFO, "Test", "${item.title}")
@@ -74,7 +78,6 @@ class DashboardActivity : AppCompatActivity() {
 
         binding.profileDashboard.setOnClickListener {
             firebaseAuth.signOut()
-            startActivity(Intent(this@DashboardActivity, LoginActivity::class.java))
         }
 
     }
