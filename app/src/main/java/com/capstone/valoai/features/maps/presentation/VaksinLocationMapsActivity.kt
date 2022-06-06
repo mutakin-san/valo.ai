@@ -5,7 +5,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -36,164 +35,6 @@ class VaksinLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     private lateinit var viewModel: FaskesViewModel
-
-    private val listFaskes = listOf(
-        FaskesModel(
-            1,
-            "Puskesmas Puspahiang",
-            "-7.408113733",
-            "108.0493673",
-            listOf("Sinovac", "Moderna")
-        ),
-        FaskesModel(
-            2,
-            "Klinik Polres Tasikmalaya",
-            "-7.302484741",
-            "108.1960569",
-            listOf("Sinovac", "Moderna")
-        ),
-        FaskesModel(
-            1,
-            "Puskesmas Sukarame",
-            "-7.356706189",
-            "108.1334107",
-            listOf("Sinovac", "Moderna")
-        ),
-        FaskesModel(
-            1,
-            "Klinik Zarra Medika",
-            "-7.341704682",
-            "108.1359896",
-            listOf("Sinovac", "Moderna")
-        ),
-        FaskesModel(
-            1,
-            "Puskesmas Puspahiang",
-            "-7.408113733",
-            "108.0493673",
-            listOf("Sinovac", "Moderna")
-        ),
-        FaskesModel(
-            1,
-            "Puskesmas Puspahiang",
-            "-7.408113733",
-            "108.0493673",
-            listOf("Sinovac", "Moderna")
-        ),
-        FaskesModel(
-            1,
-            "Puskesmas Puspahiang",
-            "-7.408113733",
-            "108.0493673",
-            listOf("Sinovac", "Moderna")
-        ),
-        FaskesModel(
-            1,
-            "Puskesmas Puspahiang",
-            "-7.408113733",
-            "108.0493673",
-            listOf("Sinovac", "Moderna")
-        ),
-        FaskesModel(
-            5,
-            "Puskesmas Leuwisari",
-            "-7.335137899",
-            "108.1012665",
-            listOf("Sinovac", "Moderna", "Pfizer", "dll")
-        ),
-        FaskesModel(
-            6,
-            "Puskesmas Mangunreja",
-            "-7.36420436",
-            "108.102777",
-            listOf("Sinovac", "Moderna", "Pfizer", "dll")
-        ),
-        FaskesModel(
-            7,
-            "Puskesmas Singaparna",
-            "-7.349938804",
-            "108.111067",
-            listOf("Sinovac", "Moderna", "Pfizer", "dll")
-        ),
-        FaskesModel(
-            8,
-            "Klinik Arafa",
-            "-7.345872189",
-            "108.1217619",
-            listOf("Sinovac", "Moderna", "Pfizer", "dll")
-        ),
-        FaskesModel(
-            9,
-            "Puskesmas Tineuwati",
-            "-7.353155725",
-            "108.1049154",
-            listOf("Sinovac", "Moderna", "Pfizer", "dll")
-        ),
-        FaskesModel(
-            10,
-            "RSUD SMC",
-            "-7.357325058",
-            "108.1061439",
-            listOf("Sinovac", "Moderna", "Pfizer", "dll")
-        ),
-        FaskesModel(
-            11,
-            "Puskesmas Sariawangi",
-            "-7.324530971",
-            "108.0775018",
-            listOf("Sinovac", "Moderna", "Pfizer", "dll")
-        ),
-        FaskesModel(
-            12,
-            "Puskesmas Cigalontang",
-            "-7.34650908",
-            "108.0332538",
-            listOf("Sinovac", "Moderna", "Pfizer", "dll")
-        ),
-        FaskesModel(
-            13,
-            "Puskesmas Salawu",
-            "-7.37338144",
-            "108.0381755",
-            listOf("Sinovac", "Moderna", "Pfizer", "dll")
-        ),
-        FaskesModel(
-            14,
-            "Puskesmas Sukahening",
-            "-7.199670074",
-            "108.1515353",
-            listOf("Sinovac", "Moderna", "Pfizer", "dll")
-        ),
-        FaskesModel(
-            15,
-            "Klinik BMC Ciawi",
-            "-7.153757751",
-            "108.1452093",
-            listOf("Sinovac", "Moderna", "Pfizer", "dll")
-        ),
-        FaskesModel(
-            16,
-            "Puskesmas Jamanis",
-            "-7.182358033",
-            "108.1816185",
-            listOf("Sinovac", "Moderna", "Pfizer", "dll")
-        ),
-        FaskesModel(
-            17,
-            "Puskesmas Rajapolah",
-            "-7.208842423",
-            "108.1891716",
-            listOf("Sinovac", "Moderna", "Pfizer", "dll")
-        ),
-        FaskesModel(
-            18,
-            "Al-Idrisiyyah Medical Center",
-            "-7.263403696",
-            "108.1866048",
-            listOf("Sinovac", "Moderna", "Pfizer", "dll")
-        ),
-    )
-
 
     private val requestLocationPermission =
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
@@ -245,26 +86,13 @@ class VaksinLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 when (resource.status) {
                     Status.SUCCESS -> {
                         resource.data?.let { list ->
-                            Log.i("Fetch API", "Fetch Data Faskes : $list")
                             list.forEach { faskes ->
                                 val location =
                                     LatLng(faskes.latitude.toDouble(), faskes.longitude.toDouble())
                                 mMap.addMarker(
                                     MarkerOptions().position(location).title(faskes.name)
-                                )
-                                mMap.setOnInfoWindowClickListener {
-                                    val detailFaskesIntent =
-                                        Intent(
-                                            this@VaksinLocationMapsActivity,
-                                            DetailFaskesActivity::class.java
-                                        )
-                                    detailFaskesIntent.apply {
-                                        putExtra(
-                                            DetailFaskesActivity.FASKES_EXTRA_NAME,
-                                            faskes
-                                        )
-                                    }
-                                    startActivity(detailFaskesIntent)
+                                )?.apply {
+                                    tag = faskes
                                 }
                             }
 
@@ -282,6 +110,22 @@ class VaksinLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
 
 
+
+        mMap.setOnInfoWindowClickListener {
+            val detailFaskesIntent =
+                Intent(
+                    this@VaksinLocationMapsActivity,
+                    DetailFaskesActivity::class.java
+                )
+
+            detailFaskesIntent.apply {
+                putExtra(
+                    DetailFaskesActivity.FASKES_EXTRA_NAME,
+                    it.tag as FaskesModel
+                )
+            }
+            startActivity(detailFaskesIntent)
+        }
     }
 
 
