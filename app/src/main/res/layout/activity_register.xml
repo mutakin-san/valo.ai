@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -71,8 +70,7 @@
             app:hintEnabled="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/label_name"
-            app:placeholderText="Isi username">
+            app:layout_constraintTop_toBottomOf="@id/label_name">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -106,8 +104,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/label_password"
-            app:passwordToggleEnabled="true"
-            app:placeholderText="Isi Password">
+            app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -142,8 +139,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/label_password_confirmation"
-            app:passwordToggleEnabled="true"
-            app:placeholderText="Isi Password">
+            app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -178,7 +174,7 @@
             app:layout_constraintTop_toBottomOf="@+id/label_vaksin_radio" />
 
         <Button
-            android:id="@+id/btn_login"
+            android:id="@+id/btn_npt_already_vaksin"
             style="@style/Button3TextSecondary"
             android:layout_width="147dp"
             android:layout_height="55dp"
@@ -191,11 +187,10 @@
             app:layout_constraintTop_toTopOf="@+id/btn_already_vaksin" />
 
         <CheckBox
-            android:id="@+id/checkbox_meat"
+            android:id="@+id/checkbox_register"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="32dp"
-            android:onClick="onCheckboxClicked"
             android:text="@string/terms_and_policies"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.497"
@@ -203,14 +198,14 @@
             app:layout_constraintTop_toBottomOf="@+id/btn_already_vaksin" />
 
         <Button
-            android:id="@+id/btn__npt_already_vaksin"
+            android:id="@+id/btn_register"
             style="@style/Button1Text"
             android:layout_width="363dp"
             android:layout_height="55dp"
             android:text="@string/register"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkbox_meat" />
+            app:layout_constraintTop_toBottomOf="@+id/checkbox_register" />
 
         <TextView
             android:id="@+id/label_does_not_have_account"
@@ -222,7 +217,7 @@
             android:text="@string/already_have_an_account"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/btn__npt_already_vaksin" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_register" />
 
         <TextView
             android:id="@+id/btn_to_login"
@@ -235,6 +230,15 @@
             app:layout_constraintBottom_toBottomOf="@+id/label_does_not_have_account"
             app:layout_constraintStart_toEndOf="@+id/label_does_not_have_account"
             app:layout_constraintTop_toTopOf="@+id/label_does_not_have_account" />
-
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.45" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>

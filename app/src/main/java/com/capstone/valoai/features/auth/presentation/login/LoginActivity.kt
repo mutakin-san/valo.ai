@@ -66,7 +66,6 @@ class LoginActivity : AppCompatActivity() {
                 signIn(email, password)
             }
 
-
             signInWithGoogle.setOnClickListener {
 
                 // Choose authentication providers
@@ -161,6 +160,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
     companion object {
-        private val TAG = LoginActivity::class.java.simpleName
+        internal val TAG = LoginActivity::class.java.simpleName
     }
 }
