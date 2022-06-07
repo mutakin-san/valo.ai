@@ -1,4 +1,4 @@
-package com.capstone.valoai.features.maps.usecase
+package com.capstone.valoai.features.maps.domain.usecase
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider

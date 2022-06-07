@@ -16,8 +16,8 @@ import com.capstone.valoai.databinding.ActivityVaksinLocationMapsBinding
 import com.capstone.valoai.features.detail_faskes.data.models.FaskesModel
 import com.capstone.valoai.features.detail_faskes.presentation.DetailFaskesActivity
 import com.capstone.valoai.features.maps.data.FaskesRepository
-import com.capstone.valoai.features.maps.usecase.FaskesViewModel
-import com.capstone.valoai.features.maps.usecase.ViewModelFactory
+import com.capstone.valoai.features.maps.domain.usecase.FaskesViewModel
+import com.capstone.valoai.features.maps.domain.usecase.ViewModelFactory
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.google.android.gms.maps.CameraUpdateFactory
