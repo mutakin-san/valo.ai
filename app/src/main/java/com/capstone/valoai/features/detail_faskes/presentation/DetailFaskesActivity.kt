@@ -4,8 +4,10 @@ import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.GridLayoutManager
 import com.capstone.valoai.databinding.ActivityDetailFaskesBinding
 import com.capstone.valoai.features.detail_faskes.data.models.FaskesModel
+import com.capstone.valoai.features.detail_faskes.domain.VaccineTypeAdapter
 
 class DetailFaskesActivity : AppCompatActivity() {
     private var faskesData: FaskesModel? = null
@@ -22,6 +24,13 @@ class DetailFaskesActivity : AppCompatActivity() {
         with(binding){
             faskesTitle.text = faskesData?.name
             faskesName.text = faskesData?.name
+            vaccineDescription.text = faskesData?.description
+
+            rvAvailableVaccineType.setHasFixedSize(true)
+            faskesData?.availableVaccineType?.let{
+                rvAvailableVaccineType.adapter = VaccineTypeAdapter(it)
+                rvAvailableVaccineType.layoutManager = GridLayoutManager(this@DetailFaskesActivity, 2)
+            }
 
             btnShowRute.setOnClickListener {
                 val mapsRuteUri =

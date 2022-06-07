@@ -16,4 +16,6 @@ data class FaskesModel(
     val longitude: String,
     @SerializedName("availableVaccineType")
     val availableVaccineType: List<String>,
+    @SerializedName("description")
+    val description: String,
 ) : Parcelable
