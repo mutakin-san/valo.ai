@@ -48,13 +48,24 @@ class RegisterActivity : AppCompatActivity() {
                 startActivity(Intent(this@RegisterActivity, LoginActivity::class.java))
                 finish()
             }
+            checkboxRegister.setOnClickListener {
+                checkboxRegister.error = null
+            }
             btnAlreadyVaksin.setOnClickListener {
                 alreadyVaksin = true
                 notAlreadyVaksin = false
+                btnAlreadyVaksin.error = null
+                btnNptAlreadyVaksin.error = null
+                btnAlreadyVaksin.setBackgroundColor(0xff40D7FF.toInt())
+                btnNptAlreadyVaksin.setBackgroundColor(0xff28B7DD.toInt())
             }
             btnNptAlreadyVaksin.setOnClickListener {
                 alreadyVaksin = false
                 notAlreadyVaksin = true
+                btnAlreadyVaksin.error = null
+                btnNptAlreadyVaksin.error = null
+                btnAlreadyVaksin.setBackgroundColor(0xff28B7DD.toInt())
+                btnNptAlreadyVaksin.setBackgroundColor(0xff40D7FF.toInt())
             }
             btnRegister.setOnClickListener {
                 val email = fieldName.editText?.text.toString()
@@ -84,17 +95,17 @@ class RegisterActivity : AppCompatActivity() {
                     )
                 ).addOnCompleteListener { tk ->
                     if (tk.isSuccessful) {
-                            val profileUpdates = UserProfileChangeRequest.Builder()
-                                .setDisplayName(email)
-                                .setPhotoUri(Uri.parse("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"))
-                                .build()
+                        val profileUpdates = UserProfileChangeRequest.Builder()
+                            .setDisplayName(email)
+                            .setPhotoUri(Uri.parse("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"))
+                            .build()
 
-                            firebaseAuth.currentUser?.updateProfile(profileUpdates)
+                        firebaseAuth.currentUser?.updateProfile(profileUpdates)
 
 
                         // Sign in success, update UI with the signed-in user's information
                         Log.d(TAG, "createUserWithEmail:success")
-                        startActivity(Intent(this@RegisterActivity, DashboardActivity::class.java))
+                        startActivity(Intent(this@RegisterActivity, FormPersonalActivity::class.java))
                         finish()
                     } else {
                         // If sign in fails, display a message to the user.

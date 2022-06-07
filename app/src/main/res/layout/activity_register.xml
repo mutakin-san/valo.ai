@@ -175,7 +175,7 @@
 
         <Button
             android:id="@+id/btn_npt_already_vaksin"
-            style="@style/Button3TextSecondary"
+            style="@style/Button3Text"
             android:layout_width="147dp"
             android:layout_height="55dp"
             android:layout_marginStart="20dp"
