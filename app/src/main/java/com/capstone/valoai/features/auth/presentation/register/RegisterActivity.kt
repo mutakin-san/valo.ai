@@ -33,11 +33,6 @@ class RegisterActivity : AppCompatActivity() {
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
 
-    private val signInLauncher = registerForActivityResult(
-        FirebaseAuthUIActivityResultContract()
-    ) { res ->
-        this.onSignInResult(res)
-    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -95,14 +90,6 @@ class RegisterActivity : AppCompatActivity() {
                     )
                 ).addOnCompleteListener { tk ->
                     if (tk.isSuccessful) {
-                        val profileUpdates = UserProfileChangeRequest.Builder()
-                            .setDisplayName(email)
-                            .setPhotoUri(Uri.parse("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"))
-                            .build()
-
-                        firebaseAuth.currentUser?.updateProfile(profileUpdates)
-
-
                         // Sign in success, update UI with the signed-in user's information
                         Log.d(TAG, "createUserWithEmail:success")
                         startActivity(Intent(this@RegisterActivity, FormPersonalActivity::class.java))
@@ -197,20 +184,6 @@ class RegisterActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
-    }
-
-    private fun onSignInResult(result: FirebaseAuthUIAuthenticationResult) {
-        if (result.resultCode == RESULT_OK) {
-            // Successfully signed in
-            val user = FirebaseAuth.getInstance().currentUser
-            startActivity(
-                Intent(
-                    this@RegisterActivity,
-                    DashboardActivity::class.java
-                )
-            )
-            finish()
-        }
     }
 
     companion object {

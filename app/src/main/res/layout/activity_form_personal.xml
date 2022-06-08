@@ -26,10 +26,10 @@
         <TextView
             android:id="@+id/personal_information_dec"
             style="@style/Subtitle2Text"
-            android:layout_marginLeft="24dp"
-            android:layout_marginRight="24dp"
             android:layout_width="match_parent"
             android:layout_height="40dp"
+            android:layout_marginLeft="24dp"
+            android:layout_marginRight="24dp"
             android:text="@string/personal_dec"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -58,8 +58,7 @@
             app:hintEnabled="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/label_name"
-            app:placeholderText="Isi name">
+            app:layout_constraintTop_toBottomOf="@id/label_name">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
@@ -88,19 +87,19 @@
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
             app:boxStrokeWidth="2dp"
-            app:hintEnabled="false"
             app:endIconDrawable="@drawable/ic_baseline_arrow_drop_down_24"
             app:endIconMode="custom"
+            app:hintEnabled="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/label_riwayat1"
-            app:placeholderText="Isi name">
+            app:layout_constraintTop_toBottomOf="@id/label_riwayat1">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <AutoCompleteTextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="56dp"
                 android:hint="@string/riwayat1"
-                android:maxLines="1" />
+                android:maxLines="1"
+                android:paddingHorizontal="18dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -123,19 +122,19 @@
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
             app:boxStrokeWidth="2dp"
-            app:hintEnabled="false"
             app:endIconDrawable="@drawable/ic_baseline_arrow_drop_down_24"
             app:endIconMode="custom"
+            app:hintEnabled="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/label_riwayat2"
-            app:placeholderText="Isi Riwayat Penyakit">
+            app:layout_constraintTop_toBottomOf="@id/label_riwayat2">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <AutoCompleteTextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="56dp"
                 android:hint="@string/riwayat2"
-                android:maxLines="1" />
+                android:maxLines="1"
+                android:paddingHorizontal="18dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -158,19 +157,19 @@
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
             app:boxStrokeWidth="2dp"
-            app:hintEnabled="false"
             app:endIconDrawable="@drawable/ic_baseline_arrow_drop_down_24"
             app:endIconMode="custom"
+            app:hintEnabled="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/label_vakin1"
-            app:placeholderText="Isi Riwayat Penyakit">
+            app:layout_constraintTop_toBottomOf="@id/label_vakin1">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <AutoCompleteTextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="56dp"
                 android:hint="@string/vakin1"
-                android:maxLines="1" />
+                android:maxLines="1"
+                android:paddingHorizontal="18dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -178,8 +177,8 @@
             style="@style/ParagraphText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
             android:layout_marginStart="24dp"
+            android:layout_marginTop="12dp"
             android:labelFor="@id/field_birth_date"
             android:text="@string/vakin2"
             app:layout_constraintStart_toStartOf="parent"
@@ -193,54 +192,19 @@
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
             app:boxStrokeWidth="2dp"
-            app:hintEnabled="false"
             app:endIconDrawable="@drawable/ic_baseline_arrow_drop_down_24"
             app:endIconMode="custom"
+            app:hintEnabled="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/label_vakin2"
-            app:placeholderText="Isi Riwayat Penyakit">
+            app:layout_constraintTop_toBottomOf="@id/label_vakin2">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <AutoCompleteTextView
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="56dp"
                 android:hint="@string/vakin2"
-                android:maxLines="1" />
-        </com.google.android.material.textfield.TextInputLayout>
-
-        <TextView
-            android:id="@+id/label_vakin3"
-            style="@style/ParagraphText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
-            android:layout_marginStart="24dp"
-            android:labelFor="@id/field_birth_date"
-            android:text="@string/vakin3"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/field_vakin2" />
-
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/field_vakin3"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
-            app:boxStrokeWidth="2dp"
-            app:hintEnabled="false"
-            app:endIconDrawable="@drawable/ic_baseline_arrow_drop_down_24"
-            app:endIconMode="custom"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/label_vakin3"
-            app:placeholderText="Isi Riwayat Penyakit">
-
-            <com.google.android.material.textfield.TextInputEditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:hint="@string/vakin3"
-                android:maxLines="1" />
+                android:maxLines="1"
+                android:paddingHorizontal="18dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
         <TextView
@@ -257,40 +221,51 @@
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/field_birth_date"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
             app:boxStrokeWidth="2dp"
-            app:hintEnabled="false"
             app:endIconDrawable="@drawable/ic_baseline_arrow_drop_down_24"
             app:endIconMode="custom"
+            app:hintEnabled="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/label_birth_date"
-            app:placeholderText="Isi name">
+            app:layout_constraintTop_toBottomOf="@id/label_birth_date">
 
-            <com.google.android.material.textfield.TextInputEditText
+            <AutoCompleteTextView
+                android:id="@+id/field_birth_date_dropdown"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="56dp"
                 android:hint="@string/birth_date"
-                android:maxLines="1" />
+                android:maxLines="1"
+                android:paddingHorizontal="18dp" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
         <Button
-            android:id="@+id/btn__npt_already_vaksin"
+            android:id="@+id/btn_submit"
             style="@style/Button1Text"
             android:layout_width="363dp"
             android:layout_height="55dp"
             android:layout_marginTop="24dp"
-            android:text="@string/selesai"
             android:layout_marginBottom="22dp"
+            android:text="@string/selesai"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/field_vakin3" />
+            app:layout_constraintTop_toBottomOf="@+id/field_vakin2" />
 
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.45" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
