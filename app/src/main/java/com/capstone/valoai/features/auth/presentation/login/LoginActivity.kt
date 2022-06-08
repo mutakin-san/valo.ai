@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.valoai.databinding.ActivityLoginBinding
+import com.capstone.valoai.features.auth.presentation.register.FormPersonalActivity
 import com.capstone.valoai.features.auth.presentation.register.RegisterActivity
 import com.capstone.valoai.features.dashboard.presentations.DashboardActivity
 import com.firebase.ui.auth.AuthUI
@@ -57,6 +58,7 @@ class LoginActivity : AppCompatActivity() {
 
             btnToRegister.setOnClickListener {
                 startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
+//                startActivity(Intent(this@LoginActivity, FormPersonalActivity::class.java))
                 finish()
             }
 

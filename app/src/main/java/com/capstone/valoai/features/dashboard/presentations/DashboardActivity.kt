@@ -1,7 +1,9 @@
 package com.capstone.valoai.features.dashboard.presentations
 
 import android.content.Intent
+import android.content.res.AssetManager
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -20,13 +22,15 @@ import com.capstone.valoai.features.maps.data.FaskesRepository
 import com.capstone.valoai.features.maps.domain.usecase.FaskesViewModel
 import com.capstone.valoai.features.maps.domain.usecase.ViewModelFactory
 import com.capstone.valoai.features.maps.presentation.VaksinLocationMapsActivity
-import com.google.android.gms.maps.model.LatLng
-import com.google.android.gms.maps.model.MarkerOptions
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.RelativeCornerSize
 import com.google.android.material.shape.RoundedCornerTreatment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import java.io.FileInputStream
+import java.io.IOException
+import java.nio.MappedByteBuffer
+import java.nio.channels.FileChannel
 
 
 class DashboardActivity : AppCompatActivity() {
@@ -149,6 +153,19 @@ class DashboardActivity : AppCompatActivity() {
     }
 
     fun onClickFeb() {
-        startActivity(Intent(this@DashboardActivity, VaksinLocationMapsActivity::class.java))
+        Log.println(Log.INFO, "test", assets.list("src/main/asserts/dataset").toString())
+//        loadModelFile()
+//        startActivity(Intent(this@DashboardActivity, VaksinLocationMapsActivity::class.java))
+    }
+
+
+    @Throws(IOException::class)
+    private fun loadModelFile(assets: AssetManager, modelFilename: String): MappedByteBuffer? {
+        val fileDescriptor = assets.openFd(modelFilename)
+        val inputStream = FileInputStream(fileDescriptor.fileDescriptor)
+        val fileChannel = inputStream.channel
+        val startOffset = fileDescriptor.startOffset
+        val declaredLength = fileDescriptor.declaredLength
+        return fileChannel.map(FileChannel.MapMode.READ_ONLY, startOffset, declaredLength)
     }
 }
