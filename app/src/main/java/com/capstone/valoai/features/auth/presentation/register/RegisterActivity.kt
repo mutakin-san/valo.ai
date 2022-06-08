@@ -27,9 +27,6 @@ class RegisterActivity : AppCompatActivity() {
     private val binding: ActivityRegisterBinding
         get() = _binding!!
 
-    private var alreadyVaksin: Boolean = false;
-    private var notAlreadyVaksin: Boolean = false
-
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
 
@@ -45,22 +42,6 @@ class RegisterActivity : AppCompatActivity() {
             }
             checkboxRegister.setOnClickListener {
                 checkboxRegister.error = null
-            }
-            btnAlreadyVaksin.setOnClickListener {
-                alreadyVaksin = true
-                notAlreadyVaksin = false
-                btnAlreadyVaksin.error = null
-                btnNptAlreadyVaksin.error = null
-                btnAlreadyVaksin.setBackgroundColor(0xff40D7FF.toInt())
-                btnNptAlreadyVaksin.setBackgroundColor(0xff28B7DD.toInt())
-            }
-            btnNptAlreadyVaksin.setOnClickListener {
-                alreadyVaksin = false
-                notAlreadyVaksin = true
-                btnAlreadyVaksin.error = null
-                btnNptAlreadyVaksin.error = null
-                btnAlreadyVaksin.setBackgroundColor(0xff28B7DD.toInt())
-                btnNptAlreadyVaksin.setBackgroundColor(0xff40D7FF.toInt())
             }
             btnRegister.setOnClickListener {
                 val email = fieldName.editText?.text.toString()
@@ -159,15 +140,6 @@ class RegisterActivity : AppCompatActivity() {
             valid = false
         } else {
             binding.checkboxRegister.error = null
-        }
-
-        if (!alreadyVaksin && !notAlreadyVaksin) {
-            binding.btnAlreadyVaksin.error = "Required."
-            binding.btnNptAlreadyVaksin.error = "Required."
-            valid = false
-        } else {
-            binding.btnAlreadyVaksin.error = null
-            binding.btnNptAlreadyVaksin.error = null
         }
 
         return valid
