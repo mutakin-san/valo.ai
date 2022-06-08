@@ -6,8 +6,9 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.capstone.valoai.R
+import com.capstone.valoai.features.detail_faskes.data.models.FaskesModel
 
-class FakesListAdapter(private val fikestList: List<String>) : RecyclerView.Adapter<FakesListAdapter.ListViewHolder>() {
+class FakesListAdapter(private val fikestList: List<FaskesModel>) : RecyclerView.Adapter<FakesListAdapter.ListViewHolder>() {
     private lateinit var onItemClickCallback: OnItemClickCallback
 
     fun setOnItemClickCallback(onItemClickCallback: OnItemClickCallback) {
@@ -19,14 +20,15 @@ class FakesListAdapter(private val fikestList: List<String>) : RecyclerView.Adap
     }
 
     override fun onBindViewHolder(holder: ListViewHolder, position: Int) {
-        holder.name.text = fikestList[position]
+        holder.name.text = fikestList[position].name
         holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(fikestList[holder.adapterPosition]) }
     }
 
     override fun getItemCount(): Int = fikestList.size
 
+
     interface OnItemClickCallback {
-        fun onItemClicked(data: String)
+        fun onItemClicked(data: FaskesModel)
     }
 
     class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
