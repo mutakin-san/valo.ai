@@ -27,6 +27,8 @@ import com.google.android.material.shape.RelativeCornerSize
 import com.google.android.material.shape.RoundedCornerTreatment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import java.io.FileInputStream
 import java.io.IOException
 import java.nio.MappedByteBuffer
@@ -55,16 +57,11 @@ class DashboardActivity : AppCompatActivity() {
             .setAllCorners(RoundedCornerTreatment()).setAllCornerSizes(RelativeCornerSize(0.1f))
             .build()
 
-        firebaseAuth = FirebaseAuth.getInstance()
+        firebaseAuth = Firebase.auth
         user = firebaseAuth.currentUser
 
         with(binding) {
-            txtName.text = user?.displayName
-            Glide.with(baseContext).load(user?.photoUrl).circleCrop().into(profileDashboard)
-
-
             bottomNavigationView.setOnItemSelectedListener { item ->
-//            Log.println(Log.INFO, "Test", "${item.title}")
                 when (item.title) {
                     "Home" -> attachFikesList()
                     "Riwayat" -> attachHistoryList()
@@ -72,23 +69,27 @@ class DashboardActivity : AppCompatActivity() {
                 true
             }
 
-            fab.setOnClickListener {
-                onClickFeb()
-            }
-
-            firebaseAuth.addAuthStateListener {
-                if (it.currentUser == null) {
-                    startActivity(Intent(this@DashboardActivity, LoginActivity::class.java))
-                    finish()
-                }
-            }
+            fab.setOnClickListener { onClickFeb() }
 
             profileDashboard.setOnClickListener {
                 firebaseAuth.signOut()
             }
         }
+    }
 
-
+    override fun onStart() {
+        super.onStart()
+        with(binding) {
+            firebaseAuth.addAuthStateListener {
+                if (it.currentUser == null) {
+                    startActivity(Intent(this@DashboardActivity, LoginActivity::class.java))
+                    finish()
+                    return@addAuthStateListener
+                }
+                txtName.text = user?.displayName
+                Glide.with(baseContext).load(user?.photoUrl).circleCrop().into(profileDashboard)
+            }
+        }
     }
 
     private fun attachFikesList() {
@@ -98,11 +99,12 @@ class DashboardActivity : AppCompatActivity() {
                 ViewModelFactory(FaskesRepository(ApiConfig.faskesService))
             )[FaskesViewModel::class.java]
 
-        viewModel.getAllFaskes().observe(this){
-            it?.let {resource ->
+        viewModel.getAllFaskes().observe(this) {
+            it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
-                        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+                        val layoutManager =
+                            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
                         val adapter = FakesListAdapter(resource.data ?: ArrayList())
                         with(binding) {
                             dashboardList.layoutManager = layoutManager
@@ -126,7 +128,7 @@ class DashboardActivity : AppCompatActivity() {
         }
     }
 
-    private fun goToDetailFakes(data: FaskesModel){
+    private fun goToDetailFakes(data: FaskesModel) {
         val intentToDetail =
             Intent(this@DashboardActivity, DetailFaskesActivity::class.java)
         intentToDetail.apply {
@@ -144,7 +146,7 @@ class DashboardActivity : AppCompatActivity() {
         val adapter = RiwayatListAdapter(dataDummy)
         with(binding) {
             dashboardList.layoutManager = layoutManager
-            adapter.setOnItemClickCallback(object : RiwayatListAdapter.OnItemClickCallback{
+            adapter.setOnItemClickCallback(object : RiwayatListAdapter.OnItemClickCallback {
                 override fun onItemClicked(data: String) {
                 }
             })

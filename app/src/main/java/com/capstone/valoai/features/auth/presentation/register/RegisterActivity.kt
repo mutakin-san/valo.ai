@@ -90,14 +90,6 @@ class RegisterActivity : AppCompatActivity() {
                     )
                 ).addOnCompleteListener { tk ->
                     if (tk.isSuccessful) {
-                        val profileUpdates = UserProfileChangeRequest.Builder()
-                            .setDisplayName(email)
-                            .setPhotoUri(Uri.parse("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"))
-                            .build()
-
-                        firebaseAuth.currentUser?.updateProfile(profileUpdates)
-
-
                         // Sign in success, update UI with the signed-in user's information
                         Log.d(TAG, "createUserWithEmail:success")
                         startActivity(Intent(this@RegisterActivity, FormPersonalActivity::class.java))
