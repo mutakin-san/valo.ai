@@ -5,6 +5,7 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -27,9 +28,16 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.CircleOptions
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import org.tensorflow.lite.Interpreter
+import java.io.FileInputStream
+import java.io.IOException
+import java.nio.MappedByteBuffer
+import java.nio.channels.FileChannel
+
 
 class VaksinLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
+    private lateinit var tflite: Interpreter
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityVaksinLocationMapsBinding
     private lateinit var fusedLocationClient: FusedLocationProviderClient
@@ -51,6 +59,8 @@ class VaksinLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        loadModel()
+        launchRecommendation("Sinovac","Sinovac")
         viewModel =
             ViewModelProvider(
                 this,
@@ -73,6 +83,7 @@ class VaksinLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
+
 
     }
 
@@ -167,5 +178,34 @@ class VaksinLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
+
+    private fun launchRecommendation(vac1: String, vac2: String) {
+        try {
+            tflite.run(vac1, 1f)
+            tflite.getOutputTensor(0)
+        }catch (e: java.lang.Exception){
+            Log.d("Error" , e.localizedMessage)
+        }
+    }
+
+    private fun loadModel() {
+        try {
+            loadModelFile()?.let {
+                tflite =  Interpreter(it)
+            }
+        } catch (ex: java.lang.Exception) {
+            ex.printStackTrace()
+        }
+    }
+
+    @Throws(IOException::class)
+    private fun loadModelFile(): MappedByteBuffer? {
+        val fileDescriptor = this.assets.openFd("vac.tflite")
+        val inputStream = FileInputStream(fileDescriptor.fileDescriptor)
+        val fileChannel: FileChannel = inputStream.channel
+        val startOffset = fileDescriptor.startOffset
+        val declareLength = fileDescriptor.declaredLength
+        return fileChannel.map(FileChannel.MapMode.READ_ONLY, startOffset, declareLength)
+    }
 
 }
