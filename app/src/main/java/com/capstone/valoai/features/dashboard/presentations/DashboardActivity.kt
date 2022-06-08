@@ -153,9 +153,7 @@ class DashboardActivity : AppCompatActivity() {
     }
 
     fun onClickFeb() {
-        Log.println(Log.INFO, "test", assets.list("src/main/asserts/dataset").toString())
-//        loadModelFile()
-//        startActivity(Intent(this@DashboardActivity, VaksinLocationMapsActivity::class.java))
+        startActivity(Intent(this@DashboardActivity, VaksinLocationMapsActivity::class.java))
     }
 
 
