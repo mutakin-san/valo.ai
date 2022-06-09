@@ -10,6 +10,7 @@ import com.bumptech.glide.Glide
 import com.capstone.valoai.commons.ApiConfig
 import com.capstone.valoai.commons.Status
 import com.capstone.valoai.databinding.ActivityDashboardBinding
+import com.capstone.valoai.features.auth.domain.usecases.UserServices
 import com.capstone.valoai.features.auth.presentation.login.LoginActivity
 import com.capstone.valoai.features.dashboard.domain.adapter.FakesListAdapter
 import com.capstone.valoai.features.dashboard.domain.adapter.FakesListAdapter.OnItemClickCallback
@@ -26,12 +27,14 @@ import com.google.android.material.shape.RoundedCornerTreatment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
+import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
 
 class DashboardActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDashboardBinding
     private lateinit var firebaseAuth: FirebaseAuth
+    private val db by lazy { FirebaseFirestore.getInstance() }
     private var user: FirebaseUser? = null
 
     private lateinit var viewModel: FaskesViewModel
@@ -68,20 +71,26 @@ class DashboardActivity : AppCompatActivity() {
             profileDashboard.setOnClickListener {
                 firebaseAuth.signOut()
             }
+
+            txtName.text = user?.displayName
+            Glide.with(baseContext).load(user?.photoUrl).circleCrop().into(profileDashboard)
+        }
+
+
+        user?.let {
+            UserServices.getDataUser(it.uid, db){ user ->
+                Log.i(DashboardActivity::class.simpleName, "Data User = ${user.name}")
+            }
         }
     }
 
     override fun onStart() {
         super.onStart()
-        with(binding) {
-            firebaseAuth.addAuthStateListener {
-                if (it.currentUser == null) {
-                    startActivity(Intent(this@DashboardActivity, LoginActivity::class.java))
-                    finish()
-                    return@addAuthStateListener
-                }
-                txtName.text = user?.displayName
-                Glide.with(baseContext).load(user?.photoUrl).circleCrop().into(profileDashboard)
+        firebaseAuth.addAuthStateListener {
+            if (it.currentUser == null) {
+                startActivity(Intent(this@DashboardActivity, LoginActivity::class.java))
+                finish()
+                return@addAuthStateListener
             }
         }
     }

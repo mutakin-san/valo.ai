@@ -3,12 +3,11 @@ package com.capstone.valoai.features.auth.presentation.login
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import com.capstone.valoai.R
 import com.capstone.valoai.databinding.ActivityLoginBinding
-import com.capstone.valoai.features.auth.presentation.register.FormPersonalActivity
 import com.capstone.valoai.features.auth.presentation.register.RegisterActivity
 import com.capstone.valoai.features.dashboard.presentations.DashboardActivity
 import com.firebase.ui.auth.AuthUI
@@ -35,8 +34,6 @@ class LoginActivity : AppCompatActivity() {
 
     private fun onSignInResult(result: FirebaseAuthUIAuthenticationResult) {
         if (result.resultCode == RESULT_OK) {
-            // Successfully signed in
-            val user = FirebaseAuth.getInstance().currentUser
             startActivity(
                 Intent(
                     this@LoginActivity,
@@ -44,6 +41,12 @@ class LoginActivity : AppCompatActivity() {
                 )
             )
             finish()
+        } else {
+            Toast.makeText(
+                this@LoginActivity,
+                result.idpResponse?.error?.localizedMessage ?: getString(R.string.google_signin_failed),
+                Toast.LENGTH_SHORT
+            ).show()
         }
     }
 
@@ -53,12 +56,10 @@ class LoginActivity : AppCompatActivity() {
         _binding = ActivityLoginBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        // Buttons
         with(binding) {
 
             btnToRegister.setOnClickListener {
                 startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
-//                startActivity(Intent(this@LoginActivity, FormPersonalActivity::class.java))
                 finish()
             }
 
@@ -72,7 +73,8 @@ class LoginActivity : AppCompatActivity() {
 
                 // Choose authentication providers
                 val providers = arrayListOf(
-                    AuthUI.IdpConfig.GoogleBuilder().build())
+                    AuthUI.IdpConfig.GoogleBuilder().build()
+                )
 
                 // Create and launch sign-in intent
                 val signInIntent = AuthUI.getInstance()
@@ -85,14 +87,12 @@ class LoginActivity : AppCompatActivity() {
 
         }
 
-        // Initialize Firebase Auth
         firebaseAuth = Firebase.auth
 
     }
 
     override fun onStart() {
         super.onStart()
-        // Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = firebaseAuth.currentUser
         if (currentUser != null) {
             startActivity(Intent(this@LoginActivity, DashboardActivity::class.java))
@@ -110,15 +110,12 @@ class LoginActivity : AppCompatActivity() {
         firebaseAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this@LoginActivity) { task ->
                 if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d(TAG, "signInWithEmail:success")
                     startActivity(Intent(this@LoginActivity, DashboardActivity::class.java))
                     finish()
                 } else {
-                    // If sign in fails, display a message to the user.
-                    Log.w(TAG, "signInWithEmail:failure", task.exception)
                     Toast.makeText(
-                        this@LoginActivity, "Authentication failed : ${task.exception?.localizedMessage}",
+                        this@LoginActivity,
+                        "${task.exception?.localizedMessage}",
                         Toast.LENGTH_SHORT
                     ).show()
                 }
@@ -159,9 +156,5 @@ class LoginActivity : AppCompatActivity() {
     override fun onDestroy() {
         super.onDestroy()
         _binding = null
-    }
-
-    companion object {
-        internal val TAG = LoginActivity::class.java.simpleName
     }
 }

@@ -188,19 +188,18 @@ class VaksinLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
         }
     }
 
+
     private fun loadModel() {
         try {
-            loadModelFile()?.let {
-                tflite =  Interpreter(it)
-            }
-        } catch (ex: java.lang.Exception) {
+            tflite = Interpreter(loadModelFile())
+        } catch (ex: Exception) {
             ex.printStackTrace()
         }
     }
 
     @Throws(IOException::class)
-    private fun loadModelFile(): MappedByteBuffer? {
-        val fileDescriptor = this.assets.openFd("vac.tflite")
+    private fun loadModelFile(): MappedByteBuffer {
+        val fileDescriptor = this.assets.openFd("model.tflite")
         val inputStream = FileInputStream(fileDescriptor.fileDescriptor)
         val fileChannel: FileChannel = inputStream.channel
         val startOffset = fileDescriptor.startOffset
