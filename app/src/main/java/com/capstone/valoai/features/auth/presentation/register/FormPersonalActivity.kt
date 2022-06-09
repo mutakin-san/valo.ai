@@ -38,10 +38,8 @@ class FormPersonalActivity : AppCompatActivity() {
     private lateinit var binding: ActivityFormPersonalBinding
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
-    private var vaksins: ArrayList<String> = ArrayList()
-    private var riwayat: ArrayList<String> = ArrayList()
 
-    @SuppressLint("ClickableViewAccessibility")
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFormPersonalBinding.inflate(layoutInflater)
@@ -49,24 +47,43 @@ class FormPersonalActivity : AppCompatActivity() {
 
         firebaseAuth = Firebase.auth
         db = FirebaseFirestore.getInstance()
+        setFormField()
 
-        with(db){
+        with(db) {
             collection("vaksins").get().addOnSuccessListener {
-                vaksins = it.documents.map { item -> item.get("name") as String } as ArrayList<String>
+                val vaksins =
+                    it.documents.map { item -> item.get("name") as String } as ArrayList<String>
+                setVaksin(vaksins)
             }
 
-            collection("riwayars").get().addOnSuccessListener {
-                riwayat = it.documents.map { item -> item.get("name") as String } as ArrayList<String>
+            collection("riwayats").get().addOnSuccessListener {
+                val riwayat =
+                    it.documents.map { item -> item.get("name") as String } as ArrayList<String>
+                setRiwayat(riwayat)
+
             }
         }
     }
 
-    override fun onStart() {
-        super.onStart()
-        setFormField(riwayat, vaksins)
+    private fun setRiwayat(riwayat: ArrayList<String>) {
+        with(binding) {
+            val adapterRiwayat =
+                ArrayAdapter(baseContext, R.layout.dropdown_menu_popup_item, riwayat)
+            (fieldRiwayat1.editText as? AutoCompleteTextView)?.setAdapter(adapterRiwayat)
+            (fieldRiwayat2.editText as? AutoCompleteTextView)?.setAdapter(adapterRiwayat)
+        }
     }
 
-    private fun setFormField(riwayat : ArrayList<String>, vaksins: ArrayList<String>){
+    private fun setVaksin(vaksins: ArrayList<String>) {
+        with(binding) {
+            val adapterVaksin =
+                ArrayAdapter(baseContext, R.layout.dropdown_menu_popup_item, vaksins)
+            (fieldVakin1.editText as? AutoCompleteTextView)?.setAdapter(adapterVaksin)
+            (fieldVakin2.editText as? AutoCompleteTextView)?.setAdapter(adapterVaksin)
+        }
+    }
+
+    private fun setFormField() {
         val datePicker =
             MaterialDatePicker.Builder.datePicker()
                 .setTitleText("Select Date")
@@ -74,14 +91,6 @@ class FormPersonalActivity : AppCompatActivity() {
                 .build()
 
         with(binding) {
-            val adapterRiwayat = ArrayAdapter(baseContext, R.layout.dropdown_menu_popup_item, riwayat)
-            val adapterVaksin = ArrayAdapter(baseContext, R.layout.dropdown_menu_popup_item, vaksins)
-            (fieldRiwayat1.editText as? AutoCompleteTextView)?.setAdapter(adapterRiwayat)
-            (fieldRiwayat2.editText as? AutoCompleteTextView)?.setAdapter(adapterRiwayat)
-            (fieldVakin1.editText as? AutoCompleteTextView)?.setAdapter(adapterVaksin)
-            (fieldVakin2.editText as? AutoCompleteTextView)?.setAdapter(adapterVaksin)
-
-
             fieldBirthDate.editText?.setOnFocusChangeListener { view, b ->
                 if (b) {
                     Log.println(Log.INFO, "test", "test")
@@ -125,12 +134,13 @@ class FormPersonalActivity : AppCompatActivity() {
                                         )
                                         finish()
                                         return@addOnSuccessListener
+                                    }?.addOnCanceledListener {
+                                        Toast.makeText(
+                                            this@FormPersonalActivity,
+                                            "Register failed",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
                                     }
-                                Toast.makeText(
-                                    this@FormPersonalActivity,
-                                    "Register failed",
-                                    Toast.LENGTH_SHORT
-                                ).show()
                             } else if (it.isCanceled) {
                                 Toast.makeText(
                                     this@FormPersonalActivity,
