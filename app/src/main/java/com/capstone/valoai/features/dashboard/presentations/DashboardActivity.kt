@@ -2,11 +2,14 @@ package com.capstone.valoai.features.dashboard.presentations
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.capstone.valoai.R
 import com.capstone.valoai.commons.ApiConfig
 import com.capstone.valoai.commons.Status
 import com.capstone.valoai.databinding.ActivityDashboardBinding
@@ -104,10 +107,12 @@ class DashboardActivity : AppCompatActivity() {
                 ViewModelFactory(FaskesRepository(ApiConfig.faskesService))
             )[FaskesViewModel::class.java]
 
+        showProgressBar()
         viewModel.getAllFaskes().observe(this) {
             it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
+                        binding.titleList.setText(R.string.rekomendasi_list)
                         val adapter = FakesListAdapter(resource.data ?: ArrayList(), baseContext)
                         with(binding) {
                             dashboardList.layoutManager = layoutManager
@@ -118,6 +123,7 @@ class DashboardActivity : AppCompatActivity() {
                             })
                             dashboardList.adapter = adapter
                         }
+                        hideProgressBar()
                     }
                     Status.ERROR -> {
                         Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
@@ -144,6 +150,7 @@ class DashboardActivity : AppCompatActivity() {
     }
 
     private fun attachHistoryList() {
+        binding.titleList.setText(R.string.riwayat_list)
         val dataDummy = arrayListOf("Test3", "Test5")
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         val adapter = RiwayatListAdapter(dataDummy)
@@ -159,5 +166,13 @@ class DashboardActivity : AppCompatActivity() {
 
     private fun onClickFloatingBtn() {
         startActivity(Intent(this@DashboardActivity, VaksinLocationMapsActivity::class.java))
+    }
+
+    private fun showProgressBar() {
+        binding.progressBar.visibility = View.VISIBLE
+    }
+
+    private fun hideProgressBar() {
+        binding.progressBar.visibility = View.GONE
     }
 }
