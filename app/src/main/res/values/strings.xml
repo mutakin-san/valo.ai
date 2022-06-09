@@ -47,4 +47,5 @@
     <string name="km10">10 Km</string>
     <string name="AstraZeneca">20 AZ</string>
     <string name="Sinovac">15 SV</string>
+    <string name="google_signin_failed">Login dengan Googe gagal!</string>
 </resources>
