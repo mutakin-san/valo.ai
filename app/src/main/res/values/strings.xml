@@ -44,6 +44,7 @@
     <string name="greeting">Selamat Datang,</string>
     <string name="Profile">avatar</string>
     <string name="rekomendasi_list">Rekomendasi Vaksin</string>
+    <string name="riwayat_list">Riwayat Vaksin</string>
     <string name="km10">10 Km</string>
     <string name="AstraZeneca">20 AZ</string>
     <string name="Sinovac">15 SV</string>

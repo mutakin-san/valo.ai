@@ -2,11 +2,14 @@ package com.capstone.valoai.features.dashboard.presentations
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.Glide
+import com.capstone.valoai.R
 import com.capstone.valoai.commons.ApiConfig
 import com.capstone.valoai.commons.Status
 import com.capstone.valoai.databinding.ActivityDashboardBinding
@@ -44,7 +47,7 @@ class DashboardActivity : AppCompatActivity() {
         this.title = "Dashboard"
         super.onCreate(savedInstanceState)
         binding = ActivityDashboardBinding.inflate(layoutInflater)
-        attachFikesList()
+        attachFakesList()
         setContentView(binding.root)
 
         val bottomAppBar = binding.bottomAppBar
@@ -60,13 +63,13 @@ class DashboardActivity : AppCompatActivity() {
         with(binding) {
             bottomNavigationView.setOnItemSelectedListener { item ->
                 when (item.title) {
-                    "Home" -> attachFikesList()
+                    "Home" -> attachFakesList()
                     "Riwayat" -> attachHistoryList()
                 }
                 true
             }
 
-            fab.setOnClickListener { onClickFeb() }
+            fab.setOnClickListener { onClickFloatingBtn() }
 
             profileDashboard.setOnClickListener {
                 firebaseAuth.signOut()
@@ -95,20 +98,22 @@ class DashboardActivity : AppCompatActivity() {
         }
     }
 
-    private fun attachFikesList() {
+    private fun attachFakesList() {
+        val layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         viewModel =
             ViewModelProvider(
                 this,
                 ViewModelFactory(FaskesRepository(ApiConfig.faskesService))
             )[FaskesViewModel::class.java]
 
+        showProgressBar()
         viewModel.getAllFaskes().observe(this) {
             it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
-                        val layoutManager =
-                            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-                        val adapter = FakesListAdapter(resource.data ?: ArrayList())
+                        binding.titleList.setText(R.string.rekomendasi_list)
+                        val adapter = FakesListAdapter(resource.data ?: ArrayList(), baseContext)
                         with(binding) {
                             dashboardList.layoutManager = layoutManager
                             adapter.setOnItemClickCallback(object : OnItemClickCallback {
@@ -118,6 +123,7 @@ class DashboardActivity : AppCompatActivity() {
                             })
                             dashboardList.adapter = adapter
                         }
+                        hideProgressBar()
                     }
                     Status.ERROR -> {
                         Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
@@ -144,6 +150,7 @@ class DashboardActivity : AppCompatActivity() {
     }
 
     private fun attachHistoryList() {
+        binding.titleList.setText(R.string.riwayat_list)
         val dataDummy = arrayListOf("Test3", "Test5")
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         val adapter = RiwayatListAdapter(dataDummy)
@@ -157,7 +164,15 @@ class DashboardActivity : AppCompatActivity() {
         }
     }
 
-    fun onClickFeb() {
+    private fun onClickFloatingBtn() {
         startActivity(Intent(this@DashboardActivity, VaksinLocationMapsActivity::class.java))
+    }
+
+    private fun showProgressBar() {
+        binding.progressBar.visibility = View.VISIBLE
+    }
+
+    private fun hideProgressBar() {
+        binding.progressBar.visibility = View.GONE
     }
 }

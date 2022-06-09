@@ -39,8 +39,9 @@
         <entry key="app/src/main/res/layout/activity_vaksin_location_maps.xml" value="0.1" />
         <entry key="app/src/main/res/layout/dropdown_menu_popup_item.xml" value="0.3473731884057971" />
         <entry key="app/src/main/res/layout/fragment_onboarding_item.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/label_in_items.xml" value="0.32518115942028986" />
         <entry key="app/src/main/res/layout/list_card_vaksin.xml" value="0.335" />
-        <entry key="app/src/main/res/layout/list_item_fakes.xml" value="0.375" />
+        <entry key="app/src/main/res/layout/list_item_fakes.xml" value="0.5" />
         <entry key="app/src/main/res/layout/list_item_riwayat.xml" value="0.23867753623188406" />
         <entry key="app/src/main/res/layout/login_layout.xml" value="0.12" />
         <entry key="app/src/main/res/layout/onboarding_item_layout.xml" value="0.17119565217391305" />
