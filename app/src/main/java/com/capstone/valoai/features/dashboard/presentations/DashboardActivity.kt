@@ -1,9 +1,7 @@
 package com.capstone.valoai.features.dashboard.presentations
 
 import android.content.Intent
-import android.content.res.AssetManager
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -29,10 +27,6 @@ import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.ktx.Firebase
-import java.io.FileInputStream
-import java.io.IOException
-import java.nio.MappedByteBuffer
-import java.nio.channels.FileChannel
 
 
 class DashboardActivity : AppCompatActivity() {
@@ -156,16 +150,5 @@ class DashboardActivity : AppCompatActivity() {
 
     fun onClickFeb() {
         startActivity(Intent(this@DashboardActivity, VaksinLocationMapsActivity::class.java))
-    }
-
-
-    @Throws(IOException::class)
-    private fun loadModelFile(assets: AssetManager, modelFilename: String): MappedByteBuffer? {
-        val fileDescriptor = assets.openFd(modelFilename)
-        val inputStream = FileInputStream(fileDescriptor.fileDescriptor)
-        val fileChannel = inputStream.channel
-        val startOffset = fileDescriptor.startOffset
-        val declaredLength = fileDescriptor.declaredLength
-        return fileChannel.map(FileChannel.MapMode.READ_ONLY, startOffset, declaredLength)
     }
 }
