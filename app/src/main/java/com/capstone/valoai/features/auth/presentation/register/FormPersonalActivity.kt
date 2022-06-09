@@ -57,7 +57,7 @@ class FormPersonalActivity : AppCompatActivity() {
             }
 
             collection("riwayats").get().addOnSuccessListener {
-               val riwayat =
+                val riwayat =
                     it.documents.map { item -> item.get("name") as String } as ArrayList<String>
                 setRiwayat(riwayat)
 
@@ -134,12 +134,13 @@ class FormPersonalActivity : AppCompatActivity() {
                                         )
                                         finish()
                                         return@addOnSuccessListener
+                                    }?.addOnCanceledListener {
+                                        Toast.makeText(
+                                            this@FormPersonalActivity,
+                                            "Register failed",
+                                            Toast.LENGTH_SHORT
+                                        ).show()
                                     }
-                                Toast.makeText(
-                                    this@FormPersonalActivity,
-                                    "Register failed",
-                                    Toast.LENGTH_SHORT
-                                ).show()
                             } else if (it.isCanceled) {
                                 Toast.makeText(
                                     this@FormPersonalActivity,
