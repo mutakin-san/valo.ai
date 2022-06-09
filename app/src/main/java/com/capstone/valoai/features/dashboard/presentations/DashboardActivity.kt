@@ -79,7 +79,7 @@ class DashboardActivity : AppCompatActivity() {
 
         user?.let {
             UserServices.getDataUser(it.uid, db){ user ->
-                Log.i(DashboardActivity::class.simpleName, "Data User = ${user.name}")
+                // Todo :: pakai data untuk kebutuhan rekomendasi
             }
         }
     }
