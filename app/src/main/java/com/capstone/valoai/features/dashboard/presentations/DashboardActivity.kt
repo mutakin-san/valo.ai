@@ -41,7 +41,7 @@ class DashboardActivity : AppCompatActivity() {
         this.title = "Dashboard"
         super.onCreate(savedInstanceState)
         binding = ActivityDashboardBinding.inflate(layoutInflater)
-        attachFikesList()
+        attachFakesList()
         setContentView(binding.root)
 
         val bottomAppBar = binding.bottomAppBar
@@ -57,13 +57,13 @@ class DashboardActivity : AppCompatActivity() {
         with(binding) {
             bottomNavigationView.setOnItemSelectedListener { item ->
                 when (item.title) {
-                    "Home" -> attachFikesList()
+                    "Home" -> attachFakesList()
                     "Riwayat" -> attachHistoryList()
                 }
                 true
             }
 
-            fab.setOnClickListener { onClickFeb() }
+            fab.setOnClickListener { onClickFloatingBtn() }
 
             profileDashboard.setOnClickListener {
                 firebaseAuth.signOut()
@@ -86,7 +86,9 @@ class DashboardActivity : AppCompatActivity() {
         }
     }
 
-    private fun attachFikesList() {
+    private fun attachFakesList() {
+        val layoutManager =
+            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         viewModel =
             ViewModelProvider(
                 this,
@@ -97,9 +99,7 @@ class DashboardActivity : AppCompatActivity() {
             it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
-                        val layoutManager =
-                            LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-                        val adapter = FakesListAdapter(resource.data ?: ArrayList())
+                        val adapter = FakesListAdapter(resource.data ?: ArrayList(), baseContext)
                         with(binding) {
                             dashboardList.layoutManager = layoutManager
                             adapter.setOnItemClickCallback(object : OnItemClickCallback {
@@ -148,7 +148,7 @@ class DashboardActivity : AppCompatActivity() {
         }
     }
 
-    fun onClickFeb() {
+    private fun onClickFloatingBtn() {
         startActivity(Intent(this@DashboardActivity, VaksinLocationMapsActivity::class.java))
     }
 }
