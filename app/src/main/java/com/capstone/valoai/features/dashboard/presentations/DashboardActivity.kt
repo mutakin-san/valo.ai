@@ -105,7 +105,6 @@ class DashboardActivity : AppCompatActivity() {
     private fun attachFakesList() {
         val layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-
         viewModel =
             ViewModelProvider(
                 this,
@@ -156,6 +155,7 @@ class DashboardActivity : AppCompatActivity() {
     private fun attachHistoryList() {
 
         binding.titleList.setText(R.string.riwayat_list)
+        val dataDummy = arrayListOf("Test3", "Test5")
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         db.collection("users").document(user?.uid ?: "").get().addOnSuccessListener { fb ->
             val vaksin1 = (fb.data?.get("vaksin1") ?: "") as String
