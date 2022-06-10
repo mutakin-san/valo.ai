@@ -44,7 +44,7 @@
             android:resource="@array/preloaded_fonts" />
 
         <activity
-            android:name=".features.maps.presentation.VaksinLocationMapsActivity"
+            android:name=".features.maps.presentation.VaccineLocationMapsActivity"
             android:exported="false"
             android:label="@string/title_activity_vaksin_location_maps" />
         <activity

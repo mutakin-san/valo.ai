@@ -23,9 +23,7 @@ import com.capstone.valoai.features.detail_faskes.presentation.DetailFaskesActiv
 import com.capstone.valoai.features.maps.data.FaskesRepository
 import com.capstone.valoai.features.maps.domain.usecase.FaskesViewModel
 import com.capstone.valoai.features.maps.domain.usecase.ViewModelFactory
-import com.capstone.valoai.features.maps.presentation.VaksinLocationMapsActivity
-import com.capstone.valoai.features.profile.data.remote.UserDataSourceRemote
-import com.capstone.valoai.features.profile.domain.vmodel.ProfileViewModel
+import com.capstone.valoai.features.maps.presentation.VaccineLocationMapsActivity
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.RelativeCornerSize
 import com.google.android.material.shape.RoundedCornerTreatment
@@ -34,7 +32,6 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
-import java.util.*
 import kotlin.collections.ArrayList
 
 
@@ -193,7 +190,7 @@ class DashboardActivity : AppCompatActivity() {
 //            }
 //
 //        }
-        startActivity(Intent(this@DashboardActivity, VaksinLocationMapsActivity::class.java))
+        startActivity(Intent(this@DashboardActivity, VaccineLocationMapsActivity::class.java))
     }
 
     private fun showProgressBar() {

@@ -5,7 +5,6 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
@@ -13,6 +12,8 @@ import androidx.lifecycle.ViewModelProvider
 import com.capstone.valoai.R
 import com.capstone.valoai.commons.ApiConfig
 import com.capstone.valoai.commons.Status
+import com.capstone.valoai.commons.hideProgressBar
+import com.capstone.valoai.commons.showProgressBar
 import com.capstone.valoai.databinding.ActivityVaksinLocationMapsBinding
 import com.capstone.valoai.features.detail_faskes.data.models.FaskesModel
 import com.capstone.valoai.features.detail_faskes.presentation.DetailFaskesActivity
@@ -28,16 +29,10 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.CircleOptions
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
-import org.tensorflow.lite.Interpreter
-import java.io.FileInputStream
-import java.io.IOException
-import java.nio.MappedByteBuffer
-import java.nio.channels.FileChannel
 
 
-class VaksinLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
+class VaccineLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
-    private lateinit var tflite: Interpreter
     private lateinit var mMap: GoogleMap
     private lateinit var binding: ActivityVaksinLocationMapsBinding
     private lateinit var fusedLocationClient: FusedLocationProviderClient
@@ -59,8 +54,6 @@ class VaksinLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        loadModel()
-        launchRecommendation("Sinovac","Sinovac")
         viewModel =
             ViewModelProvider(
                 this,
@@ -69,7 +62,7 @@ class VaksinLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
 
 
         fusedLocationClient =
-            LocationServices.getFusedLocationProviderClient(this@VaksinLocationMapsActivity)
+            LocationServices.getFusedLocationProviderClient(this@VaccineLocationMapsActivity)
 
 
         binding = ActivityVaksinLocationMapsBinding.inflate(layoutInflater)
@@ -79,7 +72,7 @@ class VaksinLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
         binding.back.setOnClickListener {
             finish()
         }
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
+
         val mapFragment = supportFragmentManager
             .findFragmentById(R.id.map) as SupportMapFragment
         mapFragment.getMapAsync(this)
@@ -96,6 +89,7 @@ class VaksinLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
             it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
+                        hideProgressBar(binding.mapsLoading)
                         resource.data?.let { list ->
                             list.forEach { faskes ->
                                 val location =
@@ -110,11 +104,11 @@ class VaksinLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
                         }
                     }
                     Status.ERROR -> {
+                        hideProgressBar(binding.mapsLoading)
                         Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
                     }
                     Status.LOADING -> {
-//                        progressBar.visibility = View.VISIBLE
-//                        recyclerView.visibility = View.GONE
+                       showProgressBar(binding.mapsLoading)
                     }
                 }
             }
@@ -125,7 +119,7 @@ class VaksinLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap.setOnInfoWindowClickListener {
             val detailFaskesIntent =
                 Intent(
-                    this@VaksinLocationMapsActivity,
+                    this@VaccineLocationMapsActivity,
                     DetailFaskesActivity::class.java
                 )
 
@@ -174,37 +168,11 @@ class VaksinLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 )
             }
         } catch (e: Exception) {
-
+            Toast.makeText(this@VaccineLocationMapsActivity,
+                e.localizedMessage,
+                Toast.LENGTH_SHORT
+            ).show()
         }
-    }
-
-
-    private fun launchRecommendation(vac1: String, vac2: String) {
-        try {
-            tflite.run(vac1, 1f)
-            tflite.getOutputTensor(0)
-        }catch (e: java.lang.Exception){
-            Log.d("Error" , e.localizedMessage)
-        }
-    }
-
-
-    private fun loadModel() {
-        try {
-            tflite = Interpreter(loadModelFile())
-        } catch (ex: Exception) {
-            ex.printStackTrace()
-        }
-    }
-
-    @Throws(IOException::class)
-    private fun loadModelFile(): MappedByteBuffer {
-        val fileDescriptor = this.assets.openFd("model.tflite")
-        val inputStream = FileInputStream(fileDescriptor.fileDescriptor)
-        val fileChannel: FileChannel = inputStream.channel
-        val startOffset = fileDescriptor.startOffset
-        val declareLength = fileDescriptor.declaredLength
-        return fileChannel.map(FileChannel.MapMode.READ_ONLY, startOffset, declareLength)
     }
 
 }
