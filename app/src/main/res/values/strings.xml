@@ -18,7 +18,7 @@
     <string name="already_have_an_account">Sudah punya akun?</string>
     <string name="get_started">Mulai Sekarang</string>
     <string name="back_button">Tombol Kembali</string>
-    <string name="banner_informasi_vaksin">Banner Informasi Vaksin</string>
+    <string name="banner_informasi_vaksin">Image by Alexandra_Koch from Pixabay</string>
     <string name="vaccine_location_text">Lokasi Vaksin</string>
     <string name="age_recommendation_text">Sasaran Usia</string>
     <string name="description">Keterangan</string>
@@ -49,4 +49,6 @@
     <string name="AstraZeneca">20 AZ</string>
     <string name="Sinovac">15 SV</string>
     <string name="google_signin_failed">Login dengan Googe gagal!</string>
+    <string name="label_vaccine_type">Jenis vaksin tersedia</string>
+    <string name="show_rute">Tampilkan Rute</string>
 </resources>

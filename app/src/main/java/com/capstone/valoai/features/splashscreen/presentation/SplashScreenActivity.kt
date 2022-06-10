@@ -10,9 +10,8 @@ import com.capstone.valoai.features.dashboard.presentations.DashboardActivity
 import com.capstone.valoai.features.onboarding.data.local.OnBoardPref
 import com.capstone.valoai.features.onboarding.data.local.datastore
 import com.capstone.valoai.features.onboarding.presentation.OnBoardingActivity
+import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.ktx.Firebase
-import com.google.firebase.ktx.initialize
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
 
@@ -26,7 +25,7 @@ class SplashScreenActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        Firebase.initialize(this)
+        FirebaseApp.initializeApp(this)
         firebaseAuth = FirebaseAuth.getInstance()
 
         lifecycleScope.launch {

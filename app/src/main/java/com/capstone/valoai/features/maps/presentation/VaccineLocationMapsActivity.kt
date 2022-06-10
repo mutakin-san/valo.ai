@@ -85,6 +85,8 @@ class VaccineLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
         mMap = googleMap
         getMyLocation()
 
+        mMap.uiSettings.isZoomControlsEnabled = true
+
         viewModel.getAllFaskes().observe(this) {
             it?.let { resource ->
                 when (resource.status) {
