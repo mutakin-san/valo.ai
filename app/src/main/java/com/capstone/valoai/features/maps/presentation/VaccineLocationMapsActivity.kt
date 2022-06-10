@@ -3,9 +3,12 @@ package com.capstone.valoai.features.maps.presentation
 import android.Manifest
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.IntentSender
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.widget.Toast
+import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
@@ -20,8 +23,11 @@ import com.capstone.valoai.features.detail_faskes.presentation.DetailFaskesActiv
 import com.capstone.valoai.features.maps.data.FaskesRepository
 import com.capstone.valoai.features.maps.domain.usecase.FaskesViewModel
 import com.capstone.valoai.features.maps.domain.usecase.ViewModelFactory
+import com.google.android.gms.common.api.ResolvableApiException
 import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationRequest
 import com.google.android.gms.location.LocationServices
+import com.google.android.gms.location.LocationSettingsRequest
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -29,6 +35,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.CircleOptions
 import com.google.android.gms.maps.model.LatLng
 import com.google.android.gms.maps.model.MarkerOptions
+import java.util.concurrent.TimeUnit
 
 
 class VaccineLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
@@ -38,6 +45,8 @@ class VaccineLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     private lateinit var viewModel: FaskesViewModel
+    private lateinit var locationRequest: LocationRequest
+
 
     private val requestLocationPermission =
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
@@ -84,7 +93,7 @@ class VaccineLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onMapReady(googleMap: GoogleMap) {
         mMap = googleMap
         getMyLocation()
-
+        createLocationRequest()
         mMap.uiSettings.isZoomControlsEnabled = true
 
         viewModel.getAllFaskes().observe(this) {
@@ -110,7 +119,7 @@ class VaccineLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
                         Toast.makeText(this, it.message, Toast.LENGTH_LONG).show()
                     }
                     Status.LOADING -> {
-                       showProgressBar(binding.mapsLoading)
+                        showProgressBar(binding.mapsLoading)
                     }
                 }
             }
@@ -170,11 +179,61 @@ class VaccineLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
                 )
             }
         } catch (e: Exception) {
-            Toast.makeText(this@VaccineLocationMapsActivity,
+            Toast.makeText(
+                this@VaccineLocationMapsActivity,
                 e.localizedMessage,
                 Toast.LENGTH_SHORT
             ).show()
         }
     }
 
+    private val resolutionLauncher =
+        registerForActivityResult(
+            ActivityResultContracts.StartIntentSenderForResult()
+        ) { result ->
+            when (result.resultCode) {
+                RESULT_OK ->
+                    Log.i(TAG, "onActivityResult: All location settings are satisfied.")
+                RESULT_CANCELED ->
+                    Toast.makeText(
+                        this@VaccineLocationMapsActivity,
+                        getString(R.string.gps_message),
+                        Toast.LENGTH_SHORT
+                    ).show()
+            }
+        }
+
+    private fun createLocationRequest() {
+        locationRequest = LocationRequest.create().apply {
+            interval = TimeUnit.SECONDS.toMillis(1)
+            maxWaitTime = TimeUnit.SECONDS.toMillis(1)
+            priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+        }
+        val builder = LocationSettingsRequest.Builder()
+            .addLocationRequest(locationRequest)
+        val client = LocationServices.getSettingsClient(this)
+        client.checkLocationSettings(builder.build())
+            .addOnSuccessListener {
+                getMyLocation()
+            }
+            .addOnFailureListener { exception ->
+                if (exception is ResolvableApiException) {
+                    try {
+                        resolutionLauncher.launch(
+                            IntentSenderRequest.Builder(exception.resolution).build()
+                        )
+                    } catch (sendEx: IntentSender.SendIntentException) {
+                        Toast.makeText(
+                            this@VaccineLocationMapsActivity,
+                            sendEx.message,
+                            Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+            }
+    }
+
+    companion object {
+        private const val TAG = "MapsActivity"
+    }
 }

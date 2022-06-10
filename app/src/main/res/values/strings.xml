@@ -51,4 +51,5 @@
     <string name="google_signin_failed">Login dengan Googe gagal!</string>
     <string name="label_vaccine_type">Jenis vaksin tersedia</string>
     <string name="show_rute">Tampilkan Rute</string>
+    <string name="gps_message">Aktifkan GPS Supaya kamu dapat mengetahui lokasi vaksin terdekat</string>
 </resources>
