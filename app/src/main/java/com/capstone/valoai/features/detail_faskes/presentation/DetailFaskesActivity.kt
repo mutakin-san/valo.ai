@@ -22,7 +22,6 @@ class DetailFaskesActivity : AppCompatActivity() {
         faskesData = intent.getParcelableExtra(FASKES_EXTRA_NAME)
 
         with(binding){
-            faskesTitle.text = faskesData?.name
             faskesName.text = faskesData?.name
             vaccineDescription.text = faskesData?.description
 

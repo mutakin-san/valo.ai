@@ -1,5 +1,8 @@
 package com.capstone.valoai.commons
 
+import android.view.View
+import android.widget.ProgressBar
+
 
 enum class Status {
     SUCCESS,
@@ -18,4 +21,13 @@ data class Resource<out T>(val status: Status, val data: T?, val message: String
 
         fun <T> loading(data: T?): Resource<T> = Resource(status = Status.LOADING, data = data, message = null)
     }
+}
+
+
+fun showProgressBar(progressBar: ProgressBar) {
+    progressBar.visibility = View.VISIBLE
+}
+
+fun hideProgressBar(progressBar: ProgressBar) {
+    progressBar.visibility = View.GONE
 }

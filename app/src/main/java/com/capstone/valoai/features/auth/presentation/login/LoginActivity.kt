@@ -3,11 +3,13 @@ package com.capstone.valoai.features.auth.presentation.login
 import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
-import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.valoai.R
+import com.capstone.valoai.commons.hideProgressBar
+import com.capstone.valoai.commons.showProgressBar
 import com.capstone.valoai.databinding.ActivityLoginBinding
+import com.capstone.valoai.features.auth.presentation.register.FormPersonalActivity
 import com.capstone.valoai.features.auth.presentation.register.RegisterActivity
 import com.capstone.valoai.features.dashboard.presentations.DashboardActivity
 import com.firebase.ui.auth.AuthUI
@@ -34,12 +36,13 @@ class LoginActivity : AppCompatActivity() {
 
     private fun onSignInResult(result: FirebaseAuthUIAuthenticationResult) {
         if (result.resultCode == RESULT_OK) {
-            startActivity(
-                Intent(
-                    this@LoginActivity,
-                    DashboardActivity::class.java
-                )
-            )
+            val navigateTo = if(result.idpResponse?.isNewUser == true){
+                FormPersonalActivity::class.java
+            }else{
+                DashboardActivity::class.java
+            }
+            val mIntent = Intent(this@LoginActivity, navigateTo)
+            startActivity(mIntent)
             finish()
         } else {
             Toast.makeText(
@@ -105,7 +108,7 @@ class LoginActivity : AppCompatActivity() {
             return
         }
 
-        showProgressBar()
+        showProgressBar(binding.progressBar)
 
         firebaseAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this@LoginActivity) { task ->
@@ -119,7 +122,7 @@ class LoginActivity : AppCompatActivity() {
                         Toast.LENGTH_SHORT
                     ).show()
                 }
-                hideProgressBar()
+                hideProgressBar(binding.progressBar)
             }
     }
 
@@ -145,13 +148,7 @@ class LoginActivity : AppCompatActivity() {
         return valid
     }
 
-    private fun showProgressBar() {
-        binding.progressBar.visibility = View.VISIBLE
-    }
 
-    private fun hideProgressBar() {
-        binding.progressBar.visibility = View.GONE
-    }
 
     override fun onDestroy() {
         super.onDestroy()
