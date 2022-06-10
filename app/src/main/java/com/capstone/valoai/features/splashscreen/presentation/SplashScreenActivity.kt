@@ -22,10 +22,15 @@ class SplashScreenActivity : AppCompatActivity() {
     }
     private lateinit var firebaseAuth: FirebaseAuth
 
+    override fun onStart() {
+        super.onStart()
+        FirebaseApp.initializeApp(this)
+
+    }
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        FirebaseApp.initializeApp(this)
         firebaseAuth = FirebaseAuth.getInstance()
 
         lifecycleScope.launch {
