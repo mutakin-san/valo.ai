@@ -24,6 +24,8 @@ import com.capstone.valoai.features.maps.data.FaskesRepository
 import com.capstone.valoai.features.maps.domain.usecase.FaskesViewModel
 import com.capstone.valoai.features.maps.domain.usecase.ViewModelFactory
 import com.capstone.valoai.features.maps.presentation.VaksinLocationMapsActivity
+import com.capstone.valoai.features.profile.data.remote.UserDataSourceRemote
+import com.capstone.valoai.features.profile.domain.vmodel.ProfileViewModel
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.RelativeCornerSize
 import com.google.android.material.shape.RoundedCornerTreatment
@@ -32,6 +34,8 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
+import java.util.*
+import kotlin.collections.ArrayList
 
 
 class DashboardActivity : AppCompatActivity() {
@@ -81,7 +85,7 @@ class DashboardActivity : AppCompatActivity() {
 
 
         user?.let {
-            UserServices.getDataUser(it.uid, db){ user ->
+            UserServices.getDataUser(it.uid, db) { user ->
                 Log.i(DashboardActivity::class.simpleName, "Data User = ${user.name}")
             }
         }
@@ -101,6 +105,7 @@ class DashboardActivity : AppCompatActivity() {
     private fun attachFakesList() {
         val layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+
         viewModel =
             ViewModelProvider(
                 this,
@@ -138,8 +143,7 @@ class DashboardActivity : AppCompatActivity() {
     }
 
     private fun goToDetailFakes(data: FaskesModel) {
-        val intentToDetail =
-            Intent(this@DashboardActivity, DetailFaskesActivity::class.java)
+        val intentToDetail = Intent(this@DashboardActivity, DetailFaskesActivity::class.java)
         intentToDetail.apply {
             putExtra(
                 DetailFaskesActivity.FASKES_EXTRA_NAME,
@@ -150,21 +154,45 @@ class DashboardActivity : AppCompatActivity() {
     }
 
     private fun attachHistoryList() {
+
         binding.titleList.setText(R.string.riwayat_list)
-        val dataDummy = arrayListOf("Test3", "Test5")
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        val adapter = RiwayatListAdapter(dataDummy)
-        with(binding) {
-            dashboardList.layoutManager = layoutManager
-            adapter.setOnItemClickCallback(object : RiwayatListAdapter.OnItemClickCallback {
-                override fun onItemClicked(data: String) {
-                }
-            })
-            dashboardList.adapter = adapter
+        db.collection("users").document(user?.uid ?: "").get().addOnSuccessListener { fb ->
+            val vaksin1 = (fb.data?.get("vaksin1") ?: "") as String
+            val vaksin2 = (fb.data?.get("vaksin2") ?: "") as String
+            val vaksin3 = (fb.data?.get("vaksin3") ?: "") as String
+            val dataDummy = arrayListOf(vaksin1, vaksin2, vaksin3)
+            val adapter = RiwayatListAdapter(dataDummy)
+
+
+
+            with(binding) {
+                dashboardList.layoutManager = layoutManager
+                adapter.setOnItemClickCallback(object : RiwayatListAdapter.OnItemClickCallback {
+                    override fun onItemClicked(data: String) {
+                    }
+                })
+                dashboardList.adapter = adapter
+            }
         }
     }
 
     private fun onClickFloatingBtn() {
+//        user?.let {
+//            val dataSource =  UserDataSourceRemote(it)
+//            val viewModel = ProfileViewModel(dataSource)
+//            viewModel.getProfile().observe(this){
+//                it.let { st ->
+//                    Log.println(Log.INFO, "Test", "ass")
+//                    when(st.status) {
+//                        Status.SUCCESS -> {
+//                            Log.println(Log.INFO, "Test", it.data?.name ?: "null")
+//                        }
+//                    }
+//                }
+//            }
+//
+//        }
         startActivity(Intent(this@DashboardActivity, VaksinLocationMapsActivity::class.java))
     }
 

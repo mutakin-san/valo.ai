@@ -5,6 +5,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.ViewGroup.MarginLayoutParams
+import android.widget.FrameLayout
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.cardview.widget.CardView
@@ -32,16 +33,15 @@ class FakesListAdapter(private val fikestList: List<FaskesModel>, val ctx: Conte
         holder.name.text = fikestList[position].name
         holder.labelsLayout.removeAllViews()
 
-
         fikestList[position].availableVaccineType.take(3).toList().forEach {
             val item = TextView(ctx)
             item.text = it
             item.setTextColor(0xFFFFFFFF.toInt())
-            item.setPadding(6, 2, 6, 2)
+            item.setPadding(12, 4, 12, 4)
             val card = CardView(ctx)
             card.addView(item)
             params.setMargins(0,0,20,0)
-            card.radius = 7F
+            card.radius = 12F
             card.setCardBackgroundColor(0xff28B7DD.toInt())
             card.layoutParams = params
             holder.labelsLayout.addView(card)
@@ -59,7 +59,6 @@ class FakesListAdapter(private val fikestList: List<FaskesModel>, val ctx: Conte
     class ListViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
         val name: TextView = itemView.findViewById(R.id.faskes_name)
         val labelsLayout: LinearLayout = itemView.findViewById(R.id.lebels_view)
-        val label: CardView = itemView.findViewById(R.id.vaksin_card)
     }
 
     fun setMargins(v: View, l: Int, t: Int, r: Int, b: Int) {

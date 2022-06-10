@@ -11,11 +11,12 @@ object ApiConfig {
     fun getRetrofit(): Retrofit {
         val loggingInterceptor =
             HttpLoggingInterceptor().setLevel(if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE)
+
         val client = OkHttpClient.Builder()
             .addInterceptor(loggingInterceptor)
             .build()
+
         return Retrofit.Builder()
-            // Todo :: Add base url
             .baseUrl("https://629d85a6c6ef9335c09f0fe0.mockapi.io/")
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
