@@ -49,4 +49,9 @@
     <string name="AstraZeneca">20 AZ</string>
     <string name="Sinovac">15 SV</string>
     <string name="google_signin_failed">Login dengan Googe gagal!</string>
+    <string name="vakin">Vaksin</string>
+    <string name="n_a">n/a</string>
+    <string name="success">Success</string>
+    <string name="success_dialog_message">Isi pesan kami disini</string>
+    <string name="continue_btn">Continue</string>
 </resources>

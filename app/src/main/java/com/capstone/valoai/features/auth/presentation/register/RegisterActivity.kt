@@ -21,11 +21,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 
 class RegisterActivity : AppCompatActivity() {
-
-
-    private var _binding: ActivityRegisterBinding? = null
-    private val binding: ActivityRegisterBinding
-        get() = _binding!!
+    private lateinit var binding: ActivityRegisterBinding
 
     private lateinit var firebaseAuth: FirebaseAuth
     private lateinit var db: FirebaseFirestore
@@ -33,7 +29,7 @@ class RegisterActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        _binding = ActivityRegisterBinding.inflate(layoutInflater)
+        binding = ActivityRegisterBinding.inflate(layoutInflater)
         setContentView(binding.root)
         with(binding) {
             btnToLogin.setOnClickListener {
@@ -151,11 +147,6 @@ class RegisterActivity : AppCompatActivity() {
 
     private fun hideProgressBar() {
         binding.progressBar.visibility = View.GONE
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
-        _binding = null
     }
 
     companion object {

@@ -1,37 +1,33 @@
 package com.capstone.valoai.features.auth.presentation.register
 
-import android.annotation.SuppressLint
+import android.R.id.message
+import android.app.Activity
+import android.app.AlertDialog
+import android.app.Dialog
+import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
-import android.text.TextUtils
 import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.widget.doOnTextChanged
+import androidx.fragment.app.DialogFragment
+import androidx.fragment.app.setFragmentResult
 import com.capstone.valoai.R
 import com.capstone.valoai.databinding.ActivityFormPersonalBinding
-import com.capstone.valoai.features.auth.presentation.login.LoginActivity
 import com.capstone.valoai.features.dashboard.presentations.DashboardActivity
-import com.firebase.ui.auth.FirebaseAuthUIActivityResultContract
 import com.google.android.material.datepicker.MaterialDatePicker
-import com.google.common.collect.ArrayListMultimap
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
-import kotlinx.coroutines.DelicateCoroutinesApi
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
-import okhttp3.internal.wait
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
-import kotlin.math.log
 
 
 class FormPersonalActivity : AppCompatActivity() {
@@ -102,8 +98,29 @@ class FormPersonalActivity : AppCompatActivity() {
                 fieldBirthDate.editText?.setText(outputDateFormat.format(it))
             }
 
+            fieldVakin1.editText?.doOnTextChanged { text, start, count, after ->
+                if (text.isNullOrEmpty()) {
+                    labelVakin2.visibility = View.GONE
+                    fieldVakin2.visibility = View.GONE
+                } else {
+                    fieldVakin2.visibility = View.VISIBLE
+                    labelVakin2.visibility = View.VISIBLE
+                }
+            }
+
+            fieldVakin1.editText?.setOnFocusChangeListener { view, b ->
+                if (!b) return@setOnFocusChangeListener
+                vaksin1Auto.showDropDown()
+            }
+
+            fieldVakin2.editText?.setOnFocusChangeListener { view, b ->
+                if (!b) return@setOnFocusChangeListener
+                vaksin2Auto.showDropDown()
+            }
+
             btnSubmit.setOnClickListener {
                 showProgressBar()
+
                 Log.println(Log.INFO, "user", firebaseAuth.currentUser?.displayName ?: "empty")
                 if (validateForm()) {
                     val users = firebaseAuth.currentUser
@@ -111,6 +128,8 @@ class FormPersonalActivity : AppCompatActivity() {
                         .setDisplayName(fieldName.editText?.text.toString())
                         .setPhotoUri(Uri.parse("https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"))
                         .build()
+
+
 
                     db.collection("users")
                         .document(users?.uid.toString()).set(
@@ -126,13 +145,16 @@ class FormPersonalActivity : AppCompatActivity() {
                             if (it.isSuccessful) {
                                 firebaseAuth.currentUser?.updateProfile(profileUpdates)
                                     ?.addOnSuccessListener {
-                                        startActivity(
-                                            Intent(
-                                                this@FormPersonalActivity,
-                                                DashboardActivity::class.java
+                                        val test = SuccessDialogView(this@FormPersonalActivity)
+                                        test.showDialog("Success", "Kamu berhasil membuat akun!") {
+                                            startActivity(
+                                                Intent(
+                                                    this@FormPersonalActivity,
+                                                    DashboardActivity::class.java
+                                                )
                                             )
-                                        )
-                                        finish()
+                                            finish()
+                                        }
                                         return@addOnSuccessListener
                                     }?.addOnCanceledListener {
                                         Toast.makeText(
@@ -165,10 +187,8 @@ class FormPersonalActivity : AppCompatActivity() {
 
         val name = binding.fieldName.editText?.text.toString()
         val birthDate = binding.fieldName.editText?.text.toString()
-        val riwayat1 = binding.fieldName.editText?.text.toString()
-//        val riwayat2 = binding.fieldName.editText?.text.toString()
-        val vaksin1 = binding.fieldName.editText?.text.toString()
-//        val vaksin2 = binding.fieldName.editText?.text.toString()
+        val vaksin1 = binding.fieldVakin1.editText?.text.toString()
+//        val vaksin2 = binding.fieldVakin2.editText?.text.toString()
 
         if (name.isEmpty()) {
             binding.fieldName.error = "Required."
@@ -185,22 +205,12 @@ class FormPersonalActivity : AppCompatActivity() {
             binding.fieldBirthDate.error = null
         }
 
-        if (riwayat1.isEmpty()) {
-            binding.fieldRiwayat1.error = "Required."
-            valid = false
-        } else {
-            binding.fieldRiwayat1.error = null
-        }
-
-
         if (vaksin1.isEmpty()) {
             binding.fieldVakin1.error = "Required."
             valid = false
         } else {
             binding.fieldVakin1.error = null
         }
-
-
 
         return valid
     }
@@ -217,4 +227,6 @@ class FormPersonalActivity : AppCompatActivity() {
         timeZone = TimeZone.getTimeZone("UTC")
     }
 }
+
+
 

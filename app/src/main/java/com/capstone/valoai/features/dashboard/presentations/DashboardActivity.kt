@@ -15,6 +15,7 @@ import com.capstone.valoai.commons.Status
 import com.capstone.valoai.databinding.ActivityDashboardBinding
 import com.capstone.valoai.features.auth.domain.usecases.UserServices
 import com.capstone.valoai.features.auth.presentation.login.LoginActivity
+import com.capstone.valoai.features.auth.presentation.register.SuccessDialogView
 import com.capstone.valoai.features.dashboard.domain.adapter.FakesListAdapter
 import com.capstone.valoai.features.dashboard.domain.adapter.FakesListAdapter.OnItemClickCallback
 import com.capstone.valoai.features.dashboard.domain.adapter.RiwayatListAdapter
@@ -178,6 +179,7 @@ class DashboardActivity : AppCompatActivity() {
     }
 
     private fun onClickFloatingBtn() {
+
 //        user?.let {
 //            val dataSource =  UserDataSourceRemote(it)
 //            val viewModel = ProfileViewModel(dataSource)
