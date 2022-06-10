@@ -5,10 +5,9 @@
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.3907407407407407" />
         <entry key="..\:/Bangkit2022/valo.ai/app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.1" />
-        <entry key="..\:/Bangkit2022/valo.ai/app/src/main/res/drawable/dashboard_background.xml" value="0.1195" />
         <entry key="..\:/Bangkit2022/valo.ai/app/src/main/res/drawable/ic_baseline_map_24.xml" value="0.1665" />
         <entry key="..\:/Bangkit2022/valo.ai/app/src/main/res/layout/activity_dashboard.xml" value="0.17074275362318841" />
-        <entry key="..\:/Bangkit2022/valo.ai/app/src/main/res/layout/activity_detail_faskes.xml" value="0.22" />
+        <entry key="..\:/Bangkit2022/valo.ai/app/src/main/res/layout/activity_detail_faskes.xml" value="0.15489130434782608" />
         <entry key="..\:/Bangkit2022/valo.ai/app/src/main/res/layout/activity_detail_vaksin.xml" value="0.16983695652173914" />
         <entry key="..\:/Bangkit2022/valo.ai/app/src/main/res/layout/activity_form_personal.xml" value="0.17074275362318841" />
         <entry key="..\:/Bangkit2022/valo.ai/app/src/main/res/layout/activity_login.xml" value="0.2300469483568075" />
@@ -17,15 +16,17 @@
         <entry key="..\:/Bangkit2022/valo.ai/app/src/main/res/layout/activity_vaksin_location_maps.xml" value="0.16983695652173914" />
         <entry key="..\:/Bangkit2022/valo.ai/app/src/main/res/layout/list_card_vaksin.xml" value="0.17074275362318841" />
         <entry key="..\:/Bangkit2022/valo.ai/app/src/main/res/layout/list_item_fakes.xml" value="0.1" />
-        <entry key="..\:/Bangkit2022/valo.ai/app/src/main/res/layout/vaccine_type_item_layout.xml" value="0.1" />
         <entry key="..\:/Bangkit2022/valo.ai/app/src/main/res/menu/bottom_navigation_menu.xml" value="0.18" />
         <entry key="app/src/main/res/drawable-v24/ic_launcher_foreground.xml" value="0.109" />
         <entry key="app/src/main/res/drawable/active_dot_indicator.xml" value="0.1885" />
         <entry key="app/src/main/res/drawable/bg_splash.xml" value="0.109" />
         <entry key="app/src/main/res/drawable/dashboard_background.xml" value="0.221" />
         <entry key="app/src/main/res/drawable/default_dot_indicator.xml" value="0.1885" />
+        <entry key="app/src/main/res/drawable/ic_baseline_date_range_24.xml" value="0.213" />
+        <entry key="app/src/main/res/drawable/ic_baseline_keyboard_arrow_right_24.xml" value="0.213" />
         <entry key="app/src/main/res/drawable/ic_baseline_medical_services_24.xml" value="0.1735" />
         <entry key="app/src/main/res/drawable/ic_launcher_background.xml" value="0.109" />
+        <entry key="app/src/main/res/drawable/profile_background.xml" value="0.213" />
         <entry key="app/src/main/res/drawable/splash_background.xml" value="0.109" />
         <entry key="app/src/main/res/drawable/sunccess_dialog_background.xml" value="0.211" />
         <entry key="app/src/main/res/font/.xml" value="0.24583333333333332" />
@@ -65,7 +66,7 @@
   <component name="VisualizationToolProject">
     <option name="state">
       <ProjectState>
-        <option name="scale" value="0.335" />
+        <option name="scale" value="0.32518115942028986" />
       </ProjectState>
     </option>
   </component>

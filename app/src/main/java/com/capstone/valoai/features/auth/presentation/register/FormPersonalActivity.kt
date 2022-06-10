@@ -1,10 +1,5 @@
 package com.capstone.valoai.features.auth.presentation.register
 
-import android.R.id.message
-import android.app.Activity
-import android.app.AlertDialog
-import android.app.Dialog
-import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -15,8 +10,6 @@ import android.widget.AutoCompleteTextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
-import androidx.fragment.app.DialogFragment
-import androidx.fragment.app.setFragmentResult
 import com.capstone.valoai.R
 import com.capstone.valoai.databinding.ActivityFormPersonalBinding
 import com.capstone.valoai.features.dashboard.presentations.DashboardActivity
@@ -173,12 +166,8 @@ class FormPersonalActivity : AppCompatActivity() {
                         }
 
                 }
-
                 hideProgressBar()
-
             }
-
-
         }
     }
 
@@ -188,7 +177,6 @@ class FormPersonalActivity : AppCompatActivity() {
         val name = binding.fieldName.editText?.text.toString()
         val birthDate = binding.fieldName.editText?.text.toString()
         val vaksin1 = binding.fieldVakin1.editText?.text.toString()
-//        val vaksin2 = binding.fieldVakin2.editText?.text.toString()
 
         if (name.isEmpty()) {
             binding.fieldName.error = "Required."
