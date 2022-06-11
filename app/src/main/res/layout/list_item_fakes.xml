@@ -52,7 +52,7 @@
 
         <LinearLayout
             android:id="@+id/lebels_view"
-            android:layout_width="331dp"
+            android:layout_width="300dp"
             android:layout_height="20dp"
             android:orientation="horizontal"
             android:layout_marginLeft="20dp"
