@@ -25,6 +25,8 @@ import com.capstone.valoai.features.maps.data.FaskesRepository
 import com.capstone.valoai.features.maps.domain.usecase.FaskesViewModel
 import com.capstone.valoai.features.maps.domain.usecase.ViewModelFactory
 import com.capstone.valoai.features.maps.presentation.VaccineLocationMapsActivity
+import com.capstone.valoai.features.profile.data.remote.UserDataSourceRemote
+import com.capstone.valoai.features.profile.domain.vmodel.ProfileViewModel
 import com.capstone.valoai.features.profile.presentations.ProfileActivity
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.RelativeCornerSize
