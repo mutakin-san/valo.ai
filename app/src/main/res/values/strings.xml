@@ -52,4 +52,13 @@
     <string name="label_vaccine_type">Jenis vaksin tersedia</string>
     <string name="show_rute">Tampilkan Rute</string>
     <string name="gps_message">Aktifkan GPS Supaya kamu dapat mengetahui lokasi vaksin terdekat</string>
+    <string name="vakin">Vaksin</string>
+    <string name="n_a">n/a</string>
+    <string name="success">Success</string>
+    <string name="success_dialog_message">Isi pesan kami disini</string>
+    <string name="continue_btn">Continue</string>
+    <string name="profile_image">Profile_Image</string>
+    <string name="log_out">Log out</string>
+    <string name="edit_profile">Edit Profile</string>
+    <string name="edit_vaksin">Edit Vaksin</string>
 </resources>
