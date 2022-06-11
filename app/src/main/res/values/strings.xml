@@ -65,4 +65,7 @@
     <string name="login_dengan_google">Login dengan Google</string>
     <string name="date_v1">Tanggal Vaksin 1</string>
     <string name="date_v2">Tanggal Vaksin 2</string>
+    <string name="date">tanggal</string>
+    <string name="vaksin_ke">Vaksin ke:</string>
+    <string name="_1">1</string>
 </resources>

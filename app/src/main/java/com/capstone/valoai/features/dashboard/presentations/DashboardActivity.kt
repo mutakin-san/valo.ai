@@ -16,6 +16,7 @@ import com.capstone.valoai.databinding.ActivityDashboardBinding
 import com.capstone.valoai.features.auth.domain.usecases.UserServices
 import com.capstone.valoai.features.auth.presentation.login.LoginActivity
 import com.capstone.valoai.features.auth.presentation.register.SuccessDialogView
+import com.capstone.valoai.features.dashboard.data.models.RiwayatVaksin
 import com.capstone.valoai.features.dashboard.domain.adapter.FakesListAdapter
 import com.capstone.valoai.features.dashboard.domain.adapter.FakesListAdapter.OnItemClickCallback
 import com.capstone.valoai.features.dashboard.domain.adapter.RiwayatListAdapter
@@ -83,7 +84,6 @@ class DashboardActivity : AppCompatActivity() {
             txtName.text = user?.displayName
             Glide.with(baseContext).load(user?.photoUrl).circleCrop().into(profileDashboard)
         }
-
 
 
     }
@@ -159,16 +159,29 @@ class DashboardActivity : AppCompatActivity() {
 
             viewModel.getProfile().observe(this) { data ->
                 if (data.status == Status.SUCCESS) {
-                    val vaksin1 = data.data?.riwayat1 ?: ""
-                    val vaksin2 = data.data?.riwayat2 ?: ""
-                    val vaksin3 = data.data?.riwayat3 ?: ""
+                    val vaksin1 = RiwayatVaksin(
+                        data.data?.riwayat1 ?: "",
+                        data.data?.tanggalRiwayat1 ?: "",
+                        "1"
+                    )
+                    val vaksin2 = RiwayatVaksin(
+                        data.data?.riwayat2 ?: "",
+                        data.data?.tanggalRiwayat2 ?: "",
+                        "2"
+                    )
+                    val vaksin3 = RiwayatVaksin(
+                        data.data?.riwayat3 ?: "",
+                        data.data?.tanggalRiwayat3 ?: "",
+                    "3"
+                    )
                     val adapter = RiwayatListAdapter(arrayListOf(vaksin1, vaksin2, vaksin3))
 
                     with(binding) {
                         dashboardList.layoutManager = layoutManager
                         adapter.setOnItemClickCallback(object :
                             RiwayatListAdapter.OnItemClickCallback {
-                            override fun onItemClicked(data: String) {
+                            override fun onItemClicked(data: RiwayatVaksin) {
+
                             }
                         })
                         dashboardList.adapter = adapter
