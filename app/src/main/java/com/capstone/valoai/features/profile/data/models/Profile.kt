@@ -6,4 +6,7 @@ data class Profile (
     val riwayat1: String = "",
     val riwayat2: String = "",
     val riwayat3: String = "",
+    val tanggalRiwayat1: String = "",
+    val tanggalRiwayat2: String = "",
+    val tanggalRiwayat3: String = "",
 )

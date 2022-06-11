@@ -18,11 +18,14 @@ class UserDataSourceRemote(private val user: FirebaseUser) {
                     it.addOnCompleteListener { data ->
                         def.complete(
                             if (data.isSuccessful) Profile(
-                                (data.result?.get("name") ?: "") as String,
-                                (data.result?.get("birthDate") ?: "") as String,
-                                (data.result?.get("riwayat1") ?: "") as String,
-                                (data.result?.get("riwayat2") ?: "") as String,
-                                (data.result?.get("riwayat3") ?: "") as String,
+                                name = (data.result?.get("name") ?: "") as String,
+                                birthDate = (data.result?.get("birthDate") ?: "") as String,
+                                riwayat1 = (data.result?.get("vaksin1") ?: "") as String,
+                                riwayat2 = (data.result?.get("vaksin2") ?: "") as String,
+                                riwayat3 = (data.result?.get("vaksin3") ?: "") as String,
+                                tanggalRiwayat1 = (data.result?.get("tanggal_vaksin1") ?: "") as String,
+                                tanggalRiwayat2 = (data.result?.get("tanggal_vaksin2") ?: "") as String,
+                                tanggalRiwayat3 = (data.result?.get("tanggal_vaksin3") ?: "") as String,
                             ) else null
                         )
                     }

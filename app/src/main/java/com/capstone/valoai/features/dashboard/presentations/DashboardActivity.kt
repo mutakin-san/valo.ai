@@ -25,6 +25,8 @@ import com.capstone.valoai.features.maps.data.FaskesRepository
 import com.capstone.valoai.features.maps.domain.usecase.FaskesViewModel
 import com.capstone.valoai.features.maps.domain.usecase.ViewModelFactory
 import com.capstone.valoai.features.maps.presentation.VaccineLocationMapsActivity
+import com.capstone.valoai.features.profile.data.remote.UserDataSourceRemote
+import com.capstone.valoai.features.profile.domain.vmodel.ProfileViewModel
 import com.capstone.valoai.features.profile.presentations.ProfileActivity
 import com.google.android.material.shape.MaterialShapeDrawable
 import com.google.android.material.shape.RelativeCornerSize
@@ -151,27 +153,37 @@ class DashboardActivity : AppCompatActivity() {
         startActivity(intentToDetail)
     }
 
+    private val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
     private fun attachHistoryList() {
-
+        showProgressBar()
         binding.titleList.setText(R.string.riwayat_list)
-        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
-        db.collection("users").document(user?.uid ?: "").get().addOnSuccessListener { fb ->
-            val vaksin1 = (fb.data?.get("vaksin1") ?: "") as String
-            val vaksin2 = (fb.data?.get("vaksin2") ?: "") as String
-            val vaksin3 = (fb.data?.get("vaksin3") ?: "") as String
-            val adapter = RiwayatListAdapter(arrayListOf(vaksin1, vaksin2, vaksin3))
+        user?.let { it ->
+            val dataSource = UserDataSourceRemote(it)
+            val viewModel = ProfileViewModel(dataSource)
 
+            viewModel.getProfile().observe(this) { data ->
+                if (data.status == Status.SUCCESS) {
+                    val vaksin1 = data.data?.riwayat1 ?: ""
+                    val vaksin2 = data.data?.riwayat2 ?: ""
+                    val vaksin3 = data.data?.riwayat3 ?: ""
+                    val adapter = RiwayatListAdapter(arrayListOf(vaksin1, vaksin2, vaksin3))
 
-
-            with(binding) {
-                dashboardList.layoutManager = layoutManager
-                adapter.setOnItemClickCallback(object : RiwayatListAdapter.OnItemClickCallback {
-                    override fun onItemClicked(data: String) {
+                    with(binding) {
+                        dashboardList.layoutManager = layoutManager
+                        adapter.setOnItemClickCallback(object :
+                            RiwayatListAdapter.OnItemClickCallback {
+                            override fun onItemClicked(data: String) {
+                            }
+                        })
+                        dashboardList.adapter = adapter
+                        hideProgressBar()
                     }
-                })
-                dashboardList.adapter = adapter
+                }
             }
         }
+//        db.collection("users").document(user?.uid ?: "").get().addOnSuccessListener { fb ->
+//
+//        }
     }
 
     private fun onClickFloatingBtn() {

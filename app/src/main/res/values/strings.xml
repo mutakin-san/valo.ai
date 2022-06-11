@@ -61,4 +61,6 @@
     <string name="log_out">Log out</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="edit_vaksin">Edit Vaksin</string>
+    <string name="date_v1">Tanggal Vaksin 1</string>
+    <string name="date_v2">Tanggal Vaksin 2</string>
 </resources>
