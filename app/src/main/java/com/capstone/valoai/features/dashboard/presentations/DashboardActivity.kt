@@ -2,7 +2,6 @@ package com.capstone.valoai.features.dashboard.presentations
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -13,9 +12,7 @@ import com.capstone.valoai.R
 import com.capstone.valoai.commons.ApiConfig
 import com.capstone.valoai.commons.Status
 import com.capstone.valoai.databinding.ActivityDashboardBinding
-import com.capstone.valoai.features.auth.domain.usecases.UserServices
 import com.capstone.valoai.features.auth.presentation.login.LoginActivity
-import com.capstone.valoai.features.auth.presentation.register.SuccessDialogView
 import com.capstone.valoai.features.dashboard.domain.adapter.FakesListAdapter
 import com.capstone.valoai.features.dashboard.domain.adapter.FakesListAdapter.OnItemClickCallback
 import com.capstone.valoai.features.dashboard.domain.adapter.RiwayatListAdapter
@@ -34,7 +31,6 @@ import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
 import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
-import kotlin.collections.ArrayList
 
 
 class DashboardActivity : AppCompatActivity() {
@@ -50,9 +46,9 @@ class DashboardActivity : AppCompatActivity() {
         this.title = "Dashboard"
         super.onCreate(savedInstanceState)
         binding = ActivityDashboardBinding.inflate(layoutInflater)
-        attachFakesList()
         setContentView(binding.root)
 
+        attachFakesList()
         val bottomAppBar = binding.bottomAppBar
         val bottomBarBackground = bottomAppBar.background as MaterialShapeDrawable
         bottomBarBackground.shapeAppearanceModel = bottomBarBackground.shapeAppearanceModel
@@ -83,11 +79,7 @@ class DashboardActivity : AppCompatActivity() {
         }
 
 
-        user?.let {
-            UserServices.getDataUser(it.uid, db) { user ->
-                Log.i(DashboardActivity::class.simpleName, "Data User = ${user.name}")
-            }
-        }
+
     }
 
     override fun onStart() {
@@ -102,6 +94,7 @@ class DashboardActivity : AppCompatActivity() {
     }
 
     private fun attachFakesList() {
+        binding.titleList.text = getString(R.string.rekomendasi_list)
         val layoutManager =
             LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         viewModel =
@@ -115,7 +108,6 @@ class DashboardActivity : AppCompatActivity() {
             it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
-                        binding.titleList.setText(R.string.rekomendasi_list)
                         val adapter = FakesListAdapter(resource.data ?: ArrayList(), baseContext)
                         with(binding) {
                             dashboardList.layoutManager = layoutManager
@@ -153,7 +145,7 @@ class DashboardActivity : AppCompatActivity() {
 
     private fun attachHistoryList() {
 
-        binding.titleList.setText(R.string.riwayat_list)
+        binding.titleList.text = getString(R.string.riwayat_list)
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         db.collection("users").document(user?.uid ?: "").get().addOnSuccessListener { fb ->
             val vaksin1 = (fb.data?.get("vaksin1") ?: "") as String

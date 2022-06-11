@@ -61,4 +61,6 @@
     <string name="log_out">Log out</string>
     <string name="edit_profile">Edit Profile</string>
     <string name="edit_vaksin">Edit Vaksin</string>
+    <string name="google_logo">Google Logo</string>
+    <string name="login_dengan_google">Login dengan Google</string>
 </resources>
