@@ -59,7 +59,7 @@
 
         <TextView
             android:id="@+id/faskes_name"
-            style="@style/Subtitle1Text"
+            style="@style/Subtitle2Text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginVertical="12dp"

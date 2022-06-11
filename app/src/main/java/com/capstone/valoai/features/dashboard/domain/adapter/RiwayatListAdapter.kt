@@ -26,7 +26,7 @@ class RiwayatListAdapter(private val fikestList: List<RiwayatVaksin>): RecyclerV
         holder.nomorVaksin.text = fikestList[position].ke
         holder.itemView.setOnClickListener { onItemClickCallback.onItemClicked(fikestList[holder.adapterPosition]) }
 
-        if(fikestList[position].vaksin.isEmpty()){
+        if(fikestList[position].vaksin.isEmpty() || fikestList[position].vaksin == "n/a"){
             holder.card.visibility = View.GONE
         }
     }

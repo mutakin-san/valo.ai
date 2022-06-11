@@ -57,7 +57,8 @@ class FormPersonalActivity : AppCompatActivity() {
 
     private fun setRiwayat(riwayat: ArrayList<String>) {
         with(binding) {
-            val adapterRiwayat = ArrayAdapter(baseContext, R.layout.dropdown_menu_popup_item, riwayat)
+            val adapterRiwayat =
+                ArrayAdapter(baseContext, R.layout.dropdown_menu_popup_item, riwayat)
             (fieldRiwayat1.editText as? AutoCompleteTextView)?.setAdapter(adapterRiwayat)
             (fieldRiwayat2.editText as? AutoCompleteTextView)?.setAdapter(adapterRiwayat)
         }
@@ -65,7 +66,8 @@ class FormPersonalActivity : AppCompatActivity() {
 
     private fun setVaksin(vaksins: ArrayList<String>) {
         with(binding) {
-            val adapterVaksin = ArrayAdapter(baseContext, R.layout.dropdown_menu_popup_item, vaksins)
+            val adapterVaksin =
+                ArrayAdapter(baseContext, R.layout.dropdown_menu_popup_item, vaksins)
             (fieldVakin1.editText as? AutoCompleteTextView)?.setAdapter(adapterVaksin)
             (fieldVakin2.editText as? AutoCompleteTextView)?.setAdapter(adapterVaksin)
         }
@@ -102,7 +104,7 @@ class FormPersonalActivity : AppCompatActivity() {
 
             dateFieldVakin1.editText?.setOnFocusChangeListener { _, b ->
                 if (b) {
-                    datePicker.show(supportFragmentManager, datePicker.toString())
+                    datePicker2.show(supportFragmentManager, datePicker2.toString())
                 }
             }
 
@@ -112,13 +114,14 @@ class FormPersonalActivity : AppCompatActivity() {
 
             dateFieldVakin2.editText?.setOnFocusChangeListener { view, b ->
                 if (b) {
-                    datePicker.show(supportFragmentManager, datePicker.toString())
+                    datePicker3.show(supportFragmentManager, datePicker3.toString())
                 }
             }
 
             datePicker3.addOnPositiveButtonClickListener {
                 dateFieldVakin2.editText?.setText(outputDateFormat.format(it))
             }
+
 
             fieldVakin1.editText?.doOnTextChanged { text, _, _, _ ->
                 if (text.isNullOrEmpty()) {
