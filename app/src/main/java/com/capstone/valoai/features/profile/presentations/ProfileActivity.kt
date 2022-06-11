@@ -36,7 +36,6 @@ class ProfileActivity : AppCompatActivity() {
             }
 
             back.setOnClickListener {
-                startActivity(Intent(this@ProfileActivity, DashboardActivity::class.java))
                 finish()
             }
 
