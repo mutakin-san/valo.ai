@@ -6,7 +6,6 @@ import android.content.Intent
 import android.content.IntentSender
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.util.Log
 import android.widget.Toast
 import androidx.activity.result.IntentSenderRequest
 import androidx.activity.result.contract.ActivityResultContracts
@@ -193,7 +192,7 @@ class VaccineLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
         ) { result ->
             when (result.resultCode) {
                 RESULT_OK ->
-                    Log.i(TAG, "onActivityResult: All location settings are satisfied.")
+                    getMyLocation()
                 RESULT_CANCELED ->
                     Toast.makeText(
                         this@VaccineLocationMapsActivity,
@@ -233,7 +232,4 @@ class VaccineLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
             }
     }
 
-    companion object {
-        private const val TAG = "MapsActivity"
-    }
 }

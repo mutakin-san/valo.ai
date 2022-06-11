@@ -11,7 +11,12 @@ object UserServices {
             .addOnSuccessListener {
                 if (it.exists()) {
                     it.data?.let { user ->
-                        onSuccess(Profile(name = user["name"].toString()))
+                        onSuccess(
+                            Profile(
+                                name = user["name"].toString(),
+                                birthDate = user["birthDate"].toString()
+                            )
+                        )
                     }
                 }
             }

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
@@ -78,7 +77,9 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/email"
-                android:maxLines="1" />
+                android:imeOptions="actionNext|actionNone"
+                android:maxLines="1"
+                android:textColorHint="#757575" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -112,8 +113,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:hint="@string/password"
+                android:imeOptions="actionDone"
                 android:inputType="textPassword"
-                android:maxLines="1" />
+                android:maxLines="1"
+                android:textColorHint="#757575" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -134,7 +137,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:text="@string/btn_to_register_text"
-            android:textColor="?attr/colorPrimary"
+            android:textColor="@color/blue_dark"
             app:layout_constraintBottom_toBottomOf="@+id/label_does_not_have_account"
             app:layout_constraintStart_toEndOf="@+id/label_does_not_have_account"
             app:layout_constraintTop_toTopOf="@+id/label_does_not_have_account" />
@@ -153,17 +156,42 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/signInWithGoogle" />
 
-        <ImageButton
+        <androidx.cardview.widget.CardView
             android:id="@+id/signInWithGoogle"
-            android:layout_width="55dp"
-            android:layout_height="55dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
             android:layout_marginTop="16dp"
-            android:backgroundTint="@android:color/transparent"
-            android:scaleType="centerInside"
+            app:cardCornerRadius="10dp"
+            app:contentPadding="10dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/btn_to_register"
-            app:srcCompat="@drawable/google" />
+            app:layout_constraintTop_toBottomOf="@+id/btn_to_register">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="8dp"
+                    android:backgroundTint="@android:color/transparent"
+                    android:contentDescription="@string/google_logo"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/google" />
+
+
+                <TextView
+                    style="@style/TitleText"
+                    android:layout_gravity="center"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/login_dengan_google"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
 
         <ProgressBar
