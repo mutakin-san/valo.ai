@@ -16,9 +16,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
             android:text="@string/login_to"
-            app:layout_constraintEnd_toEndOf="@+id/image_login"
-            app:layout_constraintHorizontal_bias="0"
-            app:layout_constraintStart_toStartOf="@+id/image_login"
+            app:layout_constraintEnd_toStartOf="@+id/label_login_vola_ai"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
@@ -26,10 +27,12 @@
             style="@style/HeadingText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/valo_ai"
             android:layout_marginStart="8dp"
+            android:text="@string/valo_ai"
             android:textColor="@color/blue_primary"
             app:layout_constraintBottom_toBottomOf="@+id/label_login"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintStart_toEndOf="@+id/label_login"
             app:layout_constraintTop_toTopOf="@+id/label_login" />
 
@@ -183,9 +186,9 @@
 
                 <TextView
                     style="@style/TitleText"
-                    android:layout_gravity="center"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_gravity="center"
                     android:text="@string/login_dengan_google"
                     android:textSize="16sp" />
             </LinearLayout>
