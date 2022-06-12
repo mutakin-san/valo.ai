@@ -36,8 +36,12 @@ class EditProfileActivity : AppCompatActivity() {
 
 
         with(binding) {
-            showProgressBar()
+            back.setOnClickListener{
+                finish()
+            }
+
             user?.let {
+                showProgressBar()
                 val dataSource = UserDataSourceRemote(it)
                 val viewModel = ProfileViewModel(dataSource)
                 Glide.with(baseContext).load(user?.photoUrl).circleCrop().into(binding.profileImage)
