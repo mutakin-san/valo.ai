@@ -1,27 +1,22 @@
 package com.capstone.valoai.features.profile.presentations
 
-import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
-import com.capstone.valoai.R
 import com.capstone.valoai.commons.Status
+import com.capstone.valoai.commons.navigateTo
 import com.capstone.valoai.databinding.ActivityProfileBinding
 import com.capstone.valoai.features.auth.presentation.login.LoginActivity
-import com.capstone.valoai.features.auth.presentation.register.RegisterActivity
-import com.capstone.valoai.features.dashboard.presentations.DashboardActivity
 import com.capstone.valoai.features.profile.data.remote.UserDataSourceRemote
 import com.capstone.valoai.features.profile.domain.vmodel.ProfileViewModel
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.firestore.FirebaseFirestore
 
 class ProfileActivity : AppCompatActivity() {
     private lateinit var binding: ActivityProfileBinding
-    private val db: FirebaseFirestore by lazy { FirebaseFirestore.getInstance() }
     private val auth: FirebaseAuth by lazy { FirebaseAuth.getInstance() }
     private val user: FirebaseUser? by lazy { auth.currentUser }
 
@@ -42,8 +37,8 @@ class ProfileActivity : AppCompatActivity() {
             user?.let {
                 val dataSource = UserDataSourceRemote(it)
                 val viewModel = ProfileViewModel(dataSource)
-                viewModel.getProfile().observe(this@ProfileActivity) {
-                    it.let { st ->
+                viewModel.getProfile().observe(this@ProfileActivity) { result ->
+                    result.let { st ->
                         when (st.status) {
                             Status.SUCCESS -> {
                                 nameProfileText.text = st.data?.name ?: "none"
@@ -85,8 +80,7 @@ class ProfileActivity : AppCompatActivity() {
         super.onStart()
         auth.addAuthStateListener {
             if (it.currentUser == null) {
-                startActivity(Intent(this@ProfileActivity, LoginActivity::class.java))
-                finish()
+                navigateTo(this@ProfileActivity, LoginActivity::class.java)
                 return@addAuthStateListener
             }
         }

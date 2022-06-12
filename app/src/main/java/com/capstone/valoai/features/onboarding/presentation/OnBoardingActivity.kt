@@ -1,6 +1,5 @@
 package com.capstone.valoai.features.onboarding.presentation
 
-import android.content.Intent
 import android.graphics.Color
 import android.os.Bundle
 import android.view.View
@@ -8,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.capstone.valoai.R
+import com.capstone.valoai.commons.navigateTo
 import com.capstone.valoai.databinding.ActivityOnBoardingBinding
 import com.capstone.valoai.features.auth.presentation.login.LoginActivity
 import com.capstone.valoai.features.onboarding.domain.adapters.OnBoardingAdapter
@@ -48,11 +48,7 @@ class OnBoardingActivity : AppCompatActivity() {
 
 
         binding.btnGetStarted.setOnClickListener {
-            val intent = Intent(this@OnBoardingActivity, LoginActivity::class.java)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-            startActivity(intent)
-            finish()
+            navigateTo(this@OnBoardingActivity, LoginActivity::class.java)
         }
 
 

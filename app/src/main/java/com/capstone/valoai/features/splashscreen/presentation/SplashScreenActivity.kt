@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.lifecycleScope
+import com.capstone.valoai.commons.navigateTo
 import com.capstone.valoai.features.auth.presentation.login.LoginActivity
 import com.capstone.valoai.features.dashboard.presentations.DashboardActivity
 import com.capstone.valoai.features.onboarding.data.local.OnBoardPref
@@ -38,13 +39,13 @@ class SplashScreenActivity : AppCompatActivity() {
         lifecycleScope.launch {
             onBoardPref.launchStatus.first { status ->
                 if (status) {
-                    navigateTo(OnBoardingActivity::class.java)
+                    navigateTo(this@SplashScreenActivity, OnBoardingActivity::class.java)
                     onBoardPref.updateIsFirstLaunchedToFalse()
                 } else {
                     if (firebaseAuth.currentUser != null) {
-                        navigateTo(DashboardActivity::class.java)
+                        navigateTo(this@SplashScreenActivity, DashboardActivity::class.java)
                     }else {
-                        navigateTo(LoginActivity::class.java)
+                        navigateTo(this@SplashScreenActivity, LoginActivity::class.java)
                     }
                 }
 
@@ -53,12 +54,4 @@ class SplashScreenActivity : AppCompatActivity() {
         }
     }
 
-
-    private fun navigateTo(destination: Class<*>){
-        val intent = Intent(this@SplashScreenActivity, destination)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP or Intent.FLAG_ACTIVITY_NEW_TASK)
-        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK)
-        startActivity(intent)
-        finish()
-    }
 }

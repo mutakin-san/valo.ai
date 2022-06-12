@@ -1,12 +1,12 @@
 package com.capstone.valoai.features.auth.presentation.login
 
-import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.capstone.valoai.R
 import com.capstone.valoai.commons.hideProgressBar
+import com.capstone.valoai.commons.navigateTo
 import com.capstone.valoai.commons.showProgressBar
 import com.capstone.valoai.databinding.ActivityLoginBinding
 import com.capstone.valoai.features.auth.presentation.register.FormPersonalActivity
@@ -36,18 +36,17 @@ class LoginActivity : AppCompatActivity() {
 
     private fun onSignInResult(result: FirebaseAuthUIAuthenticationResult) {
         if (result.resultCode == RESULT_OK) {
-            val navigateTo = if(result.idpResponse?.isNewUser == true){
+            val destination = if (result.idpResponse?.isNewUser == true) {
                 FormPersonalActivity::class.java
-            }else{
+            } else {
                 DashboardActivity::class.java
             }
-            val mIntent = Intent(this@LoginActivity, navigateTo)
-            startActivity(mIntent)
-            finish()
+            navigateTo(this@LoginActivity, destination)
         } else {
             Toast.makeText(
                 this@LoginActivity,
-                result.idpResponse?.error?.localizedMessage ?: getString(R.string.google_signin_failed),
+                result.idpResponse?.error?.localizedMessage
+                    ?: getString(R.string.google_signin_failed),
                 Toast.LENGTH_SHORT
             ).show()
         }
@@ -62,8 +61,7 @@ class LoginActivity : AppCompatActivity() {
         with(binding) {
 
             btnToRegister.setOnClickListener {
-                startActivity(Intent(this@LoginActivity, RegisterActivity::class.java))
-                finish()
+                navigateTo(this@LoginActivity, RegisterActivity::class.java)
             }
 
             btnLogin.setOnClickListener {
@@ -98,8 +96,7 @@ class LoginActivity : AppCompatActivity() {
         super.onStart()
         val currentUser = firebaseAuth.currentUser
         if (currentUser != null) {
-            startActivity(Intent(this@LoginActivity, DashboardActivity::class.java))
-            finish()
+            navigateTo(this@LoginActivity, DashboardActivity::class.java)
         }
     }
 
@@ -113,8 +110,7 @@ class LoginActivity : AppCompatActivity() {
         firebaseAuth.signInWithEmailAndPassword(email, password)
             .addOnCompleteListener(this@LoginActivity) { task ->
                 if (task.isSuccessful) {
-                    startActivity(Intent(this@LoginActivity, DashboardActivity::class.java))
-                    finish()
+                    navigateTo(this@LoginActivity, DashboardActivity::class.java)
                 } else {
                     Toast.makeText(
                         this@LoginActivity,
@@ -147,7 +143,6 @@ class LoginActivity : AppCompatActivity() {
 
         return valid
     }
-
 
 
     override fun onDestroy() {

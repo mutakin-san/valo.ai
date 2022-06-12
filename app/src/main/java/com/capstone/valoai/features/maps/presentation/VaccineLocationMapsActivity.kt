@@ -23,10 +23,7 @@ import com.capstone.valoai.features.maps.data.FaskesRepository
 import com.capstone.valoai.features.maps.domain.usecase.FaskesViewModel
 import com.capstone.valoai.features.maps.domain.usecase.ViewModelFactory
 import com.google.android.gms.common.api.ResolvableApiException
-import com.google.android.gms.location.FusedLocationProviderClient
-import com.google.android.gms.location.LocationRequest
-import com.google.android.gms.location.LocationServices
-import com.google.android.gms.location.LocationSettingsRequest
+import com.google.android.gms.location.*
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -206,7 +203,7 @@ class VaccineLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
         locationRequest = LocationRequest.create().apply {
             interval = TimeUnit.SECONDS.toMillis(1)
             maxWaitTime = TimeUnit.SECONDS.toMillis(1)
-            priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+            priority = Priority.PRIORITY_HIGH_ACCURACY
         }
         val builder = LocationSettingsRequest.Builder()
             .addLocationRequest(locationRequest)

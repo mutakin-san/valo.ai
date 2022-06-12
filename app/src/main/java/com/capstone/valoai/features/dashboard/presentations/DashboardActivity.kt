@@ -2,7 +2,6 @@ package com.capstone.valoai.features.dashboard.presentations
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -12,10 +11,9 @@ import com.bumptech.glide.Glide
 import com.capstone.valoai.R
 import com.capstone.valoai.commons.ApiConfig
 import com.capstone.valoai.commons.Status
+import com.capstone.valoai.commons.navigateTo
 import com.capstone.valoai.databinding.ActivityDashboardBinding
-import com.capstone.valoai.features.auth.domain.usecases.UserServices
 import com.capstone.valoai.features.auth.presentation.login.LoginActivity
-import com.capstone.valoai.features.auth.presentation.register.SuccessDialogView
 import com.capstone.valoai.features.dashboard.data.models.RiwayatVaksin
 import com.capstone.valoai.features.dashboard.domain.adapter.FakesListAdapter
 import com.capstone.valoai.features.dashboard.domain.adapter.FakesListAdapter.OnItemClickCallback
@@ -35,15 +33,12 @@ import com.google.android.material.shape.RoundedCornerTreatment
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.auth.ktx.auth
-import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
-import kotlin.collections.ArrayList
 
 
 class DashboardActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDashboardBinding
     private lateinit var firebaseAuth: FirebaseAuth
-    private val db by lazy { FirebaseFirestore.getInstance() }
     private var user: FirebaseUser? = null
 
     private lateinit var viewModel: FaskesViewModel
@@ -92,9 +87,7 @@ class DashboardActivity : AppCompatActivity() {
         super.onStart()
         firebaseAuth.addAuthStateListener {
             if (it.currentUser == null) {
-                startActivity(Intent(this@DashboardActivity, LoginActivity::class.java))
-                finish()
-                return@addAuthStateListener
+                navigateTo(this@DashboardActivity, LoginActivity::class.java)
             }
         }
     }

@@ -1,6 +1,5 @@
 package com.capstone.valoai.features.auth.presentation.register
 
-import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
 import android.util.Log
@@ -11,6 +10,7 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doOnTextChanged
 import com.capstone.valoai.R
+import com.capstone.valoai.commons.navigateTo
 import com.capstone.valoai.databinding.ActivityFormPersonalBinding
 import com.capstone.valoai.features.dashboard.presentations.DashboardActivity
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -21,7 +21,6 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 
 class FormPersonalActivity : AppCompatActivity() {
@@ -112,7 +111,7 @@ class FormPersonalActivity : AppCompatActivity() {
                 dateFieldVakin1.editText?.setText(outputDateFormat.format(it))
             }
 
-            dateFieldVakin2.editText?.setOnFocusChangeListener { view, b ->
+            dateFieldVakin2.editText?.setOnFocusChangeListener { _, b ->
                 if (b) {
                     datePicker3.show(supportFragmentManager, datePicker3.toString())
                 }
@@ -137,12 +136,12 @@ class FormPersonalActivity : AppCompatActivity() {
                 }
             }
 
-            fieldVakin1.editText?.setOnFocusChangeListener { view, b ->
+            fieldVakin1.editText?.setOnFocusChangeListener { _, b ->
                 if (!b) return@setOnFocusChangeListener
                 vaksin1Auto.showDropDown()
             }
 
-            fieldVakin2.editText?.setOnFocusChangeListener { view, b ->
+            fieldVakin2.editText?.setOnFocusChangeListener { _, b ->
                 if (!b) return@setOnFocusChangeListener
                 vaksin2Auto.showDropDown()
             }
@@ -178,13 +177,10 @@ class FormPersonalActivity : AppCompatActivity() {
                                     ?.addOnSuccessListener {
                                         val test = SuccessDialogView(this@FormPersonalActivity)
                                         test.showDialog("Success", "Kamu berhasil membuat akun!") {
-                                            startActivity(
-                                                Intent(
+                                            navigateTo(
                                                     this@FormPersonalActivity,
                                                     DashboardActivity::class.java
                                                 )
-                                            )
-                                            finish()
                                         }
                                         return@addOnSuccessListener
                                     }?.addOnCanceledListener {
