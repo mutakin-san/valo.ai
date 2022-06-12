@@ -2,10 +2,14 @@
 <resources>
 
     <color name="blue_primary">#28B7DD</color>
+    <color name="blue_primary_secondary">#40D7FF</color>
     <color name="blue_secondary">#02EED1</color>
 
     <color name="grey">#C4C4C4</color>
     <color name="grey_less">#E2E2E2</color>
+    <color name="grey_less2">#F4F4F4</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00FFFFFF</color>
+    <color name="blue_dark">#00838F</color>
 </resources>
