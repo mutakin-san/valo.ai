@@ -18,11 +18,20 @@ class ProfileViewModel(private val datasource: UserDataSourceRemote) : ViewModel
     }
 
     fun putProfile(profile: Profile) = liveData(Dispatchers.IO){
-        emit(Resource.loading(data = null))
+        emit(Resource.loading(data = false))
         try {
             emit(Resource.success(data = datasource.putProfile(profile)))
         } catch (exception: Exception) {
-            emit(Resource.error(data = null, message = exception.message ?: "Error Occurred!"))
+            emit(Resource.error(data = false, message = exception.message ?: "Error Occurred!"))
+        }
+    }
+
+    fun deleteProfile(uid: String) = liveData(Dispatchers.IO){
+        emit(Resource.loading(data = false))
+        try {
+            emit(Resource.success(data = datasource.deleteProfile(uid)))
+        } catch (exception: Exception) {
+            emit(Resource.error(data = false, message = exception.message ?: "Error Occurred!"))
         }
     }
 }

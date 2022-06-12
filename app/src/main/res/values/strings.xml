@@ -68,4 +68,7 @@
     <string name="date">tanggal</string>
     <string name="vaksin_ke">Vaksin ke:</string>
     <string name="_1">1</string>
+    <string name="simpan">Simpan</string>
+    <string name="hapus_akun">Hapus Akun</string>
+    <string name="edit">Edit</string>
 </resources>

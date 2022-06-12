@@ -44,6 +44,16 @@ class DashboardActivity : AppCompatActivity() {
     private lateinit var viewModel: FaskesViewModel
 
 
+    override fun onResume() {
+        with(binding){
+            txtName.text = user?.displayName
+            Glide.with(baseContext).load(user?.photoUrl).circleCrop().into(profileDashboard)
+        }
+
+        super.onResume()
+    }
+
+
     override fun onCreate(savedInstanceState: Bundle?) {
         this.title = "Dashboard"
         super.onCreate(savedInstanceState)
