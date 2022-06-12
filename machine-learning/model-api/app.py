@@ -7,23 +7,32 @@ app = Flask(__name__)
 
 @app.route('/recommendations/<vac_1>', methods=['GET'])
 def recommendations(vac_1):
-    interpreter = tf.lite.Interpreter(model_path="converted_model.tflite")
-    interpreter.allocate_tensors()
+    labels = ["AZ", "Sinovac", "Sinopharm", "Pfizer", "Moderna", "Janssen"]
+    vac_1 = vac_1.lower()
+    label_lower = [label.lower() for label in labels]
 
-    # get input and output tensors
-    input_details = interpreter.get_input_details()
-    output_details = interpreter.get_output_details()
+    if vac_1.isalpha() and vac_1 in label_lower:
+        interpreter = tf.lite.Interpreter(model_path="converted_model.tflite")
+        interpreter.allocate_tensors()
 
-    interpreter.set_tensor(input_details[0]['index'], np.array([vac_1]))
+        # get input and output tensors
+        input_details = interpreter.get_input_details()
+        output_details = interpreter.get_output_details()
 
-    interpreter.invoke()
+        interpreter.set_tensor(input_details[0]['index'], np.array([vac_1]))
 
-    output_data = interpreter.get_tensor(output_details[1]['index'])
-    vaccines = [x.decode() for x in output_data[0]]
+        interpreter.invoke()
 
-    dataJsonified = jsonify({"recommendations": vaccines})
-    return dataJsonified
+        output_data = interpreter.get_tensor(output_details[1]['index'])
+        vaccines = [x.decode() for x in output_data[0]]
+
+        dataJsonified = jsonify({
+            "recommendations": vaccines,
+            "message": "Data berhasil didapatkan"
+        })
+        return dataJsonified
+    else:
+        return jsonify({"message": "Masukkan data dengan benar"})
 
 if __name__ == '__main__':
     app.run()
-
