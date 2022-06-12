@@ -3,12 +3,12 @@ package com.capstone.valoai.features.profile.data.models
 data class Profile(
     val name: String = "",
     val birthDate: String = "",
-    val riwayat1: String = "",
-    val riwayat2: String = "",
-    val riwayat3: String = "",
-    val tanggalRiwayat1: String = "",
-    val tanggalRiwayat2: String = "",
-    val tanggalRiwayat3: String = "",
+    val vaksin1: String = "",
+    val vaksin2: String = "",
+    val vaksin3: String = "",
+    val tanggal_vaksin1: String = "",
+    val tanggal_vaksin2: String = "",
+    val tanggal_vaksin3: String = "",
 ) {
     fun copyWith(
         name: String?,
@@ -23,11 +23,11 @@ data class Profile(
         ): Profile = Profile(
         name ?: this.name,
         birthDate ?: this.birthDate,
-        riwayat1 ?: this.riwayat1,
-        riwayat2 ?: this.riwayat2,
-        riwayat3 ?: this.riwayat3,
-        tanggalRiwayat1 ?: this.tanggalRiwayat1,
-        tanggalRiwayat2 ?: this.tanggalRiwayat2,
-        tanggalRiwayat3 ?: this.tanggalRiwayat3
+        riwayat1 ?: this.vaksin1,
+        riwayat2 ?: this.vaksin2,
+        riwayat3 ?: this.vaksin3,
+        tanggalRiwayat1 ?: this.tanggal_vaksin1,
+        tanggalRiwayat2 ?: this.tanggal_vaksin2,
+        tanggalRiwayat3 ?: this.tanggal_vaksin3
     )
 }

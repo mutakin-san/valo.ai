@@ -27,6 +27,7 @@
     <string name="web_client_id">934521763666-u0vbnqbf5nuescmngfcc2nbceep91oj2.apps.googleusercontent.com</string>
     <string name="terms_and_policies">Menyetujui persyaratan dan kebijakan</string>
     <string name="personal_text">Personal Information</string>
+    <string name="update_personal_text">Update Personal Information</string>
     <string name="personal_dec">Masukan informasi personal informasi kamu agar kami bisa merekomendasikan vaksin yang relavan</string>
     <string name="name">Name</string>
     <string name="selesai">Selesai</string>

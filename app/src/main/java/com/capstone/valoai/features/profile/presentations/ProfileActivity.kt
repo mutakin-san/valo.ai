@@ -83,6 +83,10 @@ class ProfileActivity : AppCompatActivity() {
                 startActivity(Intent(this@ProfileActivity, EditProfileActivity::class.java))
             }
 
+            editVaksinId.setOnClickListener {
+                startActivity(Intent(this@ProfileActivity, EditVaksinActivity::class.java))
+            }
+
             user?.let {
 
                 viewModel!!.getProfile().observe(this@ProfileActivity) { result ->

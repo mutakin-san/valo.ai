@@ -26,10 +26,10 @@ class ProfileViewModel(private val datasource: UserDataSourceRemote) : ViewModel
         }
     }
 
-    fun deleteProfile(uid: String) = liveData(Dispatchers.IO){
+    fun deleteProfile() = liveData(Dispatchers.IO){
         emit(Resource.loading(data = false))
         try {
-            emit(Resource.success(data = datasource.deleteProfile(uid)))
+            emit(Resource.success(data = datasource.deleteProfile()))
         } catch (exception: Exception) {
             emit(Resource.error(data = false, message = exception.message ?: "Error Occurred!"))
         }

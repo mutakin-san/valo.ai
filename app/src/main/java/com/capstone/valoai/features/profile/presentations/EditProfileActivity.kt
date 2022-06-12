@@ -8,7 +8,9 @@ import android.view.View
 import android.widget.Toast
 import com.bumptech.glide.Glide
 import com.capstone.valoai.commons.Status
+import com.capstone.valoai.commons.navigateTo
 import com.capstone.valoai.databinding.ActivityEditProfileBinding
+import com.capstone.valoai.features.auth.presentation.login.LoginActivity
 import com.capstone.valoai.features.profile.data.models.Profile
 import com.capstone.valoai.features.profile.data.remote.UserDataSourceRemote
 import com.capstone.valoai.features.profile.domain.vmodel.ProfileViewModel
@@ -36,7 +38,7 @@ class EditProfileActivity : AppCompatActivity() {
 
 
         with(binding) {
-            back.setOnClickListener{
+            back.setOnClickListener {
                 finish()
             }
 
@@ -102,7 +104,11 @@ class EditProfileActivity : AppCompatActivity() {
 
 
                 deleteBtn.setOnClickListener {
-                    viewModel.deleteProfile(user!!.uid)
+                    viewModel.deleteProfile().observe(this@EditProfileActivity) { data ->
+                        if (data.data == true) {
+                            navigateTo(this@EditProfileActivity, LoginActivity::class.java)
+                        }
+                    }
                 }
 
                 fieldBirthDate.editText?.setOnFocusChangeListener { _, b ->

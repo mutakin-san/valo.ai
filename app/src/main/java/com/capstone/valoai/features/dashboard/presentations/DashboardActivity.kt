@@ -2,6 +2,7 @@ package com.capstone.valoai.features.dashboard.presentations
 
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -153,6 +154,7 @@ class DashboardActivity : AppCompatActivity() {
     }
 
     private val layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
+
     private fun attachHistoryList() {
         showProgressBar()
         binding.titleList.setText(R.string.riwayat_list)
@@ -162,19 +164,21 @@ class DashboardActivity : AppCompatActivity() {
 
             viewModel.getProfile().observe(this) { data ->
                 if (data.status == Status.SUCCESS) {
+                    Log.println(Log.INFO, "test", data.data?.vaksin1 ?: "none")
+
                     val vaksin1 = RiwayatVaksin(
-                        data.data?.riwayat1 ?: "",
-                        data.data?.tanggalRiwayat1 ?: "",
+                        data.data?.vaksin1 ?: "",
+                        data.data?.tanggal_vaksin1 ?: "",
                         "1"
                     )
                     val vaksin2 = RiwayatVaksin(
-                        data.data?.riwayat2 ?: "",
-                        data.data?.tanggalRiwayat2 ?: "",
+                        data.data?.vaksin2 ?: "",
+                        data.data?.tanggal_vaksin2 ?: "",
                         "2"
                     )
                     val vaksin3 = RiwayatVaksin(
-                        data.data?.riwayat3 ?: "",
-                        data.data?.tanggalRiwayat3 ?: "",
+                        data.data?.vaksin3 ?: "",
+                        data.data?.tanggal_vaksin3 ?: "",
                     "3"
                     )
                     val adapter = RiwayatListAdapter(arrayListOf(vaksin1, vaksin2, vaksin3))
@@ -193,9 +197,6 @@ class DashboardActivity : AppCompatActivity() {
                 }
             }
         }
-//        db.collection("users").document(user?.uid ?: "").get().addOnSuccessListener { fb ->
-//
-//        }
     }
 
     private fun onClickFloatingBtn() {
