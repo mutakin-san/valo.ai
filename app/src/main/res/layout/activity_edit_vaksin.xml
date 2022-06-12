@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".features.profile.presentations.EditVaksinActivity">
+
+    <ImageView
+        android:id="@+id/back"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="24dp"
+        android:contentDescription="@string/back_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/back_button" />
+
+
+    <TextView
+        android:layout_marginTop="24dp"
+        android:id="@+id/personal_information"
+        style="@style/TitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/update_personal_text"
+        app:layout_constraintEnd_toEndOf="@+id/personal_information_dec"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/personal_information_dec"
+        app:layout_constraintTop_toBottomOf="@+id/back" />
+
+    <TextView
+        android:id="@+id/personal_information_dec"
+        style="@style/Subtitle2Text"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginRight="24dp"
+        android:text="@string/personal_dec"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/personal_information" />
+
+
+    <TextView
+        android:id="@+id/label_vakin1"
+        style="@style/ParagraphText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        app:layout_constraintVertical_bias="0.05"
+        android:labelFor="@id/field_birth_date"
+        android:text="@string/vakin1"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/personal_information_dec" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/field_vakin1"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        app:boxStrokeWidth="2dp"
+        app:endIconDrawable="@drawable/ic_baseline_arrow_drop_down_24"
+        app:endIconMode="custom"
+        app:hintEnabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/label_vakin1">
+        <AutoCompleteTextView
+            android:id="@+id/vaksin1_auto"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:hint="@string/vakin"
+            android:maxLines="1"
+            android:paddingHorizontal="18dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <TextView
+        android:id="@+id/date_label_vakin1"
+        style="@style/ParagraphText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:labelFor="@id/field_birth_date"
+        android:text="@string/date_v1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/field_vakin1" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/date_field_vakin1"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        app:boxStrokeWidth="2dp"
+        app:endIconDrawable="@drawable/ic_baseline_arrow_drop_down_24"
+        app:endIconMode="custom"
+        app:hintEnabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/date_label_vakin1">
+
+        <AutoCompleteTextView
+            android:id="@+id/date_vaksin1_auto"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:hint="@string/date_v1"
+            android:maxLines="1"
+            android:paddingHorizontal="18dp" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <TextView
+        android:id="@+id/label_vakin2"
+        style="@style/ParagraphText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:labelFor="@id/field_birth_date"
+        android:text="@string/vakin2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/date_field_vakin1" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/field_vakin2"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        app:boxStrokeWidth="2dp"
+        app:endIconDrawable="@drawable/ic_baseline_arrow_drop_down_24"
+        app:endIconMode="custom"
+        app:hintEnabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/label_vakin2">
+
+        <AutoCompleteTextView
+            android:id="@+id/vaksin2_auto"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:hint="@string/vakin"
+            android:maxLines="1"
+            android:paddingHorizontal="18dp"
+            android:text="@string/n_a" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+
+    <TextView
+        android:id="@+id/date_label_vakin2"
+        style="@style/ParagraphText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="12dp"
+        android:labelFor="@id/field_birth_date"
+        android:text="@string/date_v2"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/field_vakin2" />
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/date_field_vakin2"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        app:boxStrokeWidth="2dp"
+        app:endIconDrawable="@drawable/ic_baseline_arrow_drop_down_24"
+        app:endIconMode="custom"
+        app:hintEnabled="false"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/date_label_vakin2">
+
+        <AutoCompleteTextView
+            android:id="@+id/date_vaksin2_auto"
+            android:layout_width="match_parent"
+            android:layout_height="56dp"
+            android:hint="@string/vakin"
+            android:maxLines="1"
+            android:paddingHorizontal="18dp"
+            android:text="@string/n_a" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/btn_submit"
+        style="@style/Button1Text"
+        android:layout_width="363dp"
+        android:layout_height="55dp"
+        android:layout_marginVertical="22dp"
+        android:text="@string/simpan"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/date_field_vakin2"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.45" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,6 +21,7 @@ import com.google.firebase.firestore.FirebaseFirestore
 import com.google.firebase.ktx.Firebase
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 
 class FormPersonalActivity : AppCompatActivity() {
@@ -42,6 +43,7 @@ class FormPersonalActivity : AppCompatActivity() {
             collection("vaksins").get().addOnSuccessListener {
                 vaksins =
                     it.documents.map { item -> item.get("name") as String } as ArrayList<String>
+
                 setVaksin(vaksins)
             }
 
@@ -52,6 +54,7 @@ class FormPersonalActivity : AppCompatActivity() {
 
             }
         }
+
     }
 
     private fun setRiwayat(riwayat: ArrayList<String>) {
@@ -65,8 +68,7 @@ class FormPersonalActivity : AppCompatActivity() {
 
     private fun setVaksin(vaksins: ArrayList<String>) {
         with(binding) {
-            val adapterVaksin =
-                ArrayAdapter(baseContext, R.layout.dropdown_menu_popup_item, vaksins)
+            val adapterVaksin = ArrayAdapter(baseContext, R.layout.dropdown_menu_popup_item, vaksins)
             (fieldVakin1.editText as? AutoCompleteTextView)?.setAdapter(adapterVaksin)
             (fieldVakin2.editText as? AutoCompleteTextView)?.setAdapter(adapterVaksin)
         }
@@ -78,6 +80,7 @@ class FormPersonalActivity : AppCompatActivity() {
                 .setTitleText("Select Date")
                 .setSelection(MaterialDatePicker.todayInUtcMilliseconds())
                 .build()
+
         val datePicker2 =
             MaterialDatePicker.Builder.datePicker()
                 .setTitleText("Select Date")

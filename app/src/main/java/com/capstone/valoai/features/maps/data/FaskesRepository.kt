@@ -11,7 +11,7 @@ class FaskesRepository(private val faskesService: FaskesService) {
             response.body()?.let {
                 it.forEach { data ->
 
-                    val vaccineTypes = mapOf(
+                    val vaccineTypes = mapOf<String, Int>(
                         "astrazaneca" to data.astrazaneca.toInt(),
                         "janssen" to data.janssen.toInt(),
                         "moderna" to data.moderna.toInt(),
