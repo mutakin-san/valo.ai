@@ -36,4 +36,30 @@ class UserDataSourceRemote(private val user: FirebaseUser) {
         }
         return def.await()
     }
+
+    suspend fun putProfile(profile: Profile): Boolean? {
+        val def = CompletableDeferred<Boolean?>()
+        try {
+
+            val data = Profile(
+                name = profile.name,
+                birthDate = profile.birthDate,
+                riwayat1 = profile.riwayat1,
+                riwayat2 = profile.riwayat2,
+                riwayat3 = profile.riwayat3,
+                tanggalRiwayat1 = profile.tanggalRiwayat1,
+                tanggalRiwayat2 = profile.tanggalRiwayat2,
+                tanggalRiwayat3 = profile.tanggalRiwayat3,
+            )
+
+            db.collection(PathFire.users).document(user.uid).set(data).addOnCompleteListener {
+                if (it.isSuccessful)
+                    it.addOnCompleteListener { data -> def.complete(data.isSuccessful) }
+                else def.complete(null)
+            }
+        } catch (e: Exception) {
+            Log.println(Log.ERROR, "Profile Log", e.message ?: "Put Profile Errors")
+        }
+        return def.await()
+    }
 }
