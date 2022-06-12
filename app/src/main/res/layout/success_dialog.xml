@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/success_dialog"
+    android:layout_width="290dp"
+    android:layout_height="260dp"
+    android:background="@color/transparent"
+    android:backgroundTint="@color/transparent"
+    app:cardPreventCornerOverlap="false"
+    android:foregroundTint="@color/transparent"
+    android:backgroundTintMode="multiply"
+    android:foregroundTintMode="multiply"
+    app:cardBackgroundColor="@color/transparent"
+    app:cardCornerRadius="12dp">
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/sunccess_dialog_background" />
+
+    <View
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/ic_baseline_check_circle_outline_24" />
+
+    <TextView
+        android:id="@+id/success_title_id"
+        style="@style/TitleText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="12dp"
+        android:text="@string/success" />
+
+    <TextView
+        android:id="@+id/success_message_id"
+        style="@style/ParagraphText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="44dp"
+        android:text="@string/success_dialog_message"
+        android:textAlignment="center" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/success_btn_id"
+        style="@style/Widget.MaterialComponents.Button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:layout_marginHorizontal="8dp"
+        android:elevation="0dp"
+        android:text="@string/continue_btn"
+ />
+
+</androidx.cardview.widget.CardView>

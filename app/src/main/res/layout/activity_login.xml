@@ -15,18 +15,34 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="100dp"
-            android:text="@string/login_to_valo_ai"
-            app:layout_constraintEnd_toEndOf="parent"
+            android:text="@string/login_to"
+            app:layout_constraintEnd_toStartOf="@+id/label_login_vola_ai"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/label_login_vola_ai"
+            style="@style/HeadingText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:text="@string/valo_ai"
+            android:textColor="@color/blue_primary"
+            app:layout_constraintBottom_toBottomOf="@+id/label_login"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/label_login"
+            app:layout_constraintTop_toTopOf="@+id/label_login" />
 
         <ImageView
             android:id="@+id/image_login"
             android:layout_width="200dp"
             android:layout_height="128dp"
             android:layout_marginStart="24dp"
-            android:layout_marginEnd="24dp"
             android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
             android:contentDescription="@string/login_image_illustration"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -35,18 +51,18 @@
 
         <TextView
             android:id="@+id/label_username"
+            style="@style/ParagraphText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="50dp"
-            android:labelFor="@id/field_username"
-            style="@style/ParagraphText"
-            android:text="@string/username"
+            android:labelFor="@id/field_email"
+            android:text="@string/email"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/image_login" />
 
         <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/field_username"
+            android:id="@+id/field_email"
             style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
@@ -56,27 +72,29 @@
             app:hintEnabled="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/label_username"
-            app:placeholderText="Isi username">
+            app:layout_constraintTop_toBottomOf="@id/label_username">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:maxLines="1" />
+                android:hint="@string/email"
+                android:imeOptions="actionNext|actionNone"
+                android:maxLines="1"
+                android:textColorHint="#757575" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
         <TextView
             android:id="@+id/label_password"
+            style="@style/ParagraphText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="24dp"
             android:layout_marginTop="16dp"
             android:labelFor="@id/field_password"
             android:text="@string/password"
-            style="@style/ParagraphText"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/field_username" />
+            app:layout_constraintTop_toBottomOf="@id/field_email" />
 
         <com.google.android.material.textfield.TextInputLayout
             android:id="@+id/field_password"
@@ -86,18 +104,20 @@
             android:layout_marginStart="24dp"
             android:layout_marginEnd="24dp"
             app:boxStrokeWidth="2dp"
+            app:hintEnabled="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/label_password"
-            app:passwordToggleEnabled="true"
-            app:hintEnabled="false"
-            app:placeholderText="Isi Password">
+            app:passwordToggleEnabled="true">
 
             <com.google.android.material.textfield.TextInputEditText
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:hint="@string/password"
+                android:imeOptions="actionDone"
                 android:inputType="textPassword"
-                android:maxLines="1" />
+                android:maxLines="1"
+                android:textColorHint="#757575" />
         </com.google.android.material.textfield.TextInputLayout>
 
 
@@ -113,12 +133,12 @@
 
         <TextView
             android:id="@+id/btn_to_register"
+            style="@style/ParagraphText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"
             android:text="@string/btn_to_register_text"
-            style="@style/ParagraphText"
-            android:textColor="?attr/colorPrimary"
+            android:textColor="@color/blue_dark"
             app:layout_constraintBottom_toBottomOf="@+id/label_does_not_have_account"
             app:layout_constraintStart_toEndOf="@+id/label_does_not_have_account"
             app:layout_constraintTop_toTopOf="@+id/label_does_not_have_account" />
@@ -126,15 +146,64 @@
 
         <Button
             android:id="@+id/btn_login"
+            style="@style/Button1Text"
             android:layout_width="0dp"
             android:layout_height="55dp"
             android:layout_marginStart="24dp"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="24dp"
             android:layout_marginEnd="24dp"
             android:text="@string/login"
-            style="@style/Button1Text"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/label_does_not_have_account" />
+            app:layout_constraintTop_toBottomOf="@id/signInWithGoogle" />
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/signInWithGoogle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="24dp"
+            android:layout_marginTop="16dp"
+            app:cardCornerRadius="10dp"
+            app:contentPadding="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/btn_to_register">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center">
+
+                <ImageView
+                    android:layout_width="30dp"
+                    android:layout_height="30dp"
+                    android:layout_marginEnd="8dp"
+                    android:backgroundTint="@android:color/transparent"
+                    android:contentDescription="@string/google_logo"
+                    android:scaleType="centerInside"
+                    app:srcCompat="@drawable/google" />
+
+
+                <TextView
+                    style="@style/TitleText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="@string/login_dengan_google"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+
+        <ProgressBar
+            android:id="@+id/progressBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.45" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView>
