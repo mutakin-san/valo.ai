@@ -215,6 +215,10 @@ class FormPersonalActivity : AppCompatActivity() {
         val birthDate = binding.fieldName.editText?.text.toString()
         val vaksin1 = binding.fieldVakin1.editText?.text.toString()
         val vaksin2 = binding.fieldVakin2.editText?.text.toString()
+        val dateVaksin1 = binding.dateFieldVakin1.editText?.text.toString()
+        val dateVaksin2 = binding.dateFieldVakin2.editText?.text.toString()
+
+
 
         if (name.isEmpty()) {
             valid = false
@@ -251,6 +255,40 @@ class FormPersonalActivity : AppCompatActivity() {
             valid = false
         } else {
             binding.fieldVakin2.error = null
+        }
+
+        if (dateVaksin1.isNotEmpty()) {
+            try {
+                val test = outputDateFormat.parse(dateVaksin1)
+
+                if(test == null){
+                    valid = false
+                    binding.dateFieldVakin1.error = "tanggal tidak valid"
+                }else{
+                    binding.dateFieldVakin1.error = null
+
+                }
+            } catch (e: Exception) {
+                valid = false
+                binding.dateFieldVakin1.error = "tanggal tidak valid"
+            }
+        }
+
+        if (dateVaksin2.isNotEmpty()) {
+            try {
+                val test = outputDateFormat.parse(dateVaksin2)
+
+                if(test == null){
+                    valid = false
+                    binding.dateFieldVakin2.error = "tanggal tidak valid"
+                }else{
+                    binding.dateFieldVakin2.error = null
+
+                }
+            } catch (e: Exception) {
+                valid = false
+                binding.dateFieldVakin2.error = "tanggal tidak valid"
+            }
         }
 
 

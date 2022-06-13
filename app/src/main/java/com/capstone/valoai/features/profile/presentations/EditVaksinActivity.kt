@@ -1,12 +1,12 @@
 package com.capstone.valoai.features.profile.presentations
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.AutoCompleteTextView
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.capstone.valoai.R
 import com.capstone.valoai.commons.Status
 import com.capstone.valoai.databinding.ActivityEditVaksinBinding
@@ -98,9 +98,10 @@ class EditVaksinActivity : AppCompatActivity() {
                             with(binding) {
                                 fieldVakin1.editText?.setText(st.data?.vaksin1)
                                 fieldVakin2.editText?.setText(st.data?.vaksin2)
-                                dateFieldVakin1.editText?.setText(st.data?.vaksin2)
+                                dateFieldVakin1.editText?.setText(st.data?.vaksin1)
                                 dateFieldVakin2.editText?.setText(st.data?.vaksin2)
                                 btnSubmit.setOnClickListener {
+                                    if (!validateForm()) return@setOnClickListener
                                     showProgressBar()
 
                                     val rVakin1 = fieldVakin1.editText?.text
@@ -156,10 +157,14 @@ class EditVaksinActivity : AppCompatActivity() {
     }
 
     private fun validateForm(): Boolean {
+
         var valid = true
 
         val vaksin1 = binding.fieldVakin1.editText?.text.toString()
         val vaksin2 = binding.fieldVakin2.editText?.text.toString()
+        val dateVaksin1 = binding.dateFieldVakin1.editText?.text.toString()
+        val dateVaksin2 = binding.dateFieldVakin2.editText?.text.toString()
+
 
 
         if (vaksin1.isEmpty()) {
@@ -167,6 +172,19 @@ class EditVaksinActivity : AppCompatActivity() {
             valid = false
         } else {
             binding.fieldVakin1.error = null
+        }
+
+        if (vaksin1.isNotEmpty() && dateVaksin1.isEmpty()) {
+            binding.dateFieldVakin1.error = "Tidak boleh kosong"
+            valid = false
+        } else {
+            binding.dateFieldVakin1.error = null
+        }
+        if (vaksin2.isNotEmpty() && dateVaksin2.isEmpty()) {
+            binding.dateFieldVakin2.error = "Tidak boleh kosong"
+            valid = false
+        } else {
+            binding.dateFieldVakin2.error = null
         }
 
         if (!vaksins.contains(vaksin1)) {
@@ -177,13 +195,39 @@ class EditVaksinActivity : AppCompatActivity() {
         }
 
 
-        if (vaksins.isNotEmpty() && !vaksins.contains(vaksin2)) {
-            binding.fieldVakin2.error = "Vaksin Tidak Valid"
-            valid = false
-        } else {
-            binding.fieldVakin2.error = null
+        if (dateVaksin1.isNotEmpty()) {
+            try {
+                val test = outputDateFormat.parse(dateVaksin1)
+
+                if(test == null){
+                    valid = false
+                    binding.dateFieldVakin1.error = "tanggal tidak valid"
+                }else{
+                    binding.dateFieldVakin1.error = null
+
+                }
+            } catch (e: Exception) {
+                valid = false
+                binding.dateFieldVakin1.error = "tanggal tidak valid"
+            }
         }
 
+        if (dateVaksin2.isNotEmpty()) {
+            try {
+                val test = outputDateFormat.parse(dateVaksin2)
+
+                if(test == null){
+                    valid = false
+                    binding.dateFieldVakin2.error = "tanggal tidak valid"
+                }else{
+                    binding.dateFieldVakin2.error = null
+
+                }
+            } catch (e: Exception) {
+                valid = false
+                binding.dateFieldVakin2.error = "tanggal tidak valid"
+            }
+        }
 
         return valid
     }
