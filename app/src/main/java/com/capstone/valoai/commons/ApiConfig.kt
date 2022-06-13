@@ -8,7 +8,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
 object ApiConfig {
-    fun getRetrofit(): Retrofit {
+    fun getRetrofit(baseUrl : String): Retrofit {
         val loggingInterceptor =
             HttpLoggingInterceptor().setLevel(if (BuildConfig.DEBUG) HttpLoggingInterceptor.Level.BODY else HttpLoggingInterceptor.Level.NONE)
 
@@ -17,12 +17,12 @@ object ApiConfig {
             .build()
 
         return Retrofit.Builder()
-//            .baseUrl("https://629d85a6c6ef9335c09f0fe0.mockapi.io/")
-            .baseUrl("https://f1992759-5b0a-4678-9cda-d7356f29551c.mock.pstmn.io/")
+            .baseUrl(baseUrl)
             .addConverterFactory(GsonConverterFactory.create())
             .client(client)
             .build()
     }
 
-    val faskesService: FaskesService = getRetrofit().create(FaskesService::class.java)
+    val recommendationService: RecommendationService = getRetrofit("https://api-valo-model.herokuapp.com/").create(RecommendationService::class.java)
+    val faskesService: FaskesService = getRetrofit("https://f1992759-5b0a-4678-9cda-d7356f29551c.mock.pstmn.io/").create(FaskesService::class.java)
 }

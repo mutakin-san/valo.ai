@@ -43,6 +43,8 @@ class VaccineLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
     private lateinit var viewModel: FaskesViewModel
     private lateinit var locationRequest: LocationRequest
 
+    private var vaccineType: String = "AZ"
+
 
     private val requestLocationPermission =
         registerForActivityResult(ActivityResultContracts.RequestMultiplePermissions()) { permissions ->
@@ -59,10 +61,14 @@ class VaccineLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
+        if(intent != null){
+            vaccineType = intent.getStringExtra("vaccineType") as String
+        }
+
         viewModel =
             ViewModelProvider(
                 this,
-                ViewModelFactory(FaskesRepository(ApiConfig.faskesService))
+                ViewModelFactory(FaskesRepository(ApiConfig.faskesService, ApiConfig.recommendationService))
             )[FaskesViewModel::class.java]
 
 
@@ -92,7 +98,7 @@ class VaccineLocationMapsActivity : AppCompatActivity(), OnMapReadyCallback {
         createLocationRequest()
         mMap.uiSettings.isZoomControlsEnabled = true
 
-        viewModel.getAllFaskes().observe(this) {
+        viewModel.getAllFaskes(vaccineType).observe(this) {
             it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {

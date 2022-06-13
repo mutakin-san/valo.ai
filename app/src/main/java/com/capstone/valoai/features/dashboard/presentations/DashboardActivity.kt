@@ -41,12 +41,13 @@ class DashboardActivity : AppCompatActivity() {
     private lateinit var binding: ActivityDashboardBinding
     private lateinit var firebaseAuth: FirebaseAuth
     private var user: FirebaseUser? = null
+    private var vaksinType: String = "AZ"
 
     private lateinit var viewModel: FaskesViewModel
 
 
     override fun onResume() {
-        with(binding){
+        with(binding) {
             txtName.text = user?.displayName
             Glide.with(baseContext).load(user?.photoUrl).circleCrop().into(profileDashboard)
         }
@@ -109,11 +110,16 @@ class DashboardActivity : AppCompatActivity() {
         viewModel =
             ViewModelProvider(
                 this,
-                ViewModelFactory(FaskesRepository(ApiConfig.faskesService))
+                ViewModelFactory(
+                    FaskesRepository(
+                        ApiConfig.faskesService,
+                        ApiConfig.recommendationService
+                    )
+                )
             )[FaskesViewModel::class.java]
 
         showProgressBar()
-        viewModel.getAllFaskes().observe(this) {
+        viewModel.getAllFaskes(vaksinType).observe(this) {
             it?.let { resource ->
                 when (resource.status) {
                     Status.SUCCESS -> {
@@ -166,6 +172,8 @@ class DashboardActivity : AppCompatActivity() {
                 if (data.status == Status.SUCCESS) {
                     Log.println(Log.INFO, "test", data.data?.vaksin1 ?: "none")
 
+                    vaksinType = data.data?.vaksin1 ?: "AZ"
+
                     val vaksin1 = RiwayatVaksin(
                         data.data?.vaksin1 ?: "",
                         data.data?.tanggal_vaksin1 ?: "",
@@ -179,7 +187,7 @@ class DashboardActivity : AppCompatActivity() {
                     val vaksin3 = RiwayatVaksin(
                         data.data?.vaksin3 ?: "",
                         data.data?.tanggal_vaksin3 ?: "",
-                    "3"
+                        "3"
                     )
                     val adapter = RiwayatListAdapter(arrayListOf(vaksin1, vaksin2, vaksin3))
 
@@ -200,7 +208,11 @@ class DashboardActivity : AppCompatActivity() {
     }
 
     private fun onClickFloatingBtn() {
-        startActivity(Intent(this@DashboardActivity, VaccineLocationMapsActivity::class.java))
+        startActivity(
+            Intent(
+                this@DashboardActivity,
+                VaccineLocationMapsActivity::class.java
+            ).apply { putExtra("vaccineType", vaksinType) })
     }
 
     private fun showProgressBar() {
