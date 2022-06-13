@@ -129,7 +129,7 @@ class EditProfileActivity : AppCompatActivity() {
         var valid = true
 
         val name = binding.fieldName.editText?.text.toString()
-        val birthDate = binding.fieldName.editText?.text.toString()
+        val birthDate = binding.fieldBirthDate.editText?.text.toString()
 
 
         if (name.isEmpty()) {
@@ -146,10 +146,10 @@ class EditProfileActivity : AppCompatActivity() {
         } else {
             binding.fieldBirthDate.error = null
         }
+
         if (birthDate.isNotEmpty()) {
             try {
                 val test = outputDateFormat.parse(birthDate)
-
                 if (test == null) {
                     valid = false
                     binding.fieldBirthDate.error = "tanggal tidak valid"

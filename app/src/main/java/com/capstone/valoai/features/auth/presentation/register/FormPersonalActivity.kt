@@ -212,7 +212,7 @@ class FormPersonalActivity : AppCompatActivity() {
         var valid = true
 
         val name = binding.fieldName.editText?.text.toString()
-        val birthDate = binding.fieldName.editText?.text.toString()
+        val birthDate = binding.fieldBirthDate.editText?.text.toString()
         val vaksin1 = binding.fieldVakin1.editText?.text.toString()
         val vaksin2 = binding.fieldVakin2.editText?.text.toString()
         val dateVaksin1 = binding.dateFieldVakin1.editText?.text.toString()
