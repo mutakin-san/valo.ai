@@ -54,6 +54,7 @@ class EditProfileActivity : AppCompatActivity() {
                                 fieldName.editText?.setText(st.data?.name)
                                 fieldBirthDate.editText?.setText(st.data?.birthDate)
                                 btnSubmit.setOnClickListener {
+                                    if(!validateForm()) return@setOnClickListener
                                     showProgressBar()
 
                                     val name = fieldName.editText?.text
@@ -123,6 +124,49 @@ class EditProfileActivity : AppCompatActivity() {
             }
         }
     }
+
+    private fun validateForm(): Boolean {
+        var valid = true
+
+        val name = binding.fieldName.editText?.text.toString()
+        val birthDate = binding.fieldName.editText?.text.toString()
+
+
+        if (name.isEmpty()) {
+            valid = false
+            binding.fieldName.error = "Required."
+        } else {
+            binding.fieldName.error = null
+        }
+
+
+        if (birthDate.isEmpty()) {
+            valid = false
+            binding.fieldBirthDate.error = "Required."
+        } else {
+            binding.fieldBirthDate.error = null
+        }
+        if (birthDate.isNotEmpty()) {
+            try {
+                val test = outputDateFormat.parse(birthDate)
+
+                if (test == null) {
+                    valid = false
+                    binding.fieldBirthDate.error = "tanggal tidak valid"
+                } else {
+                    binding.fieldBirthDate.error = null
+
+                }
+            } catch (e: Exception) {
+                valid = false
+                binding.fieldBirthDate.error = "tanggal tidak valid"
+            }
+        }
+
+
+        return valid
+    }
+
 
     private fun showProgressBar() {
         binding.progressBar.visibility = View.VISIBLE

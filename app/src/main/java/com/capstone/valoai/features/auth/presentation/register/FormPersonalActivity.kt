@@ -257,6 +257,23 @@ class FormPersonalActivity : AppCompatActivity() {
             binding.fieldVakin2.error = null
         }
 
+        if (birthDate.isNotEmpty()) {
+            try {
+                val test = outputDateFormat.parse(birthDate)
+
+                if(test == null){
+                    valid = false
+                    binding.fieldBirthDate.error = "tanggal tidak valid"
+                }else{
+                    binding.fieldBirthDate.error = null
+
+                }
+            } catch (e: Exception) {
+                valid = false
+                binding.fieldBirthDate.error = "tanggal tidak valid"
+            }
+        }
+
         if (dateVaksin1.isNotEmpty()) {
             try {
                 val test = outputDateFormat.parse(dateVaksin1)
